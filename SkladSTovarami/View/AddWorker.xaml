@@ -1,0 +1,39 @@
+﻿<Window x:Class="SkladSTovarami.View.AddWorker"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SkladSTovarami.View"
+        mc:Ignorable="d"
+       Title="AddWorker" Height="300" Width="336.82">
+    
+    <Grid Background="#FF4156C7">
+        <TextBox x:Name="textBox_surname" HorizontalAlignment="Left" Height="23" Margin="158,36,0,0" 
+                 TextWrapping="Wrap"  VerticalAlignment="Top" Width="120" PreviewTextInput="textBox_PreviewTextInput"/>
+        <TextBox x:Name="textBox_name" HorizontalAlignment="Left" Height="23" Margin="158,64,0,0" 
+                 TextWrapping="Wrap"  VerticalAlignment="Top" Width="120" PreviewTextInput="textBox_PreviewTextInput"/>
+        <TextBox x:Name="textBox_login" HorizontalAlignment="Left" Height="23" Margin="158,92,0,0" 
+                 TextWrapping="Wrap"  VerticalAlignment="Top" Width="120" PreviewTextInput="textBox_login_PreviewTextInput"/>
+        <Label x:Name="label1" Content="Фамилия :" HorizontalAlignment="Left" Margin="75,33,0,0" 
+               VerticalAlignment="Top" FontWeight="Bold"/>
+        <Label x:Name="label2" Content="Имя :" HorizontalAlignment="Left" Margin="101,61,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+        <Label x:Name="label3" Content="Логин :" HorizontalAlignment="Left" Margin="91,89,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+        <Label x:Name="label3_Copy" Content="Роль :" HorizontalAlignment="Left" Margin="98,116,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+        <ComboBox x:Name="comboBox_role" HorizontalAlignment="Left" Margin="158,120,0,0" VerticalAlignment="Top" Width="120"/>
+        <Label x:Name="label3_Copy1" Content="Пароль :" HorizontalAlignment="Left" Margin="83,142,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+        <Label x:Name="label3_Copy2" Content="Подтвердите пароль :" HorizontalAlignment="Left" 
+               Margin="10,168,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+        <PasswordBox x:Name="passwordBox" HorizontalAlignment="Left" Margin="158,146,0,0" 
+                     VerticalAlignment="Top" Width="120" Height="22"/>
+        <PasswordBox x:Name="passwordBox_approve" HorizontalAlignment="Left" Margin="158,173,0,0" 
+                     VerticalAlignment="Top" Width="120" Height="22"/>
+        
+        <Button x:Name="button_Cancel" Content="Отмена" HorizontalAlignment="Left" Margin="29,218,0,0" 
+                VerticalAlignment="Top" Width="120" Height="34" Click="button_Cancel_Click" FontWeight="Bold"/>
+        <Button x:Name="button_Save" Content="Сохранить" HorizontalAlignment="Left" Margin="174,218,0,0" 
+                VerticalAlignment="Top" Width="120" Height="34" Click="buttonSave_Click" FontWeight="Bold"/>
+        <TextBlock x:Name="textBlock_Id" HorizontalAlignment="Left" Margin="39,10,0,0" TextWrapping="Wrap" 
+                   Text="-1" VerticalAlignment="Top" Visibility="Hidden"/>
+        
+    </Grid>
+</Window>

@@ -1,0 +1,98 @@
+﻿<Window x:Class="SkladSTovarami.View.OrderEdit"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SkladSTovarami.View"
+        mc:Ignorable="d"
+        Title="OrderEdit" Height="381.107" Width="682.102" Loaded="Window_Loaded">
+
+    <Grid Background="#FF677DF7">
+        <Grid x:Name="MainGrid" HorizontalAlignment="Left" Height="360" 
+              VerticalAlignment="Top" Width="497" d:IsHidden="True">
+            <DataGrid x:Name="dataGridGoods" HorizontalAlignment="Left" Margin="10,10,0,0" 
+                      VerticalAlignment="Top" Height="249" Width="311"
+    			ItemsSource="{Binding}"
+    			HeadersVisibility="Column"                 
+    			CanUserResizeRows="False"
+    			SelectionMode="Single"
+    			CanUserAddRows="False"       		
+    			AutoGenerateColumns="False"
+    			CanUserReorderColumns="False"
+    			IsReadOnly="True">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Width="25" Binding="{Binding Id}" Header="№"/>
+                    <DataGridTextColumn Width="40" Binding="{Binding ProductsId}" Header="№ товара"/>
+                    <DataGridTextColumn Width="100" Binding="{Binding Name}" Header="Название"/>
+                    <DataGridTextColumn Width="50" Binding="{Binding Price}" Header="Цена"/>
+                    <DataGridTextColumn Width="45" Binding="{Binding Count}" Header="Количество"/>
+                </DataGrid.Columns>
+            </DataGrid>
+            <Button x:Name="button" Content="Редактировать" HorizontalAlignment="Left" 
+                    Margin="347,86,0,0" VerticalAlignment="Top" Width="121" Click="buttonEdit_Click" Height="40"/>
+            <Button x:Name="button5" Content="Добавить" HorizontalAlignment="Left" Margin="347,31,0,0" 
+                    VerticalAlignment="Top" Width="121" Height="40" Click="buttonAdd_Click"/>
+            <Button x:Name="button6" Content="Удалить" HorizontalAlignment="Left" Margin="347,141,0,0" 
+                    VerticalAlignment="Top" Width="121" Height="40" Click="buttonDel_Click"/>
+            <Button x:Name="button7" Content="Сохранить" HorizontalAlignment="Left" Margin="347,201,0,0" 
+                    VerticalAlignment="Top" Width="121" Height="40" Click="buttonSave_Click"/>
+            <Label x:Name="label4" Content="Составил : " HorizontalAlignment="Left" Margin="36,274,0,0" 
+                   VerticalAlignment="Top" Width="432" Height="41" FontSize="21.333" Background="#FF677DF7" 
+                   Foreground="#FF1017A8"/>
+            
+            <CheckBox x:Name="checkBox" Content="Выполнен" HorizontalAlignment="Left" Margin="36,315,0,0" 
+                      VerticalAlignment="Top" FontSize="16"/>
+        </Grid>
+        <Grid x:Name="GoodsGrid" HorizontalAlignment="Left" Height="269" VerticalAlignment="Top" 
+              Width="717" Background="#FF677DF7">
+            <DataGrid x:Name="dataGrid" HorizontalAlignment="Left" Margin="10,33,0,0" VerticalAlignment="Top" 
+                      Height="226" Width="512"
+    			ItemsSource="{Binding}"
+    			HeadersVisibility="Column"                 
+    			CanUserResizeRows="False"
+    			SelectionMode="Single"
+    			CanUserAddRows="False"        		
+    			AutoGenerateColumns="False"
+    			CanUserReorderColumns="False"
+    			IsReadOnly="True">
+                
+                <DataGrid.Columns>
+                    <DataGridTextColumn Width="30" Binding="{Binding Id}" Header="№"/>
+                    <DataGridTextColumn Width="120" Binding="{Binding Name}" Header="Название"/>
+                    <DataGridTextColumn Width="70" Binding="{Binding Type}" Header="Тип"/>
+                    <DataGridTextColumn Width="70" Binding="{Binding PricePurchase}" Header="Закупка"/>
+                    <DataGridTextColumn Width="70" Binding="{Binding SellPrice}" Header="Продажа"/>
+                    <DataGridTextColumn Width="70" Binding="{Binding Balance}" Header="Наличие"/>
+                </DataGrid.Columns>
+            </DataGrid>
+            
+            <TextBox x:Name="textBox" HorizontalAlignment="Left" Height="23" Margin="10,5,0,0" 
+                     TextWrapping="Wrap" Text="Поиск" VerticalAlignment="Top" Width="139" TextChanged="textBox_TextChanged"/>
+            <Button x:Name="button3" Content="Далее" HorizontalAlignment="Left" Margin="541,47,0,0" 
+                    VerticalAlignment="Top" Width="116" Height="45" FontFamily="Microsoft Sans Serif" 
+                    FontSize="20" Click="buttonNext_Click"/>
+            <Button x:Name="button4" Content="Отмена" HorizontalAlignment="Left" Margin="541,112,0,0"
+                    VerticalAlignment="Top" Width="116" Height="46" FontFamily="Microsoft Sans Serif" 
+                    FontSize="20" Click="buttonCancel_Click"/>
+            <Button x:Name="button8" Content="Поиск" HorizontalAlignment="Left" Margin="172,10,0,0" 
+                    VerticalAlignment="Top" Width="75" Click="buttonFind_Click" FontWeight="Bold"/>
+        </Grid>
+        
+        <Grid x:Name="CountPriceGrid" HorizontalAlignment="Left" Height="135" Margin="150,65,0,0" 
+              VerticalAlignment="Top" Width="250" Background="White" d:IsHidden="True">
+            <Label x:Name="label" Content="Количество :" HorizontalAlignment="Left" Margin="17,26,0,0" 
+                   VerticalAlignment="Top"/>
+            <TextBox x:Name="textBox_Count" Text="1" HorizontalAlignment="Left" Height="23" Margin="112,29,0,0" 
+                     TextWrapping="Wrap"  VerticalAlignment="Top" Width="120" 
+                     PreviewTextInput="textBox_Count_PreviewTextInput" LostFocus="textBox_SellPrice_LostFocus"/>
+            <TextBlock x:Name="textBLock_Price" HorizontalAlignment="Left" Height="23" Margin="112,60,0,0" 
+                       TextWrapping="Wrap"  VerticalAlignment="Top" Width="120" />
+            <Button x:Name="button1" Content="Отмена" HorizontalAlignment="Left" Margin="41,106,0,0" 
+                    VerticalAlignment="Top" Width="75" Click="buttonCancelling_Click"/>
+            <Button x:Name="button2" Content="Сохранить" HorizontalAlignment="Left" Margin="157,106,0,0" 
+                    VerticalAlignment="Top" Width="75" Click="buttonSaving_Click"/>
+            <Label x:Name="label1" Content="Цена закупки :" HorizontalAlignment="Left" Margin="7,57,0,0" 
+                   VerticalAlignment="Top"/>
+        </Grid>
+    </Grid>
+</Window>
