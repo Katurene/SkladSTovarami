@@ -5,8 +5,154 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SkladSTovarami.View"
         mc:Ignorable="d"
-        Title="FindWindow" Height="450" Width="800">
+        Title="ОКНО ПОИСКА" Height="454" Width="941">
+
     <Grid>
+        <ComboBox x:Name="comboBox" HorizontalAlignment="Left" Margin="10,10,0,0" 
+                  VerticalAlignment="Top" Width="167" SelectionChanged="comboBox_SelectionChanged"/>
+        <DataGrid x:Name="dataGrid_MainProd" HorizontalAlignment="Left" Margin="10,104,0,0" 
+                  VerticalAlignment="Top" Height="309" Width="609" ItemsSource="{Binding}"
+                  HeadersVisibility="Column"
+				  CanUserResizeRows="False"
+				  SelectionMode="Single"
+				  CanUserAddRows="False"
+                  AutoGenerateColumns="False"
+				  CanUserReorderColumns="False"
+                  IsReadOnly="True" SelectionChanged="dataGrid_MainProduct_SelectionChanged">
+            <DataGrid.Columns>
+                <DataGridTextColumn Width="25" Binding="{Binding Id}" Header="№"/>
+                <DataGridTextColumn Width="100" Binding="{Binding CodeName}" Header="Название"/>
+                <DataGridTextColumn Width="80" Binding="{Binding Type}" Header="Тип"/>
+                <DataGridTextColumn Width="80" Binding="{Binding Brand}" Header="Марка"/>
+                <DataGridTextColumn Width="50" Binding="{Binding TireWidth}" Header="Ширина шины"/>
+                <DataGridTextColumn Width="50" Binding="{Binding Diameter}" Header="Диаметр колес"/>
+                <DataGridTextColumn Width="50" Binding="{Binding SpeedNum}" Header="Скоростей"/>
+                <DataGridTextColumn Width="40" Binding="{Binding Used}" Header="Б/У"/>
+                <DataGridTextColumn Width="80" Binding="{Binding Info}" Header="Инфо"/>
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <DataGrid x:Name="dataGrid_Secondaries" HorizontalAlignment="Left" Margin="10,104,0,0" 
+                  VerticalAlignment="Top" Height="309" Width="609" ItemsSource="{Binding}"
+                  HeadersVisibility="Column"
+				  CanUserResizeRows="False"
+				  SelectionMode="Single"
+				  CanUserAddRows="False"
+                  AutoGenerateColumns="False"
+				  CanUserReorderColumns="False"
+                  IsReadOnly="True" SelectionChanged="dataGrid_Secondaries_SelectionChanged" d:IsHidden="True">
+            <DataGrid.Columns>
+                <DataGridTextColumn Width="25" Binding="{Binding Id}" Header="№"/>
+                <DataGridTextColumn Width="90" Binding="{Binding Type}" Header="Тип"/>
+                <DataGridTextColumn Width="150" Binding="{Binding Name}" Header="Название"/>
+                <DataGridTextColumn Width="340" Binding="{Binding Characteristics}" Header="Характеристика"/>
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <Label x:Name="label_balance" Content="Ничего не выбрано" HorizontalAlignment="Left" 
+               Margin="647,104,0,0" VerticalAlignment="Top" Height="36" Width="208"/>
+        <Label x:Name="label_Purchase" Content="Ничего не выбрано" HorizontalAlignment="Left" 
+               Margin="647,155,0,0" VerticalAlignment="Top" Width="208"/>
+        <Label x:Name="label_Sell" Content="Ничего не выбрано" HorizontalAlignment="Left" 
+               Margin="647,207,0,0" VerticalAlignment="Top" Width="208"/>
+        <Label x:Name="label_" Content="Ничего не выбрано" HorizontalAlignment="Left" 
+               Margin="647,256,0,0" VerticalAlignment="Top" Width="208"/>
+        <Grid x:Name="MainProd" HorizontalAlignment="Left" Height="89" Margin="182,15,0,0" 
+              VerticalAlignment="Top" Width="741">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+
+            <TextBox x:Name="textBox_CodeName" HorizontalAlignment="Left" Height="23" 
+                     Margin="96,10,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120" 
+                     TextChanged="textBox_CodeName_TextChanged" IsEnabled="False"/>
+            <TextBox x:Name="textBox_Brand" HorizontalAlignment="Left" Height="23" 
+                     Margin="96,53,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120" 
+                     TextChanged="textBox_Brand_TextChanged" IsEnabled="False"/>
+            <TextBox x:Name="textBox_TireWidth" HorizontalAlignment="Left" Height="23" Margin="349,10,0,0" 
+                     TextWrapping="Wrap"  VerticalAlignment="Top" Width="120" TextChanged="textBox_tireWidth_TextChanged"
+                     IsEnabled="False" LostFocus="textBox_speed_to_LostFocus" 
+                     PreviewTextInput="textBox_tireWidth_PreviewTextInput"/>
+
+            <TextBox x:Name="textBox_spNum_from" HorizontalAlignment="Left" Height="23" Margin="349,53,0,0" 
+                     TextWrapping="Wrap"  VerticalAlignment="Top" Width="46" TextChanged="textBox_Brand_TextChanged" 
+                     IsEnabled="False" PreviewTextInput="textBox_amm_from_PreviewTextInput" 
+                     LostFocus="textBox_speed_to_LostFocus"/>
+            <TextBox x:Name="textBox_spNum_to" HorizontalAlignment="Left" Height="23" Margin="424,53,0,0" 
+                     TextWrapping="Wrap"  VerticalAlignment="Top" Width="45" TextChanged="textBox_Brand_TextChanged"
+                     IsEnabled="False" PreviewTextInput="textBox_amm_from_PreviewTextInput" 
+                     LostFocus="textBox_speed_to_LostFocus"/>
+
+            <TextBox x:Name="textBox_diam_from" HorizontalAlignment="Left" Height="23" Margin="594,10,0,0" 
+                     TextWrapping="Wrap"  VerticalAlignment="Top" Width="45" TextChanged="textBox_Brand_TextChanged" 
+                     IsEnabled="False" PreviewTextInput="textBox_amm_from_PreviewTextInput" LostFocus="textBox_speed_to_LostFocus"/>
+            <TextBox x:Name="textBox_diam_to" HorizontalAlignment="Left" Height="23" Margin="667,10,0,0" 
+                     TextWrapping="Wrap"  VerticalAlignment="Top" Width="45" TextChanged="textBox_Brand_TextChanged"
+                     IsEnabled="False" PreviewTextInput="textBox_amm_from_PreviewTextInput" 
+                     LostFocus="textBox_speed_to_LostFocus"/>
+
+            <!--<TextBox x:Name="textBox_speed_from" HorizontalAlignment="Left" Height="23" Margin="594,53,0,0"
+                     TextWrapping="Wrap"  VerticalAlignment="Top" Width="45" TextChanged="textBox_Brand_TextChanged" 
+                     IsEnabled="False" PreviewTextInput="textBox_amm_from_PreviewTextInput" 
+                     LostFocus="textBox_speed_to_LostFocus"/>
+            <TextBox x:Name="textBox_speed_to" HorizontalAlignment="Left" Height="23" Margin="667,53,0,0" 
+                     TextWrapping="Wrap"  VerticalAlignment="Top" Width="45" TextChanged="textBox_Brand_TextChanged"
+                     IsEnabled="False" PreviewTextInput="textBox_amm_from_PreviewTextInput" 
+                     LostFocus="textBox_speed_to_LostFocus"/>-->
+
+            <CheckBox x:Name="checkBox" Content="Б/У" HorizontalAlignment="Left" Margin="-166,64,0,0" 
+                      VerticalAlignment="Top" Width="80" Click="checkBox_Click"/>
+            <Label x:Name="label5" Content="Марка :" HorizontalAlignment="Left" Margin="11,50,0,0" 
+                   VerticalAlignment="Top"/>
+            <Label x:Name="label6" Content="Название:" HorizontalAlignment="Left" Margin="6,10,0,0" 
+                   VerticalAlignment="Top"/>
+            <Label x:Name="label7" Content="Ширина шины :" HorizontalAlignment="Left" Margin="248,7,0,0"
+                   VerticalAlignment="Top"/>
+            <Label x:Name="label8" Content="Колич. скоростей:" HorizontalAlignment="Left" Margin="241,50,0,0"
+                   VerticalAlignment="Top"/>
+            <Label x:Name="label9" Content="До" HorizontalAlignment="Left" Margin="395,50,0,0" VerticalAlignment="Top"
+                   Width="29"/>
+            <Label x:Name="label10" Content="Диаметр От :" HorizontalAlignment="Left" Margin="492,10,0,0" 
+                   VerticalAlignment="Top"/>
+
+            <!--<Label x:Name="label11" Content="Скорость От :" HorizontalAlignment="Left"
+                   Margin="505,50,0,0" VerticalAlignment="Top"/>-->
+            <Label x:Name="label12" Content="До" HorizontalAlignment="Left" Margin="640,10,0,0" VerticalAlignment="Top"/>
+            <!--<Label x:Name="label13" Content="До" HorizontalAlignment="Left" Margin="640,50,0,0" VerticalAlignment="Top"/>-->
+
+            <CheckBox x:Name="checkBox1_name"  HorizontalAlignment="Left" Margin="221,16,0,0" 
+                      VerticalAlignment="Top" Width="17" Click="checkBox1_name_Checked"/>
+            <CheckBox x:Name="checkBox2_brand"  HorizontalAlignment="Left" Margin="221,56,0,0"
+                      VerticalAlignment="Top" Width="20" Click="checkBox2_brand_Checked" />
+            <CheckBox x:Name="checkBox3_tireWidth"  HorizontalAlignment="Left" Margin="474,16,0,0"
+                      VerticalAlignment="Top" Width="18" Click="checkBox3_tireWidth_Checked"/>
+            <CheckBox x:Name="checkBox4_spNum"  HorizontalAlignment="Left" Margin="474,56,0,0" 
+                      VerticalAlignment="Top" Width="18" Click="checkBox4_speedNum_Checked"/>
+            <CheckBox x:Name="checkBox5_diam"  HorizontalAlignment="Left" Margin="717,16,0,0"
+                      VerticalAlignment="Top" Width="16" Click="checkBox5_diameter_Checked"/>
+            <!--<CheckBox x:Name="checkBox6_speed"  HorizontalAlignment="Left" Margin="717,56,0,0" 
+                      VerticalAlignment="Top" Width="17" Click="checkBox6_speed_Checked"/>-->
+        </Grid>
         
+        <Label x:Name="label4" Content="Тип товара:" HorizontalAlignment="Left" Margin="10,39,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="textBox_type" HorizontalAlignment="Left" Height="23" Margin="84,41,0,0"
+                 TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="93"/>
+        <Grid x:Name="Secondar" HorizontalAlignment="Left" Height="84" Margin="182,15,0,0" 
+              VerticalAlignment="Top" Width="741" d:IsHidden="True">
+            <Label x:Name="label14" Content="Название :" HorizontalAlignment="Left" Margin="14,28,0,0" 
+                   VerticalAlignment="Top" Width="83"/>
+            <Label x:Name="label16" Content="Характеристика :" HorizontalAlignment="Left" Margin="283,28,0,0"
+                   VerticalAlignment="Top"/>
+            <TextBox x:Name="textBox" HorizontalAlignment="Left" Height="23" Margin="115,31,0,0" TextWrapping="Wrap" 
+                     VerticalAlignment="Top" Width="120" IsEnabled="False" TextChanged="textBox_TextChanged"/>
+            <TextBox x:Name="textBox2" HorizontalAlignment="Left" Height="64" Margin="391,10,0,0" TextWrapping="Wrap"
+                     VerticalAlignment="Top" Width="268" IsEnabled="False" TextChanged="textBox_TextChanged"/>
+            <CheckBox x:Name="checkBox1"  HorizontalAlignment="Left" Margin="252,34,0,0" VerticalAlignment="Top"
+                      Width="19" Click="checkBox1_Click"/>
+            <CheckBox x:Name="checkBox2"  HorizontalAlignment="Left" Margin="670,37,0,0" VerticalAlignment="Top"
+                      Width="17" Click="checkBox2_Click"/>
+        </Grid>
+        <Button x:Name="button" Content="Ok" HorizontalAlignment="Left" Margin="674,312,0,0" VerticalAlignment="Top"
+                Width="226" Height="70" FontSize="24" Click="button_Click"/>
     </Grid>
 </Window>

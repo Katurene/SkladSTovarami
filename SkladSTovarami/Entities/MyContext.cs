@@ -21,8 +21,7 @@ namespace SkladSTovarami.Entities
         public DbSet<Product> Product { get; set; }//возможно s добавить
         public DbSet<DeliveryInfo> DeliveryInfos { get; set; }
         public DbSet<OrderInfo> OrderInfos { get; set; }
-        public DbSet<CheckInfo> CheckInfos { get; set; }
-        public DbSet<WorkingTime> WorkingTimes { get; set; }        
+        public DbSet<CheckInfo> CheckInfos { get; set; }       
         public DbSet<MainProduct> MainProducts { get; set; }
         public DbSet<Secondary> Secondaries { get; set; } 
     }

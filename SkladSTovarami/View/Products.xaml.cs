@@ -27,7 +27,7 @@ namespace SkladSTovarami.View
             InitializeComponent();
             List<string> s = new List<string>() { "Основной", "Дополнительный" };
             TypeGoods.ItemsSource = s;
-            WeaponGrid.Visibility = Visibility.Hidden;
+            MainProdGrid.Visibility = Visibility.Hidden;
             List<string> v = new List<string>() { "Пользовательский", "%" };
             comboBox.ItemsSource = v;
             comboBox.SelectedItem = "Пользовательский";
@@ -41,13 +41,13 @@ namespace SkladSTovarami.View
 
             if (s == "Основной")
             {
-                WeaponGrid.Visibility = Visibility.Visible;
-                AccessoriesGrid.Visibility = Visibility.Hidden;
+                MainProdGrid.Visibility = Visibility.Visible;
+                SecondaryGrid.Visibility = Visibility.Hidden;
             }
             if (s == "Дополнительный")
             {
-                WeaponGrid.Visibility = Visibility.Hidden;
-                AccessoriesGrid.Visibility = Visibility.Visible;
+                MainProdGrid.Visibility = Visibility.Hidden;
+                SecondaryGrid.Visibility = Visibility.Visible;
             }
         }
 
@@ -101,7 +101,7 @@ namespace SkladSTovarami.View
                         }
                         else if (TypeGoods.SelectedItem.ToString() == "Основной")
                         {
-                            List<TextBox> s = WeaponGrid.Children.OfType<TextBox>().ToList();
+                            List<TextBox> s = MainProdGrid.Children.OfType<TextBox>().ToList();
                             foreach (TextBox q in s)
                             {
                                 if (q.Text == "" || q.Text == "0")
@@ -133,7 +133,7 @@ namespace SkladSTovarami.View
                         }
                         else if (TypeGoods.SelectedItem.ToString() == "Дополнительный")
                         {
-                            List<TextBox> s = AccessoriesGrid.Children.OfType<TextBox>().ToList();
+                            List<TextBox> s = SecondaryGrid.Children.OfType<TextBox>().ToList();
                             foreach (TextBox q in s)
                             {
                                 if (q.Text == "" || q.Text == "0")
@@ -142,7 +142,6 @@ namespace SkladSTovarami.View
                                     return;
                                 }
                             }
-
                             Secondary access = new Secondary();
                             access.Type = textBox_Type.Text;
                             access.Name = textBox_Name.Text;
@@ -178,7 +177,6 @@ namespace SkladSTovarami.View
                             f.Balance = Convert.ToInt32(textBox.Text);
                             f.PricePurchase = Convert.ToInt32(textBox1.Text);
                             f.SellPrice = Convert.ToInt32(textBox2.Text);
-
                             db.SaveChanges();
                         }
                         else if (TypeGoods.SelectedItem.ToString() == "Дополнительный")
@@ -201,41 +199,9 @@ namespace SkladSTovarami.View
                 MessageBox.Show("Error");
             }
 
-        }
-
-        private void textBox1_KeyUp(object sender, KeyEventArgs e)
-        {
-            //if ((e. >= '0') && (e.KeyChar <= '9'))
-            //{
-            //    return;
-            //}
-            ////Точку заменим запятой
-            //if (e.KeyChar == '.')
-            //{
-            //    e.KeyChar = ',';
-            //}
-
-            //if (e.KeyChar == ',')
-            //{
-            //    if (textBox1.Text.IndexOf(',') != -1)
-            //    {
-            //        //Уже есть одна запятая в textBox1
-            //        e.Handled = true;
-            //    }
-            //    return;
-            //}
-
-            ////Управляющие клавиши <Backspace>, <Enter> и т.д.
-            //if (Char.IsControl(e.KeyChar))
-            //{
-            //    return;
-            //}
-
-            ////Остальное запрещено
-            //e.Handled = true;
-        }
+        }      
        
-        private void textBox_Calibr_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        private void textBox_tireWidth_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {
             TextBox Tb1 = sender as TextBox;
             if (Char.IsDigit(e.Text, 0))
@@ -319,7 +285,7 @@ namespace SkladSTovarami.View
             else e.Handled = true;
         }
 
-        private void textBox_Calibr_LostFocus(object sender, RoutedEventArgs e)//???????????????
+        private void textBox_tireWidth_LostFocus(object sender, RoutedEventArgs e)//???????????????
         {
             TextBox tb1 = sender as TextBox;
             if (tb1.Text.IndexOf(",") == tb1.Text.Length - 1)

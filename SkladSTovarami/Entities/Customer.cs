@@ -11,7 +11,7 @@ namespace SkladSTovarami.Entities
         public int Id { get; set; }
         public string FullName { get; set; }
         public string PassportNumber { get; set; }
-        public string Contract { get; set; }  //PermitWeapon
+        public string Contract { get; set; }  
         public DateTime ValidFrom { get; set; }
         public DateTime ValidTo { get; set; }
         public virtual ICollection<Check> Checks { get; set; }

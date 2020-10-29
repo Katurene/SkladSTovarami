@@ -12,9 +12,9 @@ namespace SkladSTovarami.Entities
     {
         [Key]
         [ForeignKey("Product")]
-        public int Id { get; set; }
-        public string Type { get; set; }//вел 
-        public string CodeName { get; set; }//горный
+        public int Id { get; set; }        
+        public string CodeName { get; set; } //вел
+        public string Type { get; set; } //горный
         public string Brand { get; set; }//марка  Automatic
         public double TireWidth { get; set; }//ширина шины 1,8 2,1 2 Сaliber
         public int Diameter { get; set; }//диаметр колес24 27 29 26  KillRange

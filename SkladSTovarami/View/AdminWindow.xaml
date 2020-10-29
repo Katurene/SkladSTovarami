@@ -68,7 +68,7 @@
             <Button x:Name="button_DeleteGoods" Content="Удалить" HorizontalAlignment="Left" Margin="760,165,0,0" 
                     VerticalAlignment="Top" Width="146" Height="62" Click="button_DeleteGoods_Click"/>
             <Button x:Name="button1" Content="Поиск" HorizontalAlignment="Left" Margin="613,13,0,0" 
-                    VerticalAlignment="Top" Width="87" Height="20" Click="button1_Click_1"/>
+                    VerticalAlignment="Top" Width="87" Height="20" Click="buttonFindWindow_Click"/>
         </Grid>
         <Grid x:Name="OrderGrid" HorizontalAlignment="Left" Height="319" Margin="10,55,0,0" 
               VerticalAlignment="Top" Width="959" d:IsHidden="True">
@@ -166,8 +166,27 @@
                     Click="button_EditWorker_Click"/>
         </Grid>
 
+        <Label x:Name="label_Worker" Content="Сотрудники" HorizontalAlignment="Left" Foreground="#FF404658" 
+               FontSize="18" FontFamily="Segoe WP Semibold" Margin="360,10,0,0" VerticalAlignment="Top" 
+               RenderTransformOrigin="-1.355,0.019" Height="40" Width="125" MouseDown="label_Worker_MouseDown" FontWeight="Bold" >
+            <Label.Background>
+                <ImageBrush/>
+            </Label.Background>
+        </Label>
+
+        <Label x:Name="label_useful" Content="Разная инфа" HorizontalAlignment="Left" Foreground="#FF404658" 
+               FontSize="18" FontFamily="Segoe WP Semibold" Margin="500,10,0,0" VerticalAlignment="Top" 
+               RenderTransformOrigin="-1.355,0.019" Height="40" Width="127" MouseDown="label_useful_MouseDown" FontWeight="Bold" >
+            <Label.Background>
+                <ImageBrush/>
+            </Label.Background>
+        </Label>
         <Grid x:Name="Useful" HorizontalAlignment="Left" Height="343" Margin="0,50,0,0" 
               VerticalAlignment="Top" Width="979">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="713*"/>
+                <ColumnDefinition Width="266*"/>
+            </Grid.ColumnDefinitions>
 
             <DataGrid x:Name="dataGrid_useful" HorizontalAlignment="Left" Margin="10,66,0,0" 
                       VerticalAlignment="Top" Height="267" Width="959" ItemsSource="{Binding}"
@@ -177,7 +196,7 @@
 				      CanUserAddRows="False"
                       AutoGenerateColumns="False"
 				      CanUserReorderColumns="False"
-                     IsReadOnly="True" d:IsHidden="True">
+                     IsReadOnly="True" d:IsHidden="True" Grid.ColumnSpan="2">
 
                 <DataGrid.Columns>
                     <DataGridTextColumn Width="25" Binding="{Binding Id}" Header="№"/>
@@ -202,7 +221,7 @@
 				      CanUserAddRows="False"
                       AutoGenerateColumns="False"
 				      CanUserReorderColumns="False"
-                      IsReadOnly="True" >
+                      IsReadOnly="True" Grid.ColumnSpan="2" >
 
                 <DataGrid.Columns>
                     <DataGridTextColumn Width="25" Binding="{Binding Id}" Header="№"/>
@@ -215,22 +234,6 @@
 
             </DataGrid>
         </Grid>
-
-        <Label x:Name="label_Worker" Content="Сотрудники" HorizontalAlignment="Left" Foreground="#FF404658" 
-               FontSize="18" FontFamily="Segoe WP Semibold" Margin="360,10,0,0" VerticalAlignment="Top" 
-               RenderTransformOrigin="-1.355,0.019" Height="40" Width="125" MouseDown="label_Worker_MouseDown" FontWeight="Bold" >
-            <Label.Background>
-                <ImageBrush/>
-            </Label.Background>
-        </Label>
-
-        <Label x:Name="label_useful" Content="Разная инфа" HorizontalAlignment="Left" Foreground="#FF404658" 
-               FontSize="18" FontFamily="Segoe WP Semibold" Margin="500,10,0,0" VerticalAlignment="Top" 
-               RenderTransformOrigin="-1.355,0.019" Height="40" Width="127" MouseDown="label_useful_MouseDown" FontWeight="Bold" >
-            <Label.Background>
-                <ImageBrush/>
-            </Label.Background>
-        </Label>
 
     </Grid>
 </Window>

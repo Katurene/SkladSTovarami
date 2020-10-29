@@ -80,7 +80,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Entities\WorkingTime.cs" />
     <Compile Include="View\AddCustomer.xaml.cs">
       <DependentUpon>AddCustomer.xaml</DependentUpon>
     </Compile>
@@ -150,7 +149,6 @@
     <Compile Include="ViewModel\DeliveryViewModel.cs" />
     <Compile Include="ViewModel\OrderViewModel.cs" />
     <Compile Include="ViewModel\ProductsViewModel.cs" />
-    <Compile Include="ViewModel\WorkerRate.cs" />
     <Compile Include="View\AddWorker.xaml.cs">
       <DependentUpon>AddWorker.xaml</DependentUpon>
     </Compile>

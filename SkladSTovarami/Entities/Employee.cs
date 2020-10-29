@@ -19,16 +19,13 @@ namespace SkladSTovarami.Entities
 
         public virtual ICollection<Check> Checks { get; set; }
         public virtual ICollection<Order> Orders { get; set; }
-        public virtual ICollection<DeliveryNote> DeliveryNotes { get; set; }
-
-        public virtual ICollection<WorkingTime> WorkingTime { get; set; }
+        public virtual ICollection<DeliveryNote> DeliveryNotes { get; set; }        
 
         public Employee()
         {
             Checks = new List<Check>();
             Orders = new List<Order>();
-            DeliveryNotes = new List<DeliveryNote>();
-            WorkingTime = new List<WorkingTime>();
+            DeliveryNotes = new List<DeliveryNote>();            
         }
     }
 }

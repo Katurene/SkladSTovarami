@@ -353,14 +353,14 @@ namespace SkladSTovarami.View
             }
         }    
 
-        private void button1_Click_1(object sender, RoutedEventArgs e)
-            {
-                //GlobalFind f = new GlobalFind();
-                //f.ShowDialog();
-                //List<GoodsViewModel> s = dataGridGoods.ItemsSource as List<GoodsViewModel>;
-                //int i = s.IndexOf(s.FirstOrDefault(x => x.Id == f.Id));
-                //dataGridGoods.SelectedIndex = i;
-            }
+        private void buttonFindWindow_Click(object sender, RoutedEventArgs e)
+        {
+            FindWindow f = new FindWindow();
+            f.ShowDialog();
+            List<ProductsViewModel> s = dataGridGoods.ItemsSource as List<ProductsViewModel>;
+            int i = s.IndexOf(s.FirstOrDefault(x => x.Id == f.Id));
+            dataGridGoods.SelectedIndex = i;
+        }
         
         private void buttonOtgrZaMesac_Click(object sender, RoutedEventArgs e)
         {

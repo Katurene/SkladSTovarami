@@ -21,7 +21,7 @@ namespace SkladSTovarami.View
     /// </summary>
     public partial class WorkerMain : Window
     {
-        WorkingTime WorkTime = new WorkingTime();
+        //WorkingTime WorkTime = new WorkingTime();
         public int EmployeeId { get; set; }
         int i = 1;
         double Sum = 0;
@@ -74,15 +74,15 @@ namespace SkladSTovarami.View
             res = MessageBox.Show("Завершить работу?", "Предупреждение", MessageBoxButton.YesNo, MessageBoxImage.Question);
             if (res == MessageBoxResult.Yes)
             {
-                WorkingTime wt = new WorkingTime()
-                {
-                    TimeStart = WorkTime.TimeStart,
-                    TimeEnd = DateTime.Now,
-                    Employees = db1.Emloyees.FirstOrDefault(x => x.Id == EmployeeId),
-                    EmployeesId = EmployeeId
-                };
-                db1.WorkingTimes.Add(wt);
-                db1.SaveChanges();
+                //WorkingTime wt = new WorkingTime()
+                //{
+                //    TimeStart = WorkTime.TimeStart,
+                //    TimeEnd = DateTime.Now,
+                //    Employees = db1.Emloyees.FirstOrDefault(x => x.Id == EmployeeId),
+                //    EmployeesId = EmployeeId
+                //};
+                //db1.WorkingTimes.Add(wt);
+                //db1.SaveChanges();
                 Environment.Exit(0);
             }
             else
@@ -250,13 +250,7 @@ namespace SkladSTovarami.View
             MyContext db = new MyContext();
             dataGridCustomer.ItemsSource = db.Customers.ToList();
         }
-
-        private void Window_Loaded(object sender, RoutedEventArgs e)
-        {
-            WorkTime.TimeStart = DateTime.Now;
-            WorkTime.Employees = db1.Emloyees.FirstOrDefault(x => x.Id == EmployeeId);
-        }
-
+               
         private void textBox_Count_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {
             TextBox Tb1 = sender as TextBox;
@@ -289,13 +283,13 @@ namespace SkladSTovarami.View
             dataGridCheck.ItemsSource = checks;
         }
 
-        private void button1_Click(object sender, RoutedEventArgs e)
+        private void buttonFindProd_Click(object sender, RoutedEventArgs e)
         {
-            //GlobalFind f = new GlobalFind();
-            //f.ShowDialog();
-            //List<GoodsViewModel> s = dataGridGoods.ItemsSource as List<GoodsViewModel>;
-            //int i = s.IndexOf(s.FirstOrDefault(x => x.Id == f.Id));
-            //dataGridGoods.SelectedIndex = i;
+            FindWindow f = new FindWindow();
+            f.ShowDialog();
+            List<ProductsViewModel> s = dataGridGoods.ItemsSource as List<ProductsViewModel>;
+            int i = s.IndexOf(s.FirstOrDefault(x => x.Id == f.Id));
+            dataGridGoods.SelectedIndex = i;
         }
     }
 }

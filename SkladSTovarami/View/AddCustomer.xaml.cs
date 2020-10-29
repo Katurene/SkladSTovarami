@@ -52,7 +52,7 @@ namespace SkladSTovarami.View
                 Customer cust = new Customer();
                 cust.FullName = textBox_surname.Text + " " + textBox_name.Text + " " + textBox_fathername.Text;
                 cust.PassportNumber = textBox_Passport.Text;
-                cust.Contract = textBox_Weapon.Text;
+                cust.Contract = textBox_Contr.Text;
                 cust.ValidFrom = Convert.ToDateTime(textBox_validfrom.Text);
                 cust.ValidTo = Convert.ToDateTime(textBox_validto.Text);
                 MyContext db = new MyContext();

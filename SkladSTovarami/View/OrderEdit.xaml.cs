@@ -141,7 +141,6 @@ namespace SkladSTovarami.View
                         delnew.OrderInfos.Add(delinfo);
                     }                   
                 }
-
                 foreach (OrderInfo s in db.OrderInfos.ToList())
                 {
                     if (s.ProductsId == null)
@@ -283,11 +282,11 @@ namespace SkladSTovarami.View
 
         private void buttonFind_Click(object sender, RoutedEventArgs e)
         {
-            //GlobalFind f = new GlobalFind();
-            //f.ShowDialog();
-            //List<GoodsViewModel> s = dataGridGoods.ItemsSource as List<GoodsViewModel>;
-            //int i = s.IndexOf(s.FirstOrDefault(x => x.Id == f.Id));
-            //dataGrid.SelectedIndex = i;
+            FindWindow f = new FindWindow();
+            f.ShowDialog();
+            List<ProductsViewModel> s = dataGridGoods.ItemsSource as List<ProductsViewModel>;
+            int i = s.IndexOf(s.FirstOrDefault(x => x.Id == f.Id));
+            dataGrid.SelectedIndex = i;
         }
     }
 }

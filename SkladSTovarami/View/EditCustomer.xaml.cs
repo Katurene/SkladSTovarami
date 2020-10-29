@@ -44,7 +44,7 @@ namespace SkladSTovarami.View
                 f.textBox_name.Text = cust.FullName.Split(' ')[1];
                 f.textBox_fathername.Text = cust.FullName.Split(' ')[2];
                 f.textBox_Passport.Text = cust.PassportNumber;
-                f.textBox_Weapon.Text = cust.Contract;
+                f.textBox_Contr.Text = cust.Contract;
                 f.textBox_validfrom.Text = cust.ValidFrom.ToString("dd:MM:yyyy").Replace(":", ".");
                 f.textBox_validto.Text = cust.ValidTo.ToString("dd:MM:yyyy").Replace(":", ".");
                 f.Closing += AddCustomer_Closing;

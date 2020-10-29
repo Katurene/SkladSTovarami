@@ -44,7 +44,7 @@
                       VerticalAlignment="Top" FontSize="16"/>
         </Grid>
         <Grid x:Name="GoodsGrid" HorizontalAlignment="Left" Height="269" VerticalAlignment="Top" 
-              Width="717" Background="#FF677DF7">
+              Width="676" Background="#FF677DF7">
             <DataGrid x:Name="dataGrid" HorizontalAlignment="Left" Margin="10,33,0,0" VerticalAlignment="Top" 
                       Height="226" Width="512"
     			ItemsSource="{Binding}"
