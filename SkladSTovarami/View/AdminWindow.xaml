@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SkladSTovarami.View"
         mc:Ignorable="d"
-        Title="ОКНО АДМИНИСТРИРОВАНИЯ СКЛАДА" Height="424.038" Width="986.842" Closing="Window_Closing">
+        Title="ОКНО АДМИНИСТРИРОВАНИЯ СКЛАДА" Height="424.038" Width="986.842" Closing="Window_Closing" Background="#FF677DF7">
 
     <Grid>
         <Rectangle Fill="#FF677DF7" HorizontalAlignment="Left" Height="50" Stroke="Black" 
@@ -28,7 +28,8 @@
 
         <Label x:Name="label_Goods" Content="Товары" Padding="0" HorizontalAlignment="Left" Margin="32,15,0,0" 
                VerticalAlignment="Top" Foreground="#FF404658" FontSize="18" FontFamily="Segoe WP Semibold" 
-               RenderTransformOrigin="-1.355,0.019" Height="40" Width="90" MouseDown="label_Goods_MouseDown" FontWeight="Bold">
+               RenderTransformOrigin="-1.355,0.019" Height="40" Width="90" MouseDown="label_Goods_MouseDown" 
+               FontWeight="Bold">
             <Label.Background>
                 <ImageBrush/>
             </Label.Background>
@@ -38,10 +39,10 @@
               VerticalAlignment="Top" Width="959" d:IsHidden="True">
             <DataGrid x:Name="dataGridGoods"
                       HorizontalAlignment="Left"
-                      Margin="10,10,0,0"
+                      Margin="10,10,0,-1"
                       VerticalAlignment="Top"
                       Height="310"
-                      Width="690"
+                      Width="803"
                       ItemsSource="{Binding}"
                       HeadersVisibility="Column"
 				      CanUserResizeRows="False"
@@ -49,32 +50,37 @@
 				      CanUserAddRows="False"
                       AutoGenerateColumns="False"
 				      CanUserReorderColumns="False"
-                      IsReadOnly="True">
+                      IsReadOnly="True" FontSize="14" FontWeight="Bold">
 
                 <DataGrid.Columns>
-                    <DataGridTextColumn Width="30" Binding="{Binding Id}" Header="№"/>
-                    <DataGridTextColumn Width="170" Binding="{Binding Name}" Header="Название"/>
-                    <DataGridTextColumn Width="100" Binding="{Binding Type}" Header="Тип"/>
-                    <DataGridTextColumn Width="100" Binding="{Binding PricePurchase}" Header="Закупка"/>
-                    <DataGridTextColumn Width="100" Binding="{Binding SellPrice}" Header="Продажа"/>
-                    <DataGridTextColumn Width="100" Binding="{Binding Balance}" Header="Наличие"/>
+                    <DataGridTextColumn Width="50" Binding="{Binding Id}" Header="№"/>
+                    <DataGridTextColumn Width="220" Binding="{Binding Name}" Header="Название"/>
+                    <DataGridTextColumn Width="150" Binding="{Binding Type}" Header="Тип"/>
+                    <DataGridTextColumn Width="120" Binding="{Binding PricePurchase}" Header="Закупка"/>
+                    <DataGridTextColumn Width="120" Binding="{Binding SellPrice}" Header="Продажа"/>
+                    <DataGridTextColumn Width="120" Binding="{Binding Balance}" Header="Наличие"/>
                 </DataGrid.Columns>
             </DataGrid>
 
-            <Button x:Name="button" Content="Новый Товар" HorizontalAlignment="Left" Margin="760,34,0,0" 
-                    VerticalAlignment="Top" Width="146" Height="62" Click="buttonAddNewProduct_Click"/>
-            <Button x:Name="button3" Content="Редактировать" HorizontalAlignment="Left" Margin="760,101,0,0" 
-                    VerticalAlignment="Top" Width="146" Height="59" Click="buttonChangeProduct_Click"/>
-            <Button x:Name="button_DeleteGoods" Content="Удалить" HorizontalAlignment="Left" Margin="760,165,0,0" 
-                    VerticalAlignment="Top" Width="146" Height="62" Click="button_DeleteGoods_Click"/>
-            <Button x:Name="button1" Content="Поиск" HorizontalAlignment="Left" Margin="613,13,0,0" 
-                    VerticalAlignment="Top" Width="87" Height="20" Click="buttonFindWindow_Click"/>
+            <Button x:Name="button" Content="Новый Товар" HorizontalAlignment="Left" Margin="818,13,0,0" 
+                    VerticalAlignment="Top" Width="120" Height="50" Click="buttonAddNewProduct_Click" 
+                    FontWeight="Bold" FontSize="14" RenderTransformOrigin="1.065,0.42"/>
+            <Button x:Name="button3" Content="Редактировать" HorizontalAlignment="Left" Margin="818,90,0,0" 
+                    VerticalAlignment="Top" Width="120" Height="50" Click="buttonChangeProduct_Click" 
+                    FontWeight="Bold" FontSize="14"/>
+            <Button x:Name="button_DeleteGoods" Content="Удалить" HorizontalAlignment="Left" Margin="818,165,0,0" 
+                    VerticalAlignment="Top" Width="120" Height="50" Click="button_DeleteGoods_Click" 
+                    FontWeight="Bold" FontSize="14"/>
+            <Button x:Name="button1" Content="Поиск" HorizontalAlignment="Left" Margin="818,236,0,0" 
+                    VerticalAlignment="Top" Width="120" Height="50" Click="buttonFindWindow_Click" 
+                    RenderTransformOrigin="1.248,0.77" FontWeight="Bold" FontSize="14"/>
         </Grid>
+
         <Grid x:Name="OrderGrid" HorizontalAlignment="Left" Height="319" Margin="10,55,0,0" 
               VerticalAlignment="Top" Width="959" d:IsHidden="True">
-            <DataGrid x:Name="dataGridOrder" HorizontalAlignment="Left" Margin="10,10,0,0" 
+            <DataGrid x:Name="dataGridOrder" HorizontalAlignment="Left" Margin="10,10,0,-1" 
                       VerticalAlignment="Top"  Height="310"
-                      Width="690"
+                      Width="724"
                       ItemsSource="{Binding}"
                       HeadersVisibility="Column"
 				      CanUserResizeRows="False"
@@ -82,29 +88,29 @@
 				      CanUserAddRows="False"
                       AutoGenerateColumns="False"
 				      CanUserReorderColumns="False"
-                      IsReadOnly="True">
+                      IsReadOnly="True" FontSize="14">
 
                 <DataGrid.Columns>
-                    <DataGridTextColumn Width="30" Binding="{Binding Id}" Header="№"/>
+                    <DataGridTextColumn Width="50" Binding="{Binding Id}" Header="№"/>
                     <DataGridTextColumn Width="170" Binding="{Binding Date}" Header="Дата"/>
                     <DataGridTextColumn Width="170" Binding="{Binding Status}" Header="Статус"/>
                 </DataGrid.Columns>
             </DataGrid>
 
             <Button x:Name="button_OrderNew" Content="Добавить" HorizontalAlignment="Left" 
-                    Margin="760,10,0,0" VerticalAlignment="Top" Width="169" Height="35" Click="button_OrderNew_Click"/>
+                    Margin="760,10,0,0" VerticalAlignment="Top" Width="169" Height="35" Click="button_OrderNew_Click" FontSize="14" FontWeight="Bold"/>
             <Button x:Name="button_OrderDelete" Content="Удалить" HorizontalAlignment="Left" 
-                    Margin="760,63,0,0" VerticalAlignment="Top" Width="169" Height="39" Click="button_OrderDelete_Click"/>
+                    Margin="760,63,0,0" VerticalAlignment="Top" Width="169" Height="39" Click="button_OrderDelete_Click" FontSize="14" FontWeight="Bold"/>
             <Button x:Name="button_OrderEdit" Content="Просмотреть информацию" 
-                    HorizontalAlignment="Left" Margin="760,132,0,0" VerticalAlignment="Top" Width="169" 
-                    Height="38" Click="button_OrderEdit_Click"/>
+                    HorizontalAlignment="Left" Margin="760,123,0,0" VerticalAlignment="Top" Width="169" 
+                    Height="38" Click="button_OrderEdit_Click" FontWeight="Bold"/>
         </Grid>
 
         <Grid x:Name="DeliveryGrid" HorizontalAlignment="Left" Height="319" Margin="10,55,0,0" 
               VerticalAlignment="Top" Width="959" d:IsHidden="True">
-            <DataGrid x:Name="dataGrid_Delivery" HorizontalAlignment="Left" Margin="10,10,0,0" 
+            <DataGrid x:Name="dataGrid_Delivery" HorizontalAlignment="Left" Margin="10,10,0,-1" 
                       VerticalAlignment="Top"  Height="310"
-                      Width="690"
+                      Width="704"
                       ItemsSource="{Binding}"
                       HeadersVisibility="Column"
 				      CanUserResizeRows="False"
@@ -112,21 +118,21 @@
 			     	  CanUserAddRows="False"
                       AutoGenerateColumns="False"
 				      CanUserReorderColumns="False"
-                      IsReadOnly="True">
+                      IsReadOnly="True" FontSize="14" FontWeight="Bold">
 
                 <DataGrid.Columns>
-                    <DataGridTextColumn Width="30" Binding="{Binding Id}" Header="№"/>
-                    <DataGridTextColumn Width="170" Binding="{Binding Sum}" Header="Сумма"/>
+                    <DataGridTextColumn Width="50" Binding="{Binding Id}" Header="№"/>
+                    <DataGridTextColumn Width="200" Binding="{Binding Sum}" Header="Сумма"/>
                     <DataGridTextColumn Width="170" Binding="{Binding TypePayment}" Header="Тип оплаты"/>
                 </DataGrid.Columns>
             </DataGrid>
 
             <Button x:Name="button_AddDelivery" Content="Добавить" HorizontalAlignment="Left" 
-                    Margin="733,10,0,0" VerticalAlignment="Top" Width="188" Height="35" Click="buttonAddDelivery_Click"/>
+                    Margin="733,10,0,0" VerticalAlignment="Top" Width="203" Height="45" Click="buttonAddDelivery_Click" FontSize="14" FontWeight="Bold"/>
             <Button x:Name="button_DeleteDelivery" Content="Удалить" HorizontalAlignment="Left" 
-                    Margin="733,70,0,0" VerticalAlignment="Top" Width="188" Height="35" Click="button_DeleteDelivery_Click"/>
+                    Margin="733,70,0,0" VerticalAlignment="Top" Width="203" Height="45" Click="button_DeleteDelivery_Click" FontSize="14" FontWeight="Bold"/>
             <Button x:Name="button_InfoDelivery" Content="Просмотреть информацию" HorizontalAlignment="Left"
-                    Margin="733,130,0,0" VerticalAlignment="Top" Width="188" Height="35" Click="button_InfoDelivery_Click"/>
+                    Margin="733,130,0,0" VerticalAlignment="Top" Width="203" Height="45" Click="button_InfoDelivery_Click" FontSize="14" FontWeight="Bold"/>
         </Grid>
 
         <Grid x:Name="WorkerGrid" HorizontalAlignment="Left" Height="329" Margin="0,55,0,0" 
@@ -136,7 +142,7 @@
                       Margin="10,10,0,0"
                       VerticalAlignment="Top"
                       Height="310"
-                      Width="690"
+                      Width="735"
                       ItemsSource="{Binding}"
                       HeadersVisibility="Column"
 				      CanUserResizeRows="False"
@@ -144,10 +150,10 @@
 				      CanUserAddRows="False"
                       AutoGenerateColumns="False"
 				      CanUserReorderColumns="False"
-                      IsReadOnly="True">
+                      IsReadOnly="True" FontWeight="Bold" FontSize="14">
 
                 <DataGrid.Columns>
-                    <DataGridTextColumn Width="30" Binding="{Binding Id}" Header="№"/>
+                    <DataGridTextColumn Width="40" Binding="{Binding Id}" Header="№"/>
                     <DataGridTextColumn Width="170" Binding="{Binding Surname}" Header="Фамилия"/>
                     <DataGridTextColumn Width="170" Binding="{Binding Name}" Header="Имя"/>
                     <DataGridTextColumn Width="150" Binding="{Binding Login}" Header="Логин"/>
@@ -156,14 +162,14 @@
 
             </DataGrid>
             <Button x:Name="button_AddWorker" Content="Добавить сотрудника" HorizontalAlignment="Left" 
-                    Margin="772,10,0,0" VerticalAlignment="Top" Width="138" Height="58" FontSize="13.333" 
-                    Click="buttonAddWorker_Click"/>
+                    Margin="772,10,0,0" VerticalAlignment="Top" Width="164" Height="58" FontSize="13.333" 
+                    Click="buttonAddWorker_Click" FontWeight="Bold"/>
             <Button x:Name="button_DeleteWorker" Content="Удалить" HorizontalAlignment="Left" 
-                    Margin="772,88,0,0" VerticalAlignment="Top" Width="138" Height="52" 
-                    Click="button_DeleteWorker_Click"/>
+                    Margin="772,88,0,0" VerticalAlignment="Top" Width="164" Height="52" 
+                    Click="button_DeleteWorker_Click" FontWeight="Bold"/>
             <Button x:Name="button_EditWorker" Content="Редактировать" HorizontalAlignment="Left"
-                    Margin="772,164,0,0" VerticalAlignment="Top" Width="138" Height="58" 
-                    Click="button_EditWorker_Click"/>
+                    Margin="772,164,0,0" VerticalAlignment="Top" Width="164" Height="58" 
+                    Click="button_EditWorker_Click" FontWeight="Bold"/>
         </Grid>
 
         <Label x:Name="label_Worker" Content="Сотрудники" HorizontalAlignment="Left" Foreground="#FF404658" 
@@ -174,9 +180,10 @@
             </Label.Background>
         </Label>
 
-        <Label x:Name="label_useful" Content="Разная инфа" HorizontalAlignment="Left" Foreground="#FF404658" 
+        <Label x:Name="label_useful" Content="Отчёты" HorizontalAlignment="Left" Foreground="#FF404658" 
                FontSize="18" FontFamily="Segoe WP Semibold" Margin="500,10,0,0" VerticalAlignment="Top" 
-               RenderTransformOrigin="-1.355,0.019" Height="40" Width="127" MouseDown="label_useful_MouseDown" FontWeight="Bold" >
+               RenderTransformOrigin="-1.355,0.019" Height="40" Width="97" MouseDown="label_useful_MouseDown" 
+               FontWeight="Bold" >
             <Label.Background>
                 <ImageBrush/>
             </Label.Background>
@@ -209,9 +216,11 @@
             </DataGrid>
 
             <Button x:Name="button6" Content="Продажи за последние 30 дней" HorizontalAlignment="Left" 
-                    Margin="10,10,0,0" VerticalAlignment="Top" Width="204" Click="buttonOtgrZaMesac_Click" Height="31" FontWeight="Bold"/>
+                    Margin="10,10,0,0" VerticalAlignment="Top" Width="204" Click="buttonOtgrZaMesac_Click" 
+                    Height="31" FontWeight="Bold"/>
             <Button x:Name="button7" Content="Товары которые заканчиваются" HorizontalAlignment="Left" 
-                    Margin="268,10,0,0" VerticalAlignment="Top" Width="206" Click="buttonOstatki_Click" Height="31" FontWeight="Bold"/>
+                    Margin="268,10,0,0" VerticalAlignment="Top" Width="206" Click="buttonOstatki_Click" 
+                    Height="31" FontWeight="Bold"/>
 
             <DataGrid x:Name="dataGrid_goods" HorizontalAlignment="Left" Margin="10,66,0,0" 
                       VerticalAlignment="Top" Height="267" Width="959" ItemsSource="{Binding}"
@@ -221,14 +230,14 @@
 				      CanUserAddRows="False"
                       AutoGenerateColumns="False"
 				      CanUserReorderColumns="False"
-                      IsReadOnly="True" Grid.ColumnSpan="2" >
+                      IsReadOnly="True" Grid.ColumnSpan="2" FontSize="14" FontWeight="Bold" >
 
                 <DataGrid.Columns>
-                    <DataGridTextColumn Width="25" Binding="{Binding Id}" Header="№"/>
-                    <DataGridTextColumn Width="100" Binding="{Binding Type}" Header="Тип"/>
+                    <DataGridTextColumn Width="40" Binding="{Binding Id}" Header="№"/>
+                    <DataGridTextColumn Width="170" Binding="{Binding Type}" Header="Тип"/>
                     <DataGridTextColumn Width="350" Binding="{Binding Name}" Header="Название"/>
-                    <DataGridTextColumn Width="100" Binding="{Binding SellPrice}" Header="Цена продажи"/>
-                    <DataGridTextColumn Width="100" Binding="{Binding PricePurchase}" Header="Цена покупки"/>
+                    <DataGridTextColumn Width="150" Binding="{Binding SellPrice}" Header="Цена продажи"/>
+                    <DataGridTextColumn Width="150" Binding="{Binding PricePurchase}" Header="Цена покупки"/>
                     <DataGridTextColumn Width="100" Binding="{Binding Balance}" Header="Наличие"/>
                 </DataGrid.Columns>
 

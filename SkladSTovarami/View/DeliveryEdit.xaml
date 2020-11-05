@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SkladSTovarami.View"
         mc:Ignorable="d"
-        Title="DeliveryEdit" Height="402.792" Width="505." Background="White" Loaded="Lol_Loaded">
+        Title="DeliveryEdit" Height="397.192" Width="728.2" Background="White" Loaded="Lol_Loaded">
 
     <Grid Background="#FF4156C7">
         <Grid x:Name="MainGrid" HorizontalAlignment="Left" Height="360" VerticalAlignment="Top" 
@@ -43,9 +43,9 @@
                    Foreground="#FF1017A8"/>
         </Grid>
         <Grid x:Name="GoodsGrid" HorizontalAlignment="Left" Height="269" VerticalAlignment="Top"
-              Width="497" Background="#FF4156C7">
-            <DataGrid x:Name="dataGrid" HorizontalAlignment="Left" Margin="10,33,0,0" VerticalAlignment="Top" 
-                      Height="226" Width="321"
+              Width="631" Background="#FF4156C7">
+            <DataGrid x:Name="dataGrid" Margin="10,33,157,0" VerticalAlignment="Top" 
+                      Height="226"
                        ItemsSource="{Binding}"
                       HeadersVisibility="Column"                 
         		CanUserResizeRows="False"
@@ -55,25 +55,25 @@
 				CanUserReorderColumns="False"
                 IsReadOnly="True">
                 <DataGrid.Columns>
-                    <DataGridTextColumn Width="25" Binding="{Binding Id}" Header="№"/>
+                    <DataGridTextColumn Width="50" Binding="{Binding Id}" Header="№"/>
                     <DataGridTextColumn Width="100" Binding="{Binding Name}" Header="Название"/>
-                    <DataGridTextColumn Width="50" Binding="{Binding Type}" Header="Тип"/>
-                    <DataGridTextColumn Width="50" Binding="{Binding PricePurchase}" Header="Закупка"/>
-                    <DataGridTextColumn Width="50" Binding="{Binding SellPrice}" Header="Продажа"/>
-                    <DataGridTextColumn Width="50" Binding="{Binding Balance}" Header="Наличие"/>
+                    <DataGridTextColumn Width="80" Binding="{Binding Type}" Header="Тип"/>
+                    <DataGridTextColumn Width="80" Binding="{Binding PricePurchase}" Header="Закупка"/>
+                    <DataGridTextColumn Width="80" Binding="{Binding SellPrice}" Header="Продажа"/>
+                    <DataGridTextColumn Width="80" Binding="{Binding Balance}" Header="Наличие"/>
                 </DataGrid.Columns>
             </DataGrid>
             <TextBox x:Name="textBox" HorizontalAlignment="Left" Height="23" Margin="10,5,0,0"
                      TextWrapping="Wrap" Text="Поиск" VerticalAlignment="Top" Width="139" 
                      GotFocus="textBox_GotFocus" TextChanged="textBox_TextChanged"/>
-            <Button x:Name="button3" Content="Далее" HorizontalAlignment="Left" Margin="345,33,0,0" 
+            <Button x:Name="button3" Content="Далее" HorizontalAlignment="Left" Margin="496,33,0,0" 
                     VerticalAlignment="Top" Width="125" Height="43" FontFamily="Consolas" FontSize="20"
-                    Click="buttonNext_Click" FontWeight="Bold"/>
-            <Button x:Name="button4" Content="Отмена" HorizontalAlignment="Left" Margin="345,89,0,0" 
+                    Click="buttonNext_Click" FontWeight="Bold" RenderTransformOrigin="1.638,0.581"/>
+            <Button x:Name="button4" Content="Отмена" HorizontalAlignment="Left" Margin="496,91,0,0" 
                     VerticalAlignment="Top" Width="125" Height="43" FontFamily="Consolas" FontSize="20"
                     Click="buttonCancelling_Click" FontWeight="Bold"/>
-            <Button x:Name="button8" Content="Поиск" HorizontalAlignment="Left" Margin="171,5,0,0" 
-                    VerticalAlignment="Top" Width="75" Height="23" Click="buttonFind_Click" FontWeight="Bold"/>
+            <Button x:Name="button8" Content="Поиск" HorizontalAlignment="Left" Margin="221,5,0,0" 
+                    VerticalAlignment="Top" Width="103" Height="23" Click="buttonFind_Click" FontWeight="Bold"/>
         </Grid>
 
         <Grid x:Name="CountPriceGrid" HorizontalAlignment="Left" Height="162" Margin="121,61,0,0" 

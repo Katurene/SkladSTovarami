@@ -29,7 +29,7 @@
 				  CanUserAddRows="False"
 				  CanUserReorderColumns="False"
                   ItemsSource="{Binding}" FontFamily="Segoe UI Symbol" FontSize="14" 
-                  AutoGenerateColumns="False" IsReadOnly="True">
+                  AutoGenerateColumns="False" IsReadOnly="True" FontWeight="Bold">
 
             <DataGrid.ColumnHeaderStyle>
                 <Style TargetType="{x:Type DataGridColumnHeader}">

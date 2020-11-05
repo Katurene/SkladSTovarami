@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SkladSTovarami.View"
         mc:Ignorable="d"
-       Title="AddWorker" Height="300" Width="336.82">
+       Title="ДОБАВЛЕНИЕ СОТРУДНИКА" Height="300" Width="336.82">
     
     <Grid Background="#FF4156C7">
         <TextBox x:Name="textBox_surname" HorizontalAlignment="Left" Height="23" Margin="158,36,0,0" 

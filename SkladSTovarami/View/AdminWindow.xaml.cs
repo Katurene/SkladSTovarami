@@ -161,17 +161,21 @@ namespace SkladSTovarami.View
 
             private void button_DeleteGoods_Click(object sender, RoutedEventArgs e)
             {
-            if (dataGridGoods.SelectedItem != null)
+            var result = MessageBox.Show("Вы уверены?", "Удалить запись", MessageBoxButton.YesNo);
+            if (result == MessageBoxResult.Yes)
             {
-                ProductsViewModel viewmodel = dataGridGoods.SelectedItem as ProductsViewModel;
-                MyContext db = new MyContext();
-                var f = db.Product.Include("MainProduct");
-                var g = f.Include("Secondary");
-                Product q = g.FirstOrDefault(x => x.Id == viewmodel.Id);
-                db.Product.Remove(q);
-                db.SaveChanges();
-                var s = db.Product.Include("MainProduct");
-                dataGridGoods.ItemsSource = GoodsViewMode(s.Include("Secondary").ToList());
+                if (dataGridGoods.SelectedItem != null)
+                {
+                    ProductsViewModel viewmodel = dataGridGoods.SelectedItem as ProductsViewModel;
+                    MyContext db = new MyContext();
+                    var f = db.Product.Include("MainProduct");
+                    var g = f.Include("Secondary");
+                    Product q = g.FirstOrDefault(x => x.Id == viewmodel.Id);
+                    db.Product.Remove(q);
+                    db.SaveChanges();
+                    var s = db.Product.Include("MainProduct");
+                    dataGridGoods.ItemsSource = GoodsViewMode(s.Include("Secondary").ToList());
+                }
             }
             else
             {

@@ -28,20 +28,20 @@
                 IsReadOnly="True">
                 <DataGrid.Columns>
                     <DataGridTextColumn Width="30" Binding="{Binding Id}" Header="№"/>
-                    <DataGridTextColumn Width="75" Binding="{Binding GoodId}" Header="№ товвара"/>
+                    <DataGridTextColumn Width="75" Binding="{Binding GoodId}" Header="№ товара"/>
                     <DataGridTextColumn Width="200" Binding="{Binding Name}" Header="Название"/>
                     <DataGridTextColumn Width="150" Binding="{Binding Price}" Header="Цена"/>
                     <DataGridTextColumn Width="150" Binding="{Binding Count}" Header="Количество"/>
                     <DataGridTextColumn Width="150" Binding="{Binding Sum}" Header="Сумма"/>
-
                 </DataGrid.Columns>
             </DataGrid>
+
             <Grid HorizontalAlignment="Left" Height="60" Margin="10,536,0,0" VerticalAlignment="Top" Width="1174">
                 <Border BorderBrush="Black" BorderThickness="3" HorizontalAlignment="Left" Height="40" 
                         Margin="906,8,0,0" VerticalAlignment="Top" Width="159" 
                         MouseDown="Border_MouseDown_1" MouseEnter="Border_MouseEnter" MouseLeave="Border_MouseLeave" >
-                    <Label x:Name="label2" Content="Закрыть чек" Margin="6.8,-3.2,-1.2,-3.2" 
-                           VerticalAlignment="Top" Height="40" FontSize="21.333" FontWeight="Bold" Foreground="#FF7BBA85"/>
+                    <Label x:Name="label2" Content="Закрыть чек" Margin="0,-3.2,-1,-3.2" 
+                           VerticalAlignment="Top" Height="40" FontSize="21.333" FontWeight="Bold" Foreground="#FF7BBA85" HorizontalAlignment="Right" Width="147"/>
                 </Border>
                 <Border BorderBrush="Black" BorderThickness="3" HorizontalAlignment="Left" 
                         Height="38" Margin="562,12,0,0" VerticalAlignment="Top" Width="122" MouseEnter="Border_MouseEnter" 

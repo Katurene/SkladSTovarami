@@ -24,10 +24,10 @@
                 <DataGridTextColumn Width="100" Binding="{Binding CodeName}" Header="Название"/>
                 <DataGridTextColumn Width="80" Binding="{Binding Type}" Header="Тип"/>
                 <DataGridTextColumn Width="80" Binding="{Binding Brand}" Header="Марка"/>
-                <DataGridTextColumn Width="50" Binding="{Binding TireWidth}" Header="Ширина шины"/>
-                <DataGridTextColumn Width="50" Binding="{Binding Diameter}" Header="Диаметр колес"/>
-                <DataGridTextColumn Width="50" Binding="{Binding SpeedNum}" Header="Скоростей"/>
-                <DataGridTextColumn Width="40" Binding="{Binding Used}" Header="Б/У"/>
+                <DataGridTextColumn Width="70" Binding="{Binding TireWidth}" Header="Ширина шины"/>
+                <DataGridTextColumn Width="70" Binding="{Binding Diameter}" Header="Диаметр колес"/>
+                <DataGridTextColumn Width="70" Binding="{Binding SpeedNum}" Header="Скоростей"/>
+                <DataGridTextColumn Width="50" Binding="{Binding Used}" Header="Б/У"/>
                 <DataGridTextColumn Width="80" Binding="{Binding Info}" Header="Инфо"/>
             </DataGrid.Columns>
         </DataGrid>

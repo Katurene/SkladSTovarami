@@ -6,7 +6,7 @@
         xmlns:ExtendedWpf="http://schemas.xceed.com/wpf/xaml/toolkit"
         xmlns:local="clr-namespace:SkladSTovarami.View" 
         mc:Ignorable="d"
-       Title="AddCustomer" Height="341.423" Width="360.976">
+       Title="ДОБАВЛЕНИЕ ПОКУПАТЕЛЯ" Height="341.423" Width="360.976">
     
     <Grid Background="#FF4156C7">
         <Label x:Name="label" Content="Фамилия :" HorizontalAlignment="Left" 
