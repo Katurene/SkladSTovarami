@@ -33,9 +33,7 @@ namespace SkladSTovarami.View
             textBox_spNum_from.Text = Convert.ToString(db.MainProducts.Min(x => x.SpeedNum));
             textBox_spNum_to.Text = Convert.ToString(db.MainProducts.Max(x => x.SpeedNum));
             textBox_diam_from.Text = Convert.ToString(db.MainProducts.Min(x => x.Diameter));
-            textBox_diam_to.Text = Convert.ToString(db.MainProducts.Max(x => x.Diameter));
-            //textBox_speed_from.Text = Convert.ToString(db.MainProducts.Min(x => x.StartBulletSpeed));           
-            //textBox_speed_to.Text = Convert.ToString(db.MainProducts.Max(x => x.StartBulletSpeed));
+            textBox_diam_to.Text = Convert.ToString(db.MainProducts.Max(x => x.Diameter));            
             textBox_TireWidth.Text = Convert.ToString(db.MainProducts.Min(x => x.TireWidth));
             dataGrid_MainProd.ItemsSource = db.MainProducts.ToList();
             dataGrid_Secondaries.ItemsSource = db.Secondaries.ToList();
@@ -118,25 +116,7 @@ namespace SkladSTovarami.View
 
                     lst = lst.Where(x => x.Diameter >= Diameterfrom).ToList();
                     lst = lst.Where(x => x.Diameter <= Diameterto).ToList();
-                }
-                //if (checkBox6_speed.IsChecked == true)
-                //{
-                //    int StartBulletSpeedfrom;
-                //    int StartBulletSpeedto;
-                //    if (textBox_speed_to.Text == "")
-                //        StartBulletSpeedfrom = 0;
-                //    else
-                //        StartBulletSpeedfrom = Convert.ToInt32(textBox_speed_from.Text);
-
-
-                //    if (textBox_speed_to.Text == "")
-                //        StartBulletSpeedto = db.Weapons.Max(x => x.StartBulletSpeed);
-                //    else
-                //        StartBulletSpeedto = Convert.ToInt32(textBox_speed_to.Text);
-
-                //    lst = lst.Where(x => x.StartBulletSpeed >= StartBulletSpeedfrom).ToList();
-                //    lst = lst.Where(x => x.StartBulletSpeed <= StartBulletSpeedto).ToList();
-                //}
+                }               
                 if (checkBox.IsChecked == true)
                 {
                     lst = lst.Where(x => x.Used == checkBox.IsChecked).ToList();
@@ -146,13 +126,12 @@ namespace SkladSTovarami.View
             }
             catch
             {
-                MessageBox.Show("Error");
+                MessageBox.Show("Ошибка!");
             }
         }
 
         private void textBox_CodeName_TextChanged(object sender, TextChangedEventArgs e)
         {
-
             if (textBox_CodeName.Text != "")
             {
                 SortMainProduct();
@@ -172,7 +151,6 @@ namespace SkladSTovarami.View
             if (checkBox1_name.IsChecked == true)
             {
                 textBox_CodeName.IsEnabled = true;
-
             }
             else
                 textBox_CodeName.IsEnabled = false;
@@ -195,7 +173,6 @@ namespace SkladSTovarami.View
             if (checkBox3_tireWidth.IsChecked == true)
             {
                 textBox_TireWidth.IsEnabled = true;
-
             }
             else
                 textBox_TireWidth.IsEnabled = false;
@@ -230,22 +207,7 @@ namespace SkladSTovarami.View
                 textBox_diam_to.IsEnabled = false;
             }
             SortMainProduct();
-        }
-
-        //private void checkBox6_speed_Checked(object sender, RoutedEventArgs e)
-        //{
-        //    if (checkBox6_speed.IsChecked == true)
-        //    {
-        //        textBox_speed_from.IsEnabled = true;
-        //        textBox_speed_to.IsEnabled = true;
-        //    }
-        //    else
-        //    {
-        //        textBox_speed_from.IsEnabled = false;
-        //        textBox_speed_to.IsEnabled = false;
-        //    }
-        //    SortMainProduct();
-        //}
+        }      
 
         private void checkBox_Click(object sender, RoutedEventArgs e)
         {
@@ -313,7 +275,7 @@ namespace SkladSTovarami.View
             }
             catch
             {
-                MessageBox.Show("Error");
+                MessageBox.Show("Ошибка!");
             }
         }
 
@@ -398,7 +360,7 @@ namespace SkladSTovarami.View
             else e.Handled = true;
         }
 
-        private void button_Click(object sender, RoutedEventArgs e)
+        private void buttonOK_Click(object sender, RoutedEventArgs e)
         {
             if (dataGrid_Secondaries.SelectedItem != null)
             {

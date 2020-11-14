@@ -83,7 +83,7 @@
                          TextWrapping="Wrap" Text="Поиск" VerticalAlignment="Top" Width="131" 
                          GotFocus="textBox_GotFocus" TextChanged="textBox_TextChanged"/>
                 <Button x:Name="button" Content="Редактор покупателя" HorizontalAlignment="Left" 
-                        Margin="245,13,0,0" VerticalAlignment="Top" Width="131" Height="23" Click="button_Click"/>
+                        Margin="245,13,0,0" VerticalAlignment="Top" Width="131" Height="23" Click="buttonEditCust_Click"/>
             </Grid>
             <DataGrid x:Name="dataGridCustomer" HorizontalAlignment="Left" Margin="798,265,0,0" 
                       VerticalAlignment="Top" Height="165" Width="386" ItemsSource="{Binding}"
@@ -113,15 +113,17 @@
             </Grid>
             <Grid HorizontalAlignment="Left" Height="96" Margin="798,435,0,0" VerticalAlignment="Top" Width="386">
                 <Label x:Name="label3" Content="Сумма к оплате :" HorizontalAlignment="Left" Margin="10,10,0,0" 
-                       VerticalAlignment="Top" RenderTransformOrigin="0.921,0.538" Height="54" Width="194" FontSize="24" FontWeight="Bold" Foreground="#FFE5DF16"/>
+                       VerticalAlignment="Top" RenderTransformOrigin="0.921,0.538" Height="54" Width="194" 
+                       FontSize="24" FontWeight="Bold" Foreground="#FFE5DF16"/>
                 <Label x:Name="label4" Content="0" HorizontalAlignment="Left" Margin="246,10,0,0" 
                        VerticalAlignment="Top" FontSize="24" Height="54" Width="90"/>
             </Grid>
             <Button x:Name="button1" Content="Поиск" HorizontalAlignment="Left" Margin="958,22,0,0" 
                     VerticalAlignment="Top" Width="74" Click="buttonFindProd_Click" FontWeight="Bold"/>
         </Grid>
+        
         <Grid x:Name="AddGoodsGrid" HorizontalAlignment="Left" Height="242" VerticalAlignment="Top" 
-              Width="500" Margin="356,170,0,0" Background="#FF4156C7">
+              Width="500" Margin="356,170,0,0" Background="#FF4156C7" d:IsHidden="True">
             <TextBox x:Name="textBox_Count" HorizontalAlignment="Left" Height="50" Margin="250,91,0,0" 
                      TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="138" FontSize="26.667" 
                      FontFamily="Comic Sans MS" PreviewTextInput="textBox_Count_PreviewTextInput"/>

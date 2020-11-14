@@ -56,9 +56,9 @@
                                   BorderThickness="1" VerticalAlignment="Top" RenderTransformOrigin="1.245,0.821"/>
                         <Label x:Name="label7" Content="Примечание:" HorizontalAlignment="Left" Margin="234,134,0,0" 
                                VerticalAlignment="Top"/>
-                        <TextBox x:Name="textBox_NameWeap" HorizontalAlignment="Left" Height="23" Margin="103,13,0,0" 
+                        <TextBox x:Name="textBox_NameProd" HorizontalAlignment="Left" Height="23" Margin="103,13,0,0" 
                                  TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
-                        <TextBox x:Name="textBox_TypeWeap" HorizontalAlignment="Left" Height="23" Margin="103,45,0,0" 
+                        <TextBox x:Name="textBox_TypeProd" HorizontalAlignment="Left" Height="23" Margin="103,45,0,0" 
                                  TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
                         <TextBox x:Name="textBox_Brand" HorizontalAlignment="Left" Height="23" Margin="103,76,0,0" 
                                  TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
@@ -117,7 +117,7 @@
         </TabControl>
         
         <Button x:Name="button_Save" IsEnabled="False" Content="Сохранить" HorizontalAlignment="Left" Margin="393,13,0,0" 
-                VerticalAlignment="Top" Width="106" Click="button_Save_Click" FontWeight="Bold"/>
+                VerticalAlignment="Top" Width="106" Click="button_Save_Click" FontWeight="Bold" Foreground="Black"/>
         <TextBox x:Name="textBox_Id" HorizontalAlignment="Left" Height="23" Margin="251,13,0,0" TextWrapping="Wrap" 
                  Text="-1" VerticalAlignment="Top" Width="120" Visibility="Hidden"/>
     </Grid>

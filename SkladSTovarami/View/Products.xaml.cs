@@ -111,12 +111,12 @@ namespace SkladSTovarami.View
                                 }
                             }
                             MainProduct f = new MainProduct();
-                            f.Type = textBox_TypeWeap.Text;
-                            f.CodeName = textBox_NameWeap.Text;
+                            f.Type = textBox_TypeProd.Text;
+                            f.CodeName = textBox_NameProd.Text;
                             f.Brand = textBox_Brand.Text;
                             f.TireWidth = Convert.ToDouble(textBox_TireWidth.Text);
                             f.Diameter = Convert.ToInt32(textBox_Diameter.Text);
-                            f.SpeedNum = Convert.ToInt32(textBox_SpeedNum.Text);                           
+                            f.SpeedNum = Convert.ToInt32(textBox_SpeedNum.Text);
                             f.Used = checkBox.IsChecked.Value;
                             f.Info = textBox_Info.Text;
 
@@ -166,12 +166,12 @@ namespace SkladSTovarami.View
                         if (TypeGoods.SelectedItem.ToString() == "Основной")
                         {
                             MainProduct mainProduct = db.MainProducts.Find(Convert.ToInt32(textBox_Id.Text));
-                            mainProduct.Type = textBox_TypeWeap.Text;
-                            mainProduct.CodeName = textBox_NameWeap.Text;
+                            mainProduct.Type = textBox_TypeProd.Text;
+                            mainProduct.CodeName = textBox_NameProd.Text;
                             mainProduct.Brand = textBox_Brand.Text;
                             mainProduct.TireWidth = Convert.ToDouble(textBox_TireWidth.Text);
                             mainProduct.Diameter = Convert.ToInt32(textBox_Diameter.Text);
-                            mainProduct.SpeedNum = Convert.ToInt32(textBox_SpeedNum.Text);                           
+                            mainProduct.SpeedNum = Convert.ToInt32(textBox_SpeedNum.Text);
                             mainProduct.Used = checkBox.IsChecked.Value;
                             mainProduct.Info = textBox_Info.Text;
                             f.Balance = Convert.ToInt32(textBox.Text);
@@ -198,9 +198,8 @@ namespace SkladSTovarami.View
             {
                 MessageBox.Show("Error");
             }
+        }
 
-        }      
-       
         private void textBox_tireWidth_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {
             TextBox Tb1 = sender as TextBox;
@@ -212,7 +211,7 @@ namespace SkladSTovarami.View
                 }
                 else
                 {
-                    if (Tb1.Text.Length - Tb1.Text.IndexOf(",") >= 4) //ИСПРАВИТЬ!!!!!!!!
+                    if (Tb1.Text.Length - Tb1.Text.IndexOf(",") >= 2) //колич знаков после запятой не больше 1
                     {
                         e.Handled = true;
                     }
@@ -243,7 +242,7 @@ namespace SkladSTovarami.View
             TextBox Tb1 = sender as TextBox;
             if (Char.IsDigit(e.Text, 0))
             {
-                if (!Tb1.Text.Contains(","))
+                if (!Tb1.Text.Contains(",")) 
                 {
                     e.Handled = false;
                 }

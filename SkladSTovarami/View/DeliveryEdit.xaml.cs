@@ -217,7 +217,7 @@ namespace SkladSTovarami.View
                         delinfo.Products = db.Product.Find(delvm.ProductsId);
                         delnew.Sum += delvm.Summa;
                         delnew.DeliveryInfos.Add(delinfo);
-                    }                    
+                    }
                     db.DeliveryNotes.Add(delnew);
                 }
                 else
@@ -237,7 +237,7 @@ namespace SkladSTovarami.View
                         delinfo.Products = db.Product.Find(delvm.ProductsId);
                         delnew.Sum += delvm.Summa;
                         delnew.DeliveryInfos.Add(delinfo);
-                    }                   
+                    }
                 }
                 db.SaveChanges();
                 Close();

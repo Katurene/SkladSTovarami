@@ -12,9 +12,9 @@
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
         <Button x:Name="button" Content="Войти" HorizontalAlignment="Left" Margin="377,23,0,0" 
-                VerticalAlignment="Top" Width="126" Height="40" FontSize="21.333" Click="buttonEnter_Click"/>
+                VerticalAlignment="Top" Width="126" Height="40" FontSize="21.333" Click="buttonEnter_Click" FontWeight="Bold"/>
         <Button x:Name="button_Copy" Content="Создать" HorizontalAlignment="Left" Margin="377,68,0,0" 
-                VerticalAlignment="Top" Width="126" Height="40" FontSize="21.333" Click="button_Copy_Click"/>
+                VerticalAlignment="Top" Width="126" Height="40" FontSize="21.333" Click="button_Copy_Click" FontWeight="Bold"/>
 
         <DataGrid x:Name="dataGridWorker"
                   HorizontalAlignment="Left"

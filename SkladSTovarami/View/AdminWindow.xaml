@@ -5,31 +5,34 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SkladSTovarami.View"
         mc:Ignorable="d"
-        Title="ОКНО АДМИНИСТРИРОВАНИЯ СКЛАДА" Height="424.038" Width="986.842" Closing="Window_Closing" Background="#FF677DF7">
+        Title="ОКНО АДМИНИСТРИРОВАНИЯ СКЛАДА" Height="424.038" Width="986.842" Closing="Window_Closing"
+         Background="#FF677DF7">
 
     <Grid>
         <Rectangle Fill="#FF677DF7" HorizontalAlignment="Left" Height="50" Stroke="Black" 
                    VerticalAlignment="Top" Width="981" Margin="0,0,-0.2,0"/>
-        <Label x:Name="label_Order" Content="Заказы" HorizontalAlignment="Left" Foreground="#FF404658" 
-               FontSize="18" FontFamily="Segoe WP Semibold" Margin="127,10,0,0" VerticalAlignment="Top" 
-               RenderTransformOrigin="-1.355,0.019" Height="40" Width="90" MouseDown="label_Order_MouseDown" FontWeight="Bold">
+        <Label x:Name="label_Order" Content="Заявки" HorizontalAlignment="Left" Foreground="#FF404658" 
+               FontSize="18" FontFamily="Segoe WP Semibold" Margin="127,15,0,0" VerticalAlignment="Top" 
+               RenderTransformOrigin="-1.355,0.019" Height="35" Width="90" MouseDown="label_Order_MouseDown" 
+               FontWeight="Bold" BorderThickness="2" BorderBrush="#FFA91818">
             <Label.Background>
                 <ImageBrush/>
             </Label.Background>
         </Label>
 
         <Label x:Name="label_Delivery" Content="Накладные" HorizontalAlignment="Left" Foreground="#FF404658" 
-               FontSize="18" FontFamily="Segoe WP Semibold" Margin="235,10,0,0" VerticalAlignment="Top" 
-               RenderTransformOrigin="-1.355,0.019" Height="40" Width="125" MouseDown="label_Delivery_MouseDown" FontWeight="Bold">
+               FontSize="18" FontFamily="Segoe WP Semibold" Margin="222,15,0,0" VerticalAlignment="Top" 
+               RenderTransformOrigin="-1.355,0.019" Height="35" Width="125" MouseDown="label_Delivery_MouseDown" 
+               FontWeight="Bold" BorderThickness="2" BorderBrush="#FFA91818">
             <Label.Background>
                 <ImageBrush/>
             </Label.Background>
         </Label>
 
-        <Label x:Name="label_Goods" Content="Товары" Padding="0" HorizontalAlignment="Left" Margin="32,15,0,0" 
+        <Label x:Name="label_Goods" Content="Товары" Padding="5" HorizontalAlignment="Left" Margin="37,15,0,0" 
                VerticalAlignment="Top" Foreground="#FF404658" FontSize="18" FontFamily="Segoe WP Semibold" 
-               RenderTransformOrigin="-1.355,0.019" Height="40" Width="90" MouseDown="label_Goods_MouseDown" 
-               FontWeight="Bold">
+               RenderTransformOrigin="-1.355,0.019" Height="35" Width="85" MouseDown="label_Goods_MouseDown" 
+               FontWeight="Bold" BorderBrush="#FFA91818" BorderThickness="2">
             <Label.Background>
                 <ImageBrush/>
             </Label.Background>
@@ -65,13 +68,13 @@
             <Button x:Name="button" Content="Новый Товар" HorizontalAlignment="Left" Margin="818,13,0,0" 
                     VerticalAlignment="Top" Width="120" Height="50" Click="buttonAddNewProduct_Click" 
                     FontWeight="Bold" FontSize="14" RenderTransformOrigin="1.065,0.42"/>
-            <Button x:Name="button3" Content="Редактировать" HorizontalAlignment="Left" Margin="818,90,0,0" 
+            <Button x:Name="button3" Content="Редактировать" HorizontalAlignment="Left" Margin="818,77,0,0" 
                     VerticalAlignment="Top" Width="120" Height="50" Click="buttonChangeProduct_Click" 
                     FontWeight="Bold" FontSize="14"/>
-            <Button x:Name="button_DeleteGoods" Content="Удалить" HorizontalAlignment="Left" Margin="818,165,0,0" 
+            <Button x:Name="button_DeleteGoods" Content="Удалить" HorizontalAlignment="Left" Margin="818,143,0,0" 
                     VerticalAlignment="Top" Width="120" Height="50" Click="button_DeleteGoods_Click" 
                     FontWeight="Bold" FontSize="14"/>
-            <Button x:Name="button1" Content="Поиск" HorizontalAlignment="Left" Margin="818,236,0,0" 
+            <Button x:Name="button1" Content="Поиск" HorizontalAlignment="Left" Margin="818,210,0,0" 
                     VerticalAlignment="Top" Width="120" Height="50" Click="buttonFindWindow_Click" 
                     RenderTransformOrigin="1.248,0.77" FontWeight="Bold" FontSize="14"/>
         </Grid>
@@ -98,10 +101,12 @@
             </DataGrid>
 
             <Button x:Name="button_OrderNew" Content="Добавить" HorizontalAlignment="Left" 
-                    Margin="760,10,0,0" VerticalAlignment="Top" Width="169" Height="35" Click="button_OrderNew_Click" FontSize="14" FontWeight="Bold"/>
+                    Margin="760,10,0,0" VerticalAlignment="Top" Width="169" Height="35" 
+                    Click="button_OrderNew_Click" FontSize="14" FontWeight="Bold"/>
             <Button x:Name="button_OrderDelete" Content="Удалить" HorizontalAlignment="Left" 
-                    Margin="760,63,0,0" VerticalAlignment="Top" Width="169" Height="39" Click="button_OrderDelete_Click" FontSize="14" FontWeight="Bold"/>
-            <Button x:Name="button_OrderEdit" Content="Просмотреть информацию" 
+                    Margin="760,63,0,0" VerticalAlignment="Top" Width="169" Height="39" 
+                    Click="button_OrderDelete_Click" FontSize="14" FontWeight="Bold"/>
+            <Button x:Name="button_OrderEdit" Content="Просмотр заявок" 
                     HorizontalAlignment="Left" Margin="760,123,0,0" VerticalAlignment="Top" Width="169" 
                     Height="38" Click="button_OrderEdit_Click" FontWeight="Bold"/>
         </Grid>
@@ -128,11 +133,14 @@
             </DataGrid>
 
             <Button x:Name="button_AddDelivery" Content="Добавить" HorizontalAlignment="Left" 
-                    Margin="733,10,0,0" VerticalAlignment="Top" Width="203" Height="45" Click="buttonAddDelivery_Click" FontSize="14" FontWeight="Bold"/>
+                    Margin="733,10,0,0" VerticalAlignment="Top" Width="203" Height="45" 
+                    Click="buttonAddDelivery_Click" FontSize="14" FontWeight="Bold"/>
             <Button x:Name="button_DeleteDelivery" Content="Удалить" HorizontalAlignment="Left" 
-                    Margin="733,70,0,0" VerticalAlignment="Top" Width="203" Height="45" Click="button_DeleteDelivery_Click" FontSize="14" FontWeight="Bold"/>
-            <Button x:Name="button_InfoDelivery" Content="Просмотреть информацию" HorizontalAlignment="Left"
-                    Margin="733,130,0,0" VerticalAlignment="Top" Width="203" Height="45" Click="button_InfoDelivery_Click" FontSize="14" FontWeight="Bold"/>
+                    Margin="733,70,0,0" VerticalAlignment="Top" Width="203" Height="45" 
+                    Click="button_DeleteDelivery_Click" FontSize="14" FontWeight="Bold"/>
+            <Button x:Name="button_InfoDelivery" Content="Просмотр накладных" HorizontalAlignment="Left"
+                    Margin="733,130,0,0" VerticalAlignment="Top" Width="203" Height="45" 
+                    Click="button_InfoDelivery_Click" FontSize="14" FontWeight="Bold"/>
         </Grid>
 
         <Grid x:Name="WorkerGrid" HorizontalAlignment="Left" Height="329" Margin="0,55,0,0" 
@@ -162,28 +170,29 @@
 
             </DataGrid>
             <Button x:Name="button_AddWorker" Content="Добавить сотрудника" HorizontalAlignment="Left" 
-                    Margin="772,10,0,0" VerticalAlignment="Top" Width="164" Height="58" FontSize="13.333" 
+                    Margin="772,10,0,0" VerticalAlignment="Top" Width="164" Height="58" FontSize="14" 
                     Click="buttonAddWorker_Click" FontWeight="Bold"/>
             <Button x:Name="button_DeleteWorker" Content="Удалить" HorizontalAlignment="Left" 
                     Margin="772,88,0,0" VerticalAlignment="Top" Width="164" Height="52" 
-                    Click="button_DeleteWorker_Click" FontWeight="Bold"/>
+                    Click="button_DeleteWorker_Click" FontWeight="Bold" FontSize="14"/>
             <Button x:Name="button_EditWorker" Content="Редактировать" HorizontalAlignment="Left"
                     Margin="772,164,0,0" VerticalAlignment="Top" Width="164" Height="58" 
-                    Click="button_EditWorker_Click" FontWeight="Bold"/>
+                    Click="button_EditWorker_Click" FontWeight="Bold" FontSize="14"/>
         </Grid>
 
         <Label x:Name="label_Worker" Content="Сотрудники" HorizontalAlignment="Left" Foreground="#FF404658" 
-               FontSize="18" FontFamily="Segoe WP Semibold" Margin="360,10,0,0" VerticalAlignment="Top" 
-               RenderTransformOrigin="-1.355,0.019" Height="40" Width="125" MouseDown="label_Worker_MouseDown" FontWeight="Bold" >
+               FontSize="18" FontFamily="Segoe WP Semibold" Margin="352,15,0,0" VerticalAlignment="Top" 
+               RenderTransformOrigin="-1.355,0.019" Height="35" Width="125" 
+               MouseDown="label_Worker_MouseDown" FontWeight="Bold" BorderThickness="2" BorderBrush="#FFA91818" >
             <Label.Background>
                 <ImageBrush/>
             </Label.Background>
         </Label>
 
         <Label x:Name="label_useful" Content="Отчёты" HorizontalAlignment="Left" Foreground="#FF404658" 
-               FontSize="18" FontFamily="Segoe WP Semibold" Margin="500,10,0,0" VerticalAlignment="Top" 
-               RenderTransformOrigin="-1.355,0.019" Height="40" Width="97" MouseDown="label_useful_MouseDown" 
-               FontWeight="Bold" >
+               FontSize="18" FontFamily="Segoe WP Semibold" Margin="482,15,0,0" VerticalAlignment="Top" 
+               RenderTransformOrigin="-1.355,0.019" Height="35" Width="97" MouseDown="label_useful_MouseDown" 
+               FontWeight="Bold" BorderThickness="2" BorderBrush="#FFA91818" >
             <Label.Background>
                 <ImageBrush/>
             </Label.Background>
@@ -203,7 +212,7 @@
 				      CanUserAddRows="False"
                       AutoGenerateColumns="False"
 				      CanUserReorderColumns="False"
-                     IsReadOnly="True" d:IsHidden="True" Grid.ColumnSpan="2">
+                      IsReadOnly="True" d:IsHidden="True" Grid.ColumnSpan="2">
 
                 <DataGrid.Columns>
                     <DataGridTextColumn Width="25" Binding="{Binding Id}" Header="№"/>
@@ -216,10 +225,10 @@
             </DataGrid>
 
             <Button x:Name="button6" Content="Продажи за последние 30 дней" HorizontalAlignment="Left" 
-                    Margin="10,10,0,0" VerticalAlignment="Top" Width="204" Click="buttonOtgrZaMesac_Click" 
+                    Margin="37,10,0,0" VerticalAlignment="Top" Width="204" Click="buttonOtgrZaMesac_Click" 
                     Height="31" FontWeight="Bold"/>
-            <Button x:Name="button7" Content="Товары которые заканчиваются" HorizontalAlignment="Left" 
-                    Margin="268,10,0,0" VerticalAlignment="Top" Width="206" Click="buttonOstatki_Click" 
+            <Button x:Name="button7" Content="Остатки по товарам" HorizontalAlignment="Left" 
+                    Margin="263,10,0,0" VerticalAlignment="Top" Width="206" Click="buttonOstatki_Click" 
                     Height="31" FontWeight="Bold"/>
 
             <DataGrid x:Name="dataGrid_goods" HorizontalAlignment="Left" Margin="10,66,0,0" 
@@ -243,6 +252,8 @@
 
             </DataGrid>
         </Grid>
-
+        <Button Content="EXIT" HorizontalAlignment="Left" Margin="850,17,0,0" 
+                VerticalAlignment="Top" Width="89" Click="ButtonExit_Click" Height="28" FontSize="14" 
+                FontWeight="Bold" Background="#FFED2727"/>
     </Grid>
 </Window>

@@ -20,8 +20,7 @@ namespace SkladSTovarami.View
     /// Логика взаимодействия для WorkerMain.xaml
     /// </summary>
     public partial class WorkerMain : Window
-    {
-        //WorkingTime WorkTime = new WorkingTime();
+    {        
         public int EmployeeId { get; set; }
         int i = 1;
         double Sum = 0;
@@ -73,16 +72,7 @@ namespace SkladSTovarami.View
             MessageBoxResult res;
             res = MessageBox.Show("Завершить работу?", "Предупреждение", MessageBoxButton.YesNo, MessageBoxImage.Question);
             if (res == MessageBoxResult.Yes)
-            {
-                //WorkingTime wt = new WorkingTime()
-                //{
-                //    TimeStart = WorkTime.TimeStart,
-                //    TimeEnd = DateTime.Now,
-                //    Employees = db1.Emloyees.FirstOrDefault(x => x.Id == EmployeeId),
-                //    EmployeesId = EmployeeId
-                //};
-                //db1.WorkingTimes.Add(wt);
-                //db1.SaveChanges();
+            {             
                 Environment.Exit(0);
             }
             else
@@ -207,7 +197,7 @@ namespace SkladSTovarami.View
                         db1.Product.FirstOrDefault(x => x.Id == nwch.GoodId).Balance -= nwch.Count;
                         CheckInfo f = new CheckInfo();
                         f.Count = nwch.Count;
-                        f.Products = db1.Product.Find(nwch.GoodId);//f.Goods = db1.Goodss.Find(nwch.GoodId);
+                        f.Products = db1.Product.Find(nwch.GoodId);
                         ch.CheckInfos.Add(f);
                     }
                     db1.Checks.Add(ch);                    
@@ -238,7 +228,7 @@ namespace SkladSTovarami.View
             }
         }
 
-        private void button_Click(object sender, RoutedEventArgs e)
+        private void buttonEditCust_Click(object sender, RoutedEventArgs e)
         {
             EditCustomer f = new EditCustomer();
             f.Closing += AddCustomer_Closing;

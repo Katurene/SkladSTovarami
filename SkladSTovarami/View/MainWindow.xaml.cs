@@ -166,7 +166,7 @@ namespace SkladSTovarami
         private void textBox1_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {
             TextBox tb1 = sender as TextBox;
-            string pattern = @"^[a-zA-Z а-яА-Я ]+$";
+            string pattern = @"^[a-zA-Z а-яА-Я ]+$";  //для имени
             Regex rgx = new Regex(pattern);
             string test = tb1.Text;
             if (!rgx.IsMatch(e.Text))
@@ -182,7 +182,7 @@ namespace SkladSTovarami
         private void textBox_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {
             TextBox tb1 = sender as TextBox;
-            string pattern = @"^[a-zA-Z ]+$";
+            string pattern = @"^[a-zA-Z ]+$";   //логин только англ буквы
             Regex rgx = new Regex(pattern);
             string test = tb1.Text;
             if (!rgx.IsMatch(e.Text))

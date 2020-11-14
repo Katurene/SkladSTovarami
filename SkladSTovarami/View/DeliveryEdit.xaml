@@ -5,13 +5,13 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SkladSTovarami.View"
         mc:Ignorable="d"
-        Title="DeliveryEdit" Height="397.192" Width="728.2" Background="White" Loaded="Lol_Loaded">
+        Title="ВНЕСЕНИЕ НАКЛАДНОЙ" Height="407.592" Width="728.2" Background="White" Loaded="Lol_Loaded">
 
-    <Grid Background="#FF4156C7">
+    <Grid Background="#FF4156C7" Margin="0,0,-0.4,-19.8">
         <Grid x:Name="MainGrid" HorizontalAlignment="Left" Height="360" VerticalAlignment="Top" 
-              Width="497" d:IsHidden="True">
+              Width="684" d:IsHidden="True">
             <DataGrid x:Name="dataGridGoods" HorizontalAlignment="Left" Margin="10,10,0,0" 
-                      VerticalAlignment="Top" Height="249" Width="311"
+                      VerticalAlignment="Top" Height="281" Width="524"
                        ItemsSource="{Binding}"
                        HeadersVisibility="Column"                 
         		CanUserResizeRows="False"
@@ -21,27 +21,29 @@
 				CanUserReorderColumns="False"
                 IsReadOnly="True">
                 <DataGrid.Columns>
-                    <DataGridTextColumn Width="25" Binding="{Binding Id}" Header="№"/>
-                    <DataGridTextColumn Width="40" Binding="{Binding ProductsId}" Header="№ тов"/>
-                    <DataGridTextColumn Width="100" Binding="{Binding Name}" Header="Название"/>
-                    <DataGridTextColumn Width="50" Binding="{Binding Price}" Header="Цена"/>
-                    <DataGridTextColumn Width="45" Binding="{Binding Count}" Header="Количство"/>
-                    <DataGridTextColumn Width="45" Binding="{Binding Summa}" Header="Сумма"/>
+                    <DataGridTextColumn Width="35" Binding="{Binding Id}" Header="№"/>
+                    <DataGridTextColumn Width="50" Binding="{Binding ProductsId}" Header="№тов"/>
+                    <DataGridTextColumn Width="200" Binding="{Binding Name}" Header="Название"/>
+                    <DataGridTextColumn Width="80" Binding="{Binding Price}" Header="Цена"/>
+                    <DataGridTextColumn Width="80" Binding="{Binding Count}" Header="Количество"/>
+                    <DataGridTextColumn Width="80" Binding="{Binding Summa}" Header="Сумма"/>
                 </DataGrid.Columns>
             </DataGrid>
 
-            <Button x:Name="button" Content="Редактировать" HorizontalAlignment="Left" Margin="347,86,0,0" 
-                    VerticalAlignment="Top" Width="121" Click="buttonRedact_Click" Height="40"/>
-            <Button x:Name="button5" Content="Добавить" HorizontalAlignment="Left" Margin="347,31,0,0" 
-                    VerticalAlignment="Top" Width="121" Height="40" Click="buttonAdd_Click"/>
-            <Button x:Name="button6" Content="Удалить" HorizontalAlignment="Left" Margin="347,141,0,0" 
-                    VerticalAlignment="Top" Width="121" Height="40" Click="buttonDelete_Click"/>
-            <Button x:Name="button7" Content="Сохранить" HorizontalAlignment="Left" Margin="347,201,0,0" 
-                    VerticalAlignment="Top" Width="121" Height="40" Click="buttonSaving_Click"/>
-            <Label x:Name="label4" Content="Принял" HorizontalAlignment="Left" Margin="36,319,0,0" 
-                   VerticalAlignment="Top" Width="432" Height="41" FontSize="21.333" Background="Transparent" 
-                   Foreground="#FF1017A8"/>
+            <Button x:Name="button" Content="Редактировать" HorizontalAlignment="Left" Margin="539,86,0,0" 
+                    VerticalAlignment="Top" Width="121" Click="buttonRedact_Click" Height="40" FontWeight="Bold" FontSize="14"/>
+            <Button x:Name="button5" Content="Добавить" HorizontalAlignment="Left" Margin="539,28,0,0" 
+                    VerticalAlignment="Top" Width="121" Height="40" Click="buttonAdd_Click" FontWeight="Bold" FontSize="14"/>
+            <Button x:Name="button6" Content="Удалить" HorizontalAlignment="Left" Margin="539,148,0,0" 
+                    VerticalAlignment="Top" Width="121" Height="40" Click="buttonDelete_Click" FontWeight="Bold" FontSize="14"/>
+            <Button x:Name="button7" Content="Сохранить" HorizontalAlignment="Left" Margin="539,207,0,0" 
+                    VerticalAlignment="Top" Width="121" Height="40" Click="buttonSaving_Click" FontWeight="Bold" FontSize="14"/>
+            
+            <Label x:Name="label4" Content="Принял" HorizontalAlignment="Left" Margin="36,335,0,0" 
+                   VerticalAlignment="Top" Width="432" Height="41" FontSize="18" Background="Transparent" 
+                   Foreground="#FFB0A620"/>
         </Grid>
+
         <Grid x:Name="GoodsGrid" HorizontalAlignment="Left" Height="269" VerticalAlignment="Top"
               Width="631" Background="#FF4156C7">
             <DataGrid x:Name="dataGrid" Margin="10,33,157,0" VerticalAlignment="Top" 
@@ -53,7 +55,7 @@
         		CanUserAddRows="False"        		
                 AutoGenerateColumns="False"
 				CanUserReorderColumns="False"
-                IsReadOnly="True">
+                IsReadOnly="True" FontWeight="Bold">
                 <DataGrid.Columns>
                     <DataGridTextColumn Width="50" Binding="{Binding Id}" Header="№"/>
                     <DataGridTextColumn Width="100" Binding="{Binding Name}" Header="Название"/>
@@ -99,14 +101,14 @@
                    VerticalAlignment="Top"/>
         </Grid>
 
-        <ComboBox x:Name="comboBox_TypePayment" HorizontalAlignment="Left" Margin="104,282,0,0"
+        <ComboBox x:Name="comboBox_TypePayment" HorizontalAlignment="Left" Margin="131,315,0,0"
                   VerticalAlignment="Top" Width="120"/>
-        <Label x:Name="label3" Content="Тип оплаты :" HorizontalAlignment="Left" Margin="10,276,0,0"
+        <Label x:Name="label3" Content="Тип оплаты :" HorizontalAlignment="Left" Margin="10,309,0,0"
                VerticalAlignment="Top" FontWeight="Bold" FontSize="14"/>
-        <Label x:Name="label_Summa" Content="Сумма :" HorizontalAlignment="Left" Margin="278,269,0,0"
+        <Label x:Name="label_Summa" Content="Сумма :" HorizontalAlignment="Left" Margin="288,306,0,0"
                VerticalAlignment="Top" Height="42" Width="93" FontSize="20"  
                FontFamily="Microsoft Sans Serif"/>
-        <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Margin="371,274,0,0" TextWrapping="Wrap" 
+        <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Margin="386,310,0,0" TextWrapping="Wrap" 
                    Text="0.00" VerticalAlignment="Top" Height="35" Width="96" FontSize="21.333" 
                    FontFamily="Microsoft Sans Serif" />
     </Grid>
