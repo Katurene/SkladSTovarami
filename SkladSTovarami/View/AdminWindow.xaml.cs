@@ -400,7 +400,7 @@ namespace SkladSTovarami.View
         private void buttonOstatki_Click(object sender, RoutedEventArgs e)
         {
             MyContext db = new MyContext();
-            var s = db.Product.Include("MainProduct");//если меньше 3 то мало
+            var s = db.Product.Include("MainProduct");//если меньше или 3 то мало
             dataGrid_goods.ItemsSource = GoodsViewMode(s.Include("Secondary").Where(x => x.Balance <= 3).ToList());
             dataGrid_goods.Visibility = Visibility.Visible;
             dataGrid_useful.Visibility = Visibility.Hidden;

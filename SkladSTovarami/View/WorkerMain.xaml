@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SkladSTovarami.View"
         mc:Ignorable="d"
-        Title="WorkerMain" Height="636.989" Width="1201.816" Closing="Window_Closing">
+        Title="УПРАВЛЕНИЕ РЕАЛИЗАЦИЕЙ ТОВАРОВ" Height="636.989" Width="1201.816" Closing="Window_Closing">
     <Grid>
         <Grid x:Name="Main" HorizontalAlignment="Left" Height="606" VerticalAlignment="Top" Width="1194">
             <Grid.Background>

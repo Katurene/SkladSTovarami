@@ -242,7 +242,7 @@ namespace SkladSTovarami.View
             TextBox Tb1 = sender as TextBox;
             if (Char.IsDigit(e.Text, 0))
             {
-                if (!Tb1.Text.Contains(",")) 
+                if (!Tb1.Text.Contains(","))
                 {
                     e.Handled = false;
                 }
