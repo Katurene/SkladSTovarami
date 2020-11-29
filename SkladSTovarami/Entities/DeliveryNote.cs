@@ -11,6 +11,7 @@ namespace SkladSTovarami.Entities
         public int Id { get; set; }
         public double Sum { get; set; }
         public string TypePayment { get; set; }
+        public string Invoice { get; set; } //нет в основном 
         public DateTime Date { get; set; }
         public int? EmployeesId { get; set; }
         public virtual Employee Employees { get; set; }

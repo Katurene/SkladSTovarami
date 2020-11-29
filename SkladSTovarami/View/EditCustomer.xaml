@@ -6,6 +6,7 @@
         xmlns:local="clr-namespace:SkladSTovarami.View"
         mc:Ignorable="d"
         Title="Редактор покупателя" Height="300" Width="622.197">
+
     <Grid Background="#FF4156C7">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="27*"/>
@@ -22,7 +23,7 @@
                 IsReadOnly="True" Grid.ColumnSpan="2">
 
             <DataGrid.Columns>
-                <DataGridTextColumn Width="30" Binding="{Binding Id}" Header="№"/>
+                <DataGridTextColumn Width="30" Binding="{Binding CustomerId}" Header="№"/>
                 <DataGridTextColumn Width="120" Binding="{Binding FullName}" Header="ФИО"/>
                 <DataGridTextColumn Width="80" Binding="{Binding PassportNumber}" Header="№ Паспорта"/>
                 <DataGridTextColumn Width="80" Binding="{Binding Contract}" Header="№ Договора"/>
@@ -31,12 +32,12 @@
             </DataGrid.Columns>
         </DataGrid>
 
-        <Button x:Name="button" Content="Добавить" HorizontalAlignment="Left" Margin="446.2,10,0,0" 
-                VerticalAlignment="Top" Width="99" Click="buttonAdd_Click" FontWeight="Bold" Grid.Column="1"/>
-        <Button x:Name="button1" Content="Редактировать" HorizontalAlignment="Left" Margin="446.2,44,0,0"
-                VerticalAlignment="Top" Width="99" Click="buttonEdit_Click" RenderTransformOrigin="0.495,-0.452" FontWeight="Bold" Grid.Column="1"/>
-        <Button x:Name="button2" Content="Удалить" HorizontalAlignment="Left" Margin="446.2,79,0,0"
-                VerticalAlignment="Top" Width="99" Click="buttonDelete_Click" FontWeight="Bold" Grid.Column="1"/>
+        <Button x:Name="button" Content="Добавить" HorizontalAlignment="Left" Margin="446.6,10,0,0" 
+                VerticalAlignment="Top" Width="99" Click="buttonAdd_Click" FontWeight="Bold" Grid.Column="1" Height="27"/>
+        <Button x:Name="button1" Content="Редактировать" HorizontalAlignment="Left" Margin="446.6,42,0,0"
+                VerticalAlignment="Top" Width="99" Click="buttonEdit_Click" RenderTransformOrigin="0.495,-0.452" FontWeight="Bold" Grid.Column="1" Height="27"/>
+        <Button x:Name="button2" Content="Удалить" HorizontalAlignment="Left" Margin="446.6,74,0,0"
+                VerticalAlignment="Top" Width="99" Click="buttonDelete_Click" FontWeight="Bold" Grid.Column="1" Height="30"/>
 
     </Grid>
 </Window>

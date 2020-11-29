@@ -130,6 +130,7 @@ namespace SkladSTovarami.View
                             db.Product.Add(god);
                             db.SaveChanges();
                             this.Close();
+                            MessageBox.Show("Товар успешно сохранен в базе.");
                         }
                         else if (TypeGoods.SelectedItem.ToString() == "Дополнительный")
                         {
@@ -153,11 +154,13 @@ namespace SkladSTovarami.View
                             };
 
                             god.Balance = Convert.ToInt32(textBox.Text);
-                            god.PricePurchase = Convert.ToInt32(textBox1.Text);
-                            god.SellPrice = Convert.ToInt32(textBox2.Text);
+                            god.PricePurchase = Convert.ToDouble(textBox1.Text);//Convert.ToInt32(textBox1.Text)
+                            god.SellPrice = Convert.ToDouble(textBox2.Text);//Convert.ToInt32(textBox2.Text)
                             db.Product.Add(god);
                             db.SaveChanges();
                             this.Close();
+
+                            MessageBox.Show("Товар успешно сохранен в базе.");
                         }
                     }
                     else
@@ -190,7 +193,7 @@ namespace SkladSTovarami.View
                             f.SellPrice = Convert.ToInt32(textBox2.Text);
                             db.SaveChanges();
                         }
-                        this.Close();
+                        this.Close();                       
                     }
                 }
             }

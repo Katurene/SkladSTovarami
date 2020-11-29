@@ -28,6 +28,9 @@ namespace SkladSTovarami.ViewModel
         [Display(Name = "Сумма")]
         public double Summa { get { return Count * Price; } }
 
+        //public DateTime DateStart { get; set; } //?????????
+        //public DateTime DateEnd { get; set; }   //???????????
+
         public DeliveryViewModel(DeliveryInfo lst, int id)
         {
             this.Count = lst.Count;

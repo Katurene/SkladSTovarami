@@ -62,7 +62,7 @@ namespace SkladSTovarami.View
             {
                 MyContext db = new MyContext();
                 Customer cust = dataGrid.SelectedItem as Customer;
-                Customer custdel = db.Customers.Find(cust.Id);
+                Customer custdel = db.Customers.Find(cust.CustomerId);
                 db.Customers.Remove(custdel);
                 db.SaveChanges();
             }

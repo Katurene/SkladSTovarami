@@ -6,51 +6,51 @@
         xmlns:local="clr-namespace:SkladSTovarami.View"
         mc:Ignorable="d"
         Title="ДОБАВЛЕНИЕ ТОВАРА" Height="302.55" Width="543.909" >
-    
+
     <Grid Margin="0,0,2,0" Background="#FF4156C7">
         <ComboBox x:Name="TypeGoods"
     		HorizontalAlignment="Left" 
     		Margin="111,13,0,0"
     		VerticalAlignment="Top"
-    		Width="120" SelectionChanged="TypeGoods_SelectionChanged">           
-        </ComboBox>        
+    		Width="120" SelectionChanged="TypeGoods_SelectionChanged">
+        </ComboBox>
         <Label x:Name="label" Content="Тип товара" HorizontalAlignment="Left" Margin="21,10,0,0" 
                VerticalAlignment="Top" FontWeight="Bold"/>
-        
+
         <TabControl x:Name="tabControl" HorizontalAlignment="Left" Height="218" Margin="10,41,0,0" 
-                    VerticalAlignment="Top" Width="517">            
+                    VerticalAlignment="Top" Width="517">
             <TabItem Header="Характеристики">
                 <Grid Background="#FFE5E5E5">
                     <Grid x:Name="SecondaryGrid" HorizontalAlignment="Left" Height="170" 
                           VerticalAlignment="Top" Width="491" Margin="10,10,0,0" Visibility="Hidden" d:IsHidden="True">
-                        <Label x:Name="label_Type" Content="Тип :" HorizontalAlignment="Left" Margin="77,13,0,0" 
+                        <Label x:Name="label_Type" Content="Производитель:" HorizontalAlignment="Left" Margin="15,38,0,0" 
                                VerticalAlignment="Top" RenderTransformOrigin="1.246,0.592"/>
-                        <TextBox x:Name="textBox_Type" HorizontalAlignment="Left" Height="23" Margin="156,13,0,0" 
+                        <TextBox x:Name="textBox_Type" HorizontalAlignment="Left" Height="23" Margin="156,41,0,0" 
                                  TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
-                        <TextBox x:Name="textBox_Name" HorizontalAlignment="Left" Height="23" Margin="156,41,0,0" 
+                        <TextBox x:Name="textBox_Name" HorizontalAlignment="Left" Height="23" Margin="156,12,0,0" 
                                  TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
                         <TextBox x:Name="textBox_Charact" HorizontalAlignment="Left" Height="88" Margin="156,72,0,0" 
                                  TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="317"/>
-                        <Label x:Name="label1" Content="Название :" HorizontalAlignment="Left" Margin="44,41,0,0" 
+                        <Label x:Name="label1" Content="Название :" HorizontalAlignment="Left" Margin="44,10,0,0" 
                                VerticalAlignment="Top" RenderTransformOrigin="0.031,-0.083"/>
                         <Label x:Name="label2" Content="Характеристика :" HorizontalAlignment="Left" Margin="10,72,0,0" 
                                VerticalAlignment="Top"/>
                     </Grid>
-                    
+
                     <Grid x:Name="MainProdGrid" HorizontalAlignment="Left" Height="190" VerticalAlignment="Top" 
-                          Width="511" Visibility="Visible">                       
+                          Width="511" Visibility="Visible">
                         <Label x:Name="label_CodeName" Content="Название:" HorizontalAlignment="Left" 
                                Margin="10,10,0,0" VerticalAlignment="Top"/>
-                        <Label x:Name="label_TypePr" Content="Тип товара:" HorizontalAlignment="Left" Margin="10,41,0,0" 
-                               VerticalAlignment="Top"/>   <!--"label_TypeWeapon"-->
+                        <Label x:Name="label_TypePr" Content="Производитель:" HorizontalAlignment="Left" Margin="5,42,0,0" 
+                               VerticalAlignment="Top" RenderTransformOrigin="0.331,0.609" Width="98"/>
                         <Label x:Name="label_Brand" Content="Марка:" HorizontalAlignment="Left" 
-                               Margin="10,73,0,0" VerticalAlignment="Top"/> <!--"label_Automatic"-->
+                               Margin="10,73,0,0" VerticalAlignment="Top"/>
                         <Label x:Name="label_TireWidth" Content="Ширина шины:" HorizontalAlignment="Left" 
-                               Margin="10,103,0,0" VerticalAlignment="Top" RenderTransformOrigin="1.855,0.535"/> <!--"label_Calibr"-->
+                               Margin="10,103,0,0" VerticalAlignment="Top" RenderTransformOrigin="1.855,0.535"/>
                         <Label x:Name="label_Diameter" Content="Диаметр колес:" HorizontalAlignment="Left" 
-                               Margin="279,14,0,0" VerticalAlignment="Top"/> <!--"label_KillRange"-->
+                               Margin="279,14,0,0" VerticalAlignment="Top"/>
                         <Label x:Name="label_SpeedNum" Content="Скоростей:" HorizontalAlignment="Left" 
-                               Margin="10,134,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.202,0.4"/> <!--"label_Ammunition"-->
+                               Margin="10,134,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.202,0.4"/>
 
                         <CheckBox x:Name="checkBox" Content="Б/У" HorizontalAlignment="Left" Margin="328,76,0,0" 
                                   BorderThickness="1" VerticalAlignment="Top" RenderTransformOrigin="1.245,0.821"/>
@@ -73,13 +73,13 @@
                         <TextBox x:Name="textBox_Diameter" HorizontalAlignment="Left" 
                                  PreviewTextInput="textBox_PreviewTextInput" Height="23" Margin="391,14,0,0" 
                                  TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="110" 
-                                 GotFocus="textBox_GotFocus" LostFocus="textBox_tireWidth_LostFocus"/>                       
+                                 GotFocus="textBox_GotFocus" LostFocus="textBox_tireWidth_LostFocus"/>
                         <TextBox x:Name="textBox_Info" HorizontalAlignment="Left" Height="73" Margin="328,107,0,0" 
                                  TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="173"/>
                     </Grid>
                 </Grid>
             </TabItem>
-            
+
             <TabItem Header="Наличие">
                 <Grid Background="#FFE5E5E5">
                     <Label x:Name="label3" Content="В Наличии:" HorizontalAlignment="Left" 
@@ -98,7 +98,7 @@
                              LostFocus="textBox_tireWidth_LostFocus" GotFocus="textBox_GotFocus"/>
                     <TextBox x:Name="textBox2" HorizontalAlignment="Left" Height="23" Margin="146,133,0,0"  
                              TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="120" 
-                             PreviewTextInput="textBox1_PreviewTextInput" LostFocus="textBox_tireWidth_LostFocus" 
+                              LostFocus="textBox_tireWidth_LostFocus" PreviewTextInput="textBox1_PreviewTextInput"
                              GotFocus="textBox_GotFocus"/>
                     <ComboBox x:Name="comboBox" Margin="387,29,0,0" 
                               Width="118" RenderTransformOrigin="0.5,0" VerticalAlignment="Top" HorizontalAlignment="Left" 
@@ -115,7 +115,7 @@
                 </Grid>
             </TabItem>
         </TabControl>
-        
+
         <Button x:Name="button_Save" IsEnabled="False" Content="Сохранить" HorizontalAlignment="Left" Margin="393,13,0,0" 
                 VerticalAlignment="Top" Width="106" Click="button_Save_Click" FontWeight="Bold" Foreground="Black"/>
         <TextBox x:Name="textBox_Id" HorizontalAlignment="Left" Height="23" Margin="251,13,0,0" TextWrapping="Wrap" 

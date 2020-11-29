@@ -7,14 +7,22 @@
         mc:Ignorable="d"
         Title="Авторизация" Height="350" Width="525">
 
-    <Grid x:Name="Main" Margin="2,10,-2,0" Background="#FF4156C7">
+    <Grid x:Name="Main" Margin="2,10,-2,0">
+        <Grid.Background>
+            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                <GradientStop Color="Black" Offset="0"/>
+                <GradientStop Color="#FF3350B0" Offset="1"/>
+            </LinearGradientBrush>
+        </Grid.Background>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        <Button x:Name="button" Content="Войти" HorizontalAlignment="Left" Margin="377,23,0,0" 
-                VerticalAlignment="Top" Width="126" Height="40" FontSize="21.333" Click="buttonEnter_Click" FontWeight="Bold"/>
-        <Button x:Name="button_Copy" Content="Создать" HorizontalAlignment="Left" Margin="377,68,0,0" 
-                VerticalAlignment="Top" Width="126" Height="40" FontSize="21.333" Click="button_Copy_Click" FontWeight="Bold"/>
+        <Button x:Name="button" Content="Войти" HorizontalAlignment="Left" Margin="361,15,0,0" 
+                VerticalAlignment="Top" Width="126" Height="40" FontSize="21.333" 
+                Click="buttonEnter_Click" FontWeight="Bold"/>
+        <Button x:Name="button_Copy" Content="Создать" HorizontalAlignment="Left" Margin="361,67,0,0" 
+                VerticalAlignment="Top" Width="126" Height="40" FontSize="21.333" 
+                Click="button_Copy_Click" FontWeight="Bold"/>
 
         <DataGrid x:Name="dataGridWorker"
                   HorizontalAlignment="Left"

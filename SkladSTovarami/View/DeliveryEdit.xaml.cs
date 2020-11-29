@@ -208,6 +208,7 @@ namespace SkladSTovarami.View
                     delnew.TypePayment = comboBox_TypePayment.SelectedItem as string;
                     delnew.Sum = 0;
                     delnew.Date = DateTime.Now;
+                    delnew.Invoice = textBox_Invoice.Text;//новое 
 
                     foreach (DeliveryViewModel delvm in lst)
                     {
@@ -227,6 +228,7 @@ namespace SkladSTovarami.View
                     delnew.TypePayment = comboBox_TypePayment.SelectedItem as string;
                     delnew.Sum = 0;
                     delnew.Date = DateTime.Now;
+                    delnew.Invoice = textBox_Invoice.Text;//новое
                     delnew.DeliveryInfos.Clear();
 
                     foreach (DeliveryViewModel delvm in lst)

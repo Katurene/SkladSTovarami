@@ -13,11 +13,17 @@
             <ColumnDefinition Width="119*"/>
         </Grid.ColumnDefinitions>
         <TextBox x:Name="textBox_surname" HorizontalAlignment="Left" Height="23" Margin="38,22,0,0" 
-                 TextWrapping="Wrap"  VerticalAlignment="Top" Width="150" PreviewTextInput="textBox_PreviewTextInput" Grid.Column="1"/>
+                 TextWrapping="Wrap"  VerticalAlignment="Top" Width="150" 
+                 PreviewTextInput="textBox_PreviewTextInput" Grid.Column="1"
+                 ToolTip="Только русские и англ символы"/>
         <TextBox x:Name="textBox_name" HorizontalAlignment="Left" Height="23" Margin="38,56,0,0" 
-                 TextWrapping="Wrap"  VerticalAlignment="Top" Width="150" PreviewTextInput="textBox_PreviewTextInput" Grid.Column="1"/>
+                 TextWrapping="Wrap"  VerticalAlignment="Top" Width="150" 
+                 PreviewTextInput="textBox_PreviewTextInput" Grid.Column="1"
+                 ToolTip="Только русские и англ символы"/>
         <TextBox x:Name="textBox_login" HorizontalAlignment="Left" Height="23" Margin="38,91,0,0" 
-                 TextWrapping="Wrap"  VerticalAlignment="Top" Width="150" PreviewTextInput="textBox_login_PreviewTextInput" Grid.Column="1"/>
+                 TextWrapping="Wrap"  VerticalAlignment="Top" Width="150" 
+                 PreviewTextInput="textBox_login_PreviewTextInput" Grid.Column="1"
+                 ToolTip="Только англ символы"/>
         <Label x:Name="label1" Content="Фамилия :" HorizontalAlignment="Left" Margin="90,16,0,0" 
                VerticalAlignment="Top" FontWeight="Bold" Height="29" Width="82" RenderTransformOrigin="0.654,0.604"/>
         <Label x:Name="label2" Content="Имя :" HorizontalAlignment="Left" Margin="122,50,0,0" 

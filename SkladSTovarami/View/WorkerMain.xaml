@@ -6,18 +6,15 @@
         xmlns:local="clr-namespace:SkladSTovarami.View"
         mc:Ignorable="d"
         Title="УПРАВЛЕНИЕ РЕАЛИЗАЦИЕЙ ТОВАРОВ" Height="636.989" Width="1201.816" Closing="Window_Closing">
+
     <Grid>
-        <Grid x:Name="Main" HorizontalAlignment="Left" Height="606" VerticalAlignment="Top" Width="1194">
-            <Grid.Background>
-                <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
-                    <GradientStop Color="Black" Offset="1"/>
-                    <GradientStop Color="#FF12265D"/>
-                    <GradientStop Color="#FF181988"/>
-                    <GradientStop Color="#FF181988" Offset="0.931"/>
-                </LinearGradientBrush>
-            </Grid.Background>
-            <DataGrid x:Name="dataGridCheck" HorizontalAlignment="Left" Margin="10,10,0,0" 
-                      VerticalAlignment="Top" Height="420" Width="780" ItemsSource="{Binding}"
+        <Grid x:Name="Main" HorizontalAlignment="Left" Height="606" VerticalAlignment="Top" Width="1194" Background="#FF474ED4">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="104*"/>
+                <ColumnDefinition Width="95*"/>
+            </Grid.ColumnDefinitions>
+            <DataGrid x:Name="dataGridCheck" HorizontalAlignment="Left" Margin="10,262,0,0" 
+                      VerticalAlignment="Top" Height="190" Width="780" ItemsSource="{Binding}"
         		HeadersVisibility="Column"                 
         		CanUserResizeRows="False"
         		SelectionMode="Single"
@@ -25,7 +22,7 @@
         		SelectionChanged="dataGridCheck_SelectionChanged"
                 AutoGenerateColumns="False"
 				CanUserReorderColumns="False"
-                IsReadOnly="True">
+                IsReadOnly="True" Grid.ColumnSpan="2">
                 <DataGrid.Columns>
                     <DataGridTextColumn Width="30" Binding="{Binding Id}" Header="№"/>
                     <DataGridTextColumn Width="75" Binding="{Binding GoodId}" Header="№ товара"/>
@@ -36,7 +33,7 @@
                 </DataGrid.Columns>
             </DataGrid>
 
-            <Grid HorizontalAlignment="Left" Height="60" Margin="10,536,0,0" VerticalAlignment="Top" Width="1174">
+            <Grid HorizontalAlignment="Left" Height="60" Margin="10,536,0,0" VerticalAlignment="Top" Width="1174" Grid.ColumnSpan="2">
                 <Border BorderBrush="Black" BorderThickness="3" HorizontalAlignment="Left" Height="40" 
                         Margin="906,8,0,0" VerticalAlignment="Top" Width="159" 
                         MouseDown="Border_MouseDown_1" MouseEnter="Border_MouseEnter" MouseLeave="Border_MouseLeave" >
@@ -58,8 +55,8 @@
                            Foreground="#FF7BBA85"/>
                 </Border>
             </Grid>
-            <DataGrid x:Name="dataGridGoods" HorizontalAlignment="Left" Margin="798,55,0,0" VerticalAlignment="Top" 
-                      Height="200" Width="386" ItemsSource="{Binding}"
+            <DataGrid x:Name="dataGridGoods" HorizontalAlignment="Left" Margin="10,45,0,0" VerticalAlignment="Top" 
+                      Height="200" Width="486" ItemsSource="{Binding}"
         		HeadersVisibility="Column"                 
         		CanUserResizeRows="False"
         		SelectionMode="Single"
@@ -71,39 +68,40 @@
                 <DataGrid.Columns>
                     <DataGridTextColumn Width="30" Binding="{Binding Id}" Header="№"/>
                     <DataGridTextColumn Width="120" Binding="{Binding Name}" Header="Название"/>
-                    <DataGridTextColumn Width="60" Binding="{Binding Type}" Header="Тип"/>
-                    <DataGridTextColumn Width="55" Binding="{Binding PricePurchase}" Header="Закупка"/>
-                    <DataGridTextColumn Width="60" Binding="{Binding SellPrice}" Header="Продажа"/>
-                    <DataGridTextColumn Width="60" Binding="{Binding Balance}" Header="Наличие"/>
+                    <DataGridTextColumn Width="120" Binding="{Binding Type}" Header="Поставщик"/>
+                    <DataGridTextColumn Width="70" Binding="{Binding PricePurchase}" Header="Закупка"/>
+                    <DataGridTextColumn Width="70" Binding="{Binding SellPrice}" Header="Продажа"/>
+                    <DataGridTextColumn Width="70" Binding="{Binding Balance}" Header="Наличие"/>
                 </DataGrid.Columns>
             </DataGrid>
 
-            <Grid HorizontalAlignment="Left" Height="45" Margin="798,10,0,0" VerticalAlignment="Top" Width="386">
-                <TextBox x:Name="textBox" HorizontalAlignment="Left" Height="23" Margin="10,13,0,0" 
-                         TextWrapping="Wrap" Text="Поиск" VerticalAlignment="Top" Width="131" 
+            <Grid HorizontalAlignment="Left" Height="45" Margin="174,10,0,0" VerticalAlignment="Top" Width="386" Grid.Column="1">
+                <TextBox x:Name="textBox" HorizontalAlignment="Left" Height="23" Margin="-787,9,0,0" 
+                         TextWrapping="Wrap" Text="Поиск" VerticalAlignment="Top" Width="142" 
                          GotFocus="textBox_GotFocus" TextChanged="textBox_TextChanged"/>
                 <Button x:Name="button" Content="Редактор покупателя" HorizontalAlignment="Left" 
-                        Margin="245,13,0,0" VerticalAlignment="Top" Width="131" Height="23" Click="buttonEditCust_Click"/>
+                        Margin="213,44,0,-34" VerticalAlignment="Top" Width="148" Height="35" 
+                        Click="buttonEditCust_Click" FontSize="14" FontWeight="Bold"/>
             </Grid>
-            <DataGrid x:Name="dataGridCustomer" HorizontalAlignment="Left" Margin="798,265,0,0" 
-                      VerticalAlignment="Top" Height="165" Width="386" ItemsSource="{Binding}"
+            <DataGrid x:Name="dataGridCustomer" HorizontalAlignment="Left" Margin="538,45,0,0" 
+                      VerticalAlignment="Top" Height="200" Width="465" ItemsSource="{Binding}"
         		HeadersVisibility="Column"                 
         		CanUserResizeRows="False"
         		SelectionMode="Single"
         		CanUserAddRows="False"        	
                 AutoGenerateColumns="False"
 				CanUserReorderColumns="False"
-                IsReadOnly="True">
+                IsReadOnly="True" Grid.ColumnSpan="2">
                 <DataGrid.Columns>
-                    <DataGridTextColumn Width="30" Binding="{Binding Id}" Header="№"/>
+                    <DataGridTextColumn Width="30" Binding="{Binding CustomerId}" Header="№"/>
                     <DataGridTextColumn Width="130" Binding="{Binding FullName}" Header="ФИО"/>
-                    <DataGridTextColumn Width="75" Binding="{Binding PassportNumber}" Header="№ Паспорта"/>
-                    <DataGridTextColumn Width="75" Binding="{Binding Contract}" Header="№ Договора"/>
-                    <DataGridTextColumn Width="30" Binding="{Binding ValidFrom}" Header="С"/>
-                    <DataGridTextColumn Width="30" Binding="{Binding ValidTo}" Header="До"/>
+                    <DataGridTextColumn Width="80" Binding="{Binding PassportNumber}" Header="№ Паспорта"/>
+                    <DataGridTextColumn Width="80" Binding="{Binding Contract}" Header="№ Договора"/>
+                    <DataGridTextColumn Width="60" Binding="{Binding ValidFrom}" Header="С"/>
+                    <DataGridTextColumn Width="60" Binding="{Binding ValidTo}" Header="До"/>
                 </DataGrid.Columns>
             </DataGrid>
-            <Grid HorizontalAlignment="Left" Height="96" Margin="10,435,0,0" VerticalAlignment="Top" Width="780">
+            <Grid HorizontalAlignment="Left" Height="96" Margin="10,435,0,0" VerticalAlignment="Top" Width="780" Grid.ColumnSpan="2">
                 <Label x:Name="label_Selected" Content="Пустой чек" HorizontalContentAlignment="Right"  
                        HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="40"
                        Width="760" FontSize="24" FontWeight="Bold" Foreground="#FFE5DF16"/>
@@ -111,17 +109,18 @@
                        HorizontalAlignment="Left" Margin="10,50,0,0" VerticalAlignment="Top" Height="40" Width="760" 
                        FontSize="24" FontWeight="Bold" Foreground="#FFE5DF16"/>
             </Grid>
-            <Grid HorizontalAlignment="Left" Height="96" Margin="798,435,0,0" VerticalAlignment="Top" Width="386">
+            <Grid HorizontalAlignment="Left" Height="96" Margin="174,435,0,0" VerticalAlignment="Top" Width="386" Grid.Column="1">
                 <Label x:Name="label3" Content="Сумма к оплате :" HorizontalAlignment="Left" Margin="10,10,0,0" 
                        VerticalAlignment="Top" RenderTransformOrigin="0.921,0.538" Height="54" Width="194" 
                        FontSize="24" FontWeight="Bold" Foreground="#FFE5DF16"/>
                 <Label x:Name="label4" Content="0" HorizontalAlignment="Left" Margin="246,10,0,0" 
                        VerticalAlignment="Top" FontSize="24" Height="54" Width="90"/>
             </Grid>
-            <Button x:Name="button1" Content="Поиск" HorizontalAlignment="Left" Margin="958,22,0,0" 
-                    VerticalAlignment="Top" Width="74" Click="buttonFindProd_Click" FontWeight="Bold"/>
+            <Label Content="Введите название для поиска" HorizontalAlignment="Left" Margin="166,15,0,0" VerticalAlignment="Top" Width="191" FontWeight="Bold"/>
+            <!--<Button x:Name="button1" Content="Поиск" HorizontalAlignment="Left" Margin="166,18,0,0" 
+                    VerticalAlignment="Top" Width="74" Click="buttonFindProd_Click" FontWeight="Bold" FontSize="14"/>-->
         </Grid>
-        
+
         <Grid x:Name="AddGoodsGrid" HorizontalAlignment="Left" Height="242" VerticalAlignment="Top" 
               Width="500" Margin="356,170,0,0" Background="#FF4156C7" d:IsHidden="True">
             <TextBox x:Name="textBox_Count" HorizontalAlignment="Left" Height="50" Margin="250,91,0,0" 

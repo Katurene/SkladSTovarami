@@ -1,5 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,6 +14,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Microsoft.Office.Interop.Excel;
 using SkladSTovarami.Entities;
 using SkladSTovarami.ViewModel;
 
@@ -19,7 +23,7 @@ namespace SkladSTovarami.View
     /// <summary>
     /// Логика взаимодействия для AdminWindow.xaml
     /// </summary>
-    public partial class AdminWindow : Window
+    public partial class AdminWindow : System.Windows.Window
     {
         public int EmployeeId;
 
@@ -152,6 +156,8 @@ namespace SkladSTovarami.View
                 }
                 f.Closing += addNoteWindow_Closing;
                 f.ShowDialog();
+
+                MessageBox.Show("Товар успешно изменен.");
             }
             else
             {
@@ -292,21 +298,25 @@ namespace SkladSTovarami.View
 
         private void button_DeleteDelivery_Click(object sender, RoutedEventArgs e)
         {
-            if (dataGrid_Delivery.SelectedItem != null)
+            var result = MessageBox.Show("Вы уверены?", "Удалить запись", MessageBoxButton.YesNo);
+            if (result == MessageBoxResult.Yes)
             {
-                MyContext db = new MyContext();
-                DeliveryNote delnote = dataGrid_Delivery.SelectedItem as DeliveryNote;
-                DeliveryNote del = db.DeliveryNotes.FirstOrDefault(x => x.Id == delnote.Id);
-
-                foreach (DeliveryInfo s in del.DeliveryInfos)
+                if (dataGrid_Delivery.SelectedItem != null)
                 {
-                    db.Product.FirstOrDefault(x => x.Id == s.ProductsId).Balance -= s.Count;
+                    MyContext db = new MyContext();
+                    DeliveryNote delnote = dataGrid_Delivery.SelectedItem as DeliveryNote;
+                    DeliveryNote del = db.DeliveryNotes.FirstOrDefault(x => x.Id == delnote.Id);
+
+                    foreach (DeliveryInfo s in del.DeliveryInfos)
+                    {
+                        db.Product.FirstOrDefault(x => x.Id == s.ProductsId).Balance -= s.Count;
+                    }
+                    db.DeliveryNotes.Remove(del);
+                    db.SaveChanges();
+                    MyContext db1 = new MyContext();
+                    dataGrid_Delivery.ItemsSource = db1.DeliveryNotes.ToList();
+                    dataGridGoods.ItemsSource = GoodsViewMode(db1.Product.ToList());
                 }
-                db.DeliveryNotes.Remove(del);
-                db.SaveChanges();
-                MyContext db1 = new MyContext();
-                dataGrid_Delivery.ItemsSource = db1.DeliveryNotes.ToList();
-                dataGridGoods.ItemsSource = GoodsViewMode(db1.Product.ToList());
             }
             else
             {
@@ -329,21 +339,46 @@ namespace SkladSTovarami.View
             dataGridOrder.ItemsSource = db.Orders.ToList();
         }
 
+        //private void button_OrderDelete_Click(object sender, RoutedEventArgs e) //старый нерабочий метод 
+        //{                                                              //пусть будет на всякий случай
+        //    if (dataGridOrder.SelectedItem != null)
+        //    {
+        //        MyContext db = new MyContext();
+        //        Order delnote = dataGridOrder.SelectedItem as Order;
+        //        Order del = db.Orders.FirstOrDefault(x => x.Id == delnote.Id);
+        //        db.Orders.Remove(del);
+        //        db.SaveChanges();
+        //        MyContext db1 = new MyContext();
+        //        dataGridOrder.ItemsSource = db1.Orders.ToList();
+        //    }
+        //    else
+        //    {
+        //        MessageBox.Show("Выберите что-нибудь?", "Ошибка");
+        //    }
+        //}
+
         private void button_OrderDelete_Click(object sender, RoutedEventArgs e)
         {
-            if (dataGridOrder.SelectedItem != null)
+            try 
             {
-                MyContext db = new MyContext();
-                Order delnote = dataGridOrder.SelectedItem as Order;
-                Order del = db.Orders.FirstOrDefault(x => x.Id == delnote.Id);
-                db.Orders.Remove(del);
-                db.SaveChanges();
-                MyContext db1 = new MyContext();
-                dataGridOrder.ItemsSource = db1.Orders.ToList();
+                if (dataGridOrder.SelectedItem != null)
+                {
+                    MyContext db = new MyContext();
+                    Order delnote = dataGridOrder.SelectedItem as Order;
+                    Order del = db.Orders.FirstOrDefault(x => x.Id == delnote.Id);
+                    db.Orders.Remove(del);
+                    db.SaveChanges();
+                    MyContext db1 = new MyContext();
+                    dataGridOrder.ItemsSource = db1.Orders.ToList();
+                }
+                else
+                {
+                    MessageBox.Show("Вы ничего не выбрали!", "Ошибка");
+                }
             }
-            else
+            catch
             {
-                MessageBox.Show("Выберите что-нибудь?", "Ошибка");
+                MessageBox.Show("Заявка содержит товары! Удалите товары из заявки!", "Ошибка");
             }
         }
 
@@ -372,7 +407,7 @@ namespace SkladSTovarami.View
             dataGridGoods.SelectedIndex = i;
         }
 
-        private void buttonOtgrZaMesac_Click(object sender, RoutedEventArgs e)
+        private void buttonOtgrZaMesac_Click(object sender, RoutedEventArgs e) //продажи за месяц
         {
             MyContext db = new MyContext();
             List<CheckViewModel> lst = new List<CheckViewModel>();
@@ -389,7 +424,7 @@ namespace SkladSTovarami.View
                 t.Name = name;
                 t.Price = s.Products.SellPrice;
                 t.Count = s.Count;
-                t.GoodId = s.Products.Id;
+                t.GoodId = s.Products.Id;//ИД товара - не нужен Вместо него Покупателя надо бы
                 lst.Add(t);
             }
             dataGrid_useful.ItemsSource = lst;
@@ -412,5 +447,100 @@ namespace SkladSTovarami.View
             mainWindow.Show();
             this.Close();
         }
+
+        private void btnExport_Click(object sender, RoutedEventArgs e)  //Excel - если слетит то 
+        {                                                               //переактивировать офис. Нужна лицензия
+            Microsoft.Office.Interop.Excel.Application excel = new Microsoft.Office.Interop.Excel.Application();
+            excel.Visible = true;
+            Workbook workbook = excel.Workbooks.Add(System.Reflection.Missing.Value);
+            Worksheet sheet1 = (Worksheet)workbook.Sheets[1];
+            sheet1.Columns.AutoFit();
+
+            for (int j = 0; j < dataGridGoods.Columns.Count; j++)
+            {
+                Range myRange = (Range)sheet1.Cells[1, j + 1];
+                sheet1.Cells[1, j + 1].Font.Bold = true;
+                sheet1.Columns[j + 1].ColumnWidth = 15;
+                myRange.Value2 = dataGridGoods.Columns[j].Header;
+            }
+            for (int i = 0; i < dataGridGoods.Columns.Count; i++)
+            {
+                for (int j = 0; j < dataGridGoods.Items.Count; j++)
+                {
+                    TextBlock b = dataGridGoods.Columns[i].GetCellContent(dataGridGoods.Items[j]) as TextBlock;
+                    Microsoft.Office.Interop.Excel.Range myRange = (Microsoft.Office.Interop.Excel.Range)sheet1.Cells[j + 2, i + 1];
+                    myRange.Value2 = b.Text;
+                }
+            }
+        }
+
+        private void ButtonPostupleniyaZaPeriod_Click(object sender, RoutedEventArgs e)
+        {
+           
+        }
+
+        private void ButtonDetails_Click(object sender, RoutedEventArgs e)
+        {
+          
+        }
+    
+    
+          
+
+        //private void btnExport_Click(object sender, RoutedEventArgs e)
+        //{
+        //    MyContext db = new MyContext();
+        //    Microsoft.Office.Interop.Excel.Application excel = null;
+        //    Microsoft.Office.Interop.Excel.Workbook wb = null;
+        //    object missing = Type.Missing;
+        //    Microsoft.Office.Interop.Excel.Worksheet ws = null;
+        //    Microsoft.Office.Interop.Excel.Range rng = null;
+
+        //    // collection of DataGrid Items
+        //    var dtExcelDataTable = ExcelTimeReport(txtFrmDte.Text, txtToDte.Text, strCondition);
+
+        //    excel = new Microsoft.Office.Interop.Excel.Application();
+        //    wb = excel.Workbooks.Add();
+        //    ws = (Microsoft.Office.Interop.Excel.Worksheet)wb.ActiveSheet;
+        //    ws.Columns.AutoFit();
+        //    ws.Columns.EntireColumn.ColumnWidth = 25;
+
+        //    // Header row
+        //    for (int Idx = 0; Idx < dtExcelDataTable.Columns.Count; Idx++)
+        //    {
+        //        ws.Range["A1"].Offset[0, Idx].Value = dtExcelDataTable.Columns[Idx].ColumnName;
+        //    }
+
+        //    // Data Rows
+        //    for (int Idx = 0; Idx < dtExcelDataTable.Rows.Count; Idx++)
+        //    {
+        //        ws.Range["A2"].Offset[Idx].Resize[1, dtExcelDataTable.Columns.Count].Value = dtExcelDataTable.Rows[Idx].ItemArray;
+        //    }
+
+        //    excel.Visible = true;
+        //    wb.Activate();
+        //}
+
+
+        //private void btnExport_Click(object sender, RoutedEventArgs e)
+        //{
+        //    ExportToExcel();
+        //}
+
+        //private void ExportToExcel()  //бесполезное сохранение строки в эксель по ctrl
+        //{
+        //    dataGrid_goods.SelectAllCells();
+        //    dataGrid_goods.ClipboardCopyMode = DataGridClipboardCopyMode.IncludeHeader;
+        //    ApplicationCommands.Copy.Execute(null, dataGrid_goods);
+        //    String resultat = (string)Clipboard.GetData(DataFormats.CommaSeparatedValue);
+        //    String result = (string)Clipboard.GetData(DataFormats.Text);
+        //    dataGrid_goods.UnselectAllCells();
+        //    System.IO.StreamWriter file = new System.IO.StreamWriter(@"E:\111\test.xls");
+        //    file.WriteLine(result.Replace(',', ' '));
+        //    file.Close();
+
+        //    MessageBox.Show("Exporting DataGrid data to Excel file created");
+        //}
+
     }
 }

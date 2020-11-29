@@ -11,8 +11,8 @@ namespace SkladSTovarami.Entities
         public int Id { get; set; }
         public int? DeliveryNoteId { get; set; }
         public virtual DeliveryNote DeliveryNote { get; set; }
-        public int? ProductsId { get; set; }//GoodsId
-        public virtual Product Products { get; set; }//Goods
+        public int? ProductsId { get; set; }
+        public virtual Product Products { get; set; }
         public int Count { get; set; }
         public double Price { get; set; }
         public double Summa { get { return Count * Price; } }

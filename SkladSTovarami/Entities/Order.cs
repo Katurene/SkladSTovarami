@@ -11,8 +11,8 @@ namespace SkladSTovarami.Entities
         public int Id { get; set; }
         public DateTime Date { get; set; }
         public bool Status { get; set; }
-        public int? CustomerId { get; set; }
-        public virtual Customer Customer { get; set; }
+        public int? CustomerId { get; set; }  //Это здесь не надо
+        public virtual Customer Customer { get; set; }  //Убрать
         public int? EmployeesId { get; set; }
         public virtual Employee Employees { get; set; }
 
@@ -21,6 +21,11 @@ namespace SkladSTovarami.Entities
         public Order()
         {
             OrderInfos = new List<OrderInfo>();
-        }       
+        }
+
+        public string textValue //для замены true/false на да/нет
+        {
+            get { return Status == true ? "Выполнена" : "Не выполнена"; }
+        }
     }
 }

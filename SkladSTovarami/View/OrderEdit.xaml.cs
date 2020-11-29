@@ -129,7 +129,7 @@ namespace SkladSTovarami.View
                     delnew.OrderInfos.Clear();
                     delnew.Date = DateTime.Now;
                     if (checkBox.IsChecked == true)
-                        delnew.Status = true;
+                        delnew.Status = true;                   
                     else
                         delnew.Status = false;
                     delnew.OrderInfos.Clear();
@@ -272,7 +272,7 @@ namespace SkladSTovarami.View
                 tb1.Text = tb1.Text.TrimStart(new char[] { '0' });
         }
 
-        private void textBox_TextChanged(object sender, TextChangedEventArgs e)
+        private void textBox_TextChanged(object sender, TextChangedEventArgs e) //фильтр поиска
         {
             MyContext db = new MyContext();
             var s = db.Product.Include("MainProduct");
@@ -280,14 +280,14 @@ namespace SkladSTovarami.View
             dataGrid.ItemsSource = list.Where(x => x.Name.ToUpper().Contains(textBox.Text.ToUpper()));
         }
 
-        private void buttonFind_Click(object sender, RoutedEventArgs e)
-        {
-            FindWindow f = new FindWindow();
-            f.ShowDialog();
-            List<ProductsViewModel> s = dataGridGoods.ItemsSource as List<ProductsViewModel>;
-            int i = s.IndexOf(s.FirstOrDefault(x => x.Id == f.Id));
-            dataGrid.SelectedIndex = i;
-        }
+        //private void buttonFind_Click(object sender, RoutedEventArgs e)
+        //{
+        //    FindWindow f = new FindWindow();
+        //    f.ShowDialog();
+        //    List<ProductsViewModel> s = dataGridGoods.ItemsSource as List<ProductsViewModel>;
+        //    int i = s.IndexOf(s.FirstOrDefault(x => x.Id == f.Id));
+        //    dataGrid.SelectedIndex = i;
+        //}
     }
 }
 

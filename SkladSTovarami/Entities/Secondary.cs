@@ -13,8 +13,8 @@ namespace SkladSTovarami.Entities
         [Key]
         [ForeignKey("Product")]
         public int Id { get; set; }
-        public string Type { get; set; } //шлем
-        public string Name { get; set; } //детский
+        public string Type { get; set; } //производитель Китай
+        public string Name { get; set; } //шлем
         public string Characteristics { get; set; }//велосипедный
         public virtual Product Product { get; set; }
 

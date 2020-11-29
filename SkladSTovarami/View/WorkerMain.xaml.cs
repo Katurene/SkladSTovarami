@@ -189,7 +189,7 @@ namespace SkladSTovarami.View
                     ch.Sum = Sum;
                     ch.Employees = db1.Emloyees.Find(EmployeeId);
                     Customer v = dataGridCustomer.SelectedItem as Customer;
-                    ch.Customer = db1.Customers.FirstOrDefault(x => x.Id == v.Id);
+                    ch.Customer = db1.Customers.FirstOrDefault(x => x.CustomerId == v.CustomerId);
                     CheckInfo NewChIn = new CheckInfo();
 
                     foreach (CheckViewModel nwch in checks)
@@ -273,13 +273,13 @@ namespace SkladSTovarami.View
             dataGridCheck.ItemsSource = checks;
         }
 
-        private void buttonFindProd_Click(object sender, RoutedEventArgs e)
-        {
-            FindWindow f = new FindWindow();
-            f.ShowDialog();
-            List<ProductsViewModel> s = dataGridGoods.ItemsSource as List<ProductsViewModel>;
-            int i = s.IndexOf(s.FirstOrDefault(x => x.Id == f.Id));
-            dataGridGoods.SelectedIndex = i;
-        }
+        //private void buttonFindProd_Click(object sender, RoutedEventArgs e)
+        //{
+        //    FindWindow f = new FindWindow();
+        //    f.ShowDialog();
+        //    List<ProductsViewModel> s = dataGridGoods.ItemsSource as List<ProductsViewModel>;
+        //    int i = s.IndexOf(s.FirstOrDefault(x => x.Id == f.Id));
+        //    dataGridGoods.SelectedIndex = i;
+        //}
     }
 }

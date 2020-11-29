@@ -11,7 +11,8 @@
         <ComboBox x:Name="comboBox" HorizontalAlignment="Left" Margin="10,10,0,0" 
                   VerticalAlignment="Top" Width="167" SelectionChanged="comboBox_SelectionChanged"/>
         <DataGrid x:Name="dataGrid_MainProd" HorizontalAlignment="Left" Margin="10,104,0,0" 
-                  VerticalAlignment="Top" Height="309" Width="709" ItemsSource="{Binding}"
+                  VerticalAlignment="Top" Height="309" Width="766" d:IsHidden="False"
+                  ItemsSource="{Binding}"
                   HeadersVisibility="Column"
 				  CanUserResizeRows="False"
 				  SelectionMode="Single"
@@ -22,18 +23,27 @@
             <DataGrid.Columns>
                 <DataGridTextColumn Width="40" Binding="{Binding Id}" Header="№"/>
                 <DataGridTextColumn Width="140" Binding="{Binding CodeName}" Header="Название"/>
-                <DataGridTextColumn Width="100" Binding="{Binding Type}" Header="Тип"/>
+                <DataGridTextColumn Width="100" Binding="{Binding Type}" Header="Производитель"/>
                 <DataGridTextColumn Width="100" Binding="{Binding Brand}" Header="Марка"/>
                 <DataGridTextColumn Width="70" Binding="{Binding TireWidth}" Header="Ширина"/>
                 <DataGridTextColumn Width="70" Binding="{Binding Diameter}" Header="Диаметр"/>
                 <DataGridTextColumn Width="70" Binding="{Binding SpeedNum}" Header="Скоростей"/>
-                <DataGridTextColumn Width="50" Binding="{Binding Used}" Header="Б/У"/>
-                <DataGridTextColumn Width="80" Binding="{Binding Info}" Header="Инфо"/>
+                <DataGridTextColumn Width="50" Binding="{Binding textValue}" Header="Б/У"/>
+                <!--<DataGridTextColumn Width="100" Binding="{Binding Info}" Header="Инфо"/>-->
+
+                <DataGridTextColumn Header="Описание" Binding="{Binding Path=Info}" Width="110">
+                    <DataGridTextColumn.ElementStyle>
+                        <Style TargetType="TextBlock">
+                            <Setter Property="TextWrapping" Value="Wrap"></Setter>
+                        </Style>
+                    </DataGridTextColumn.ElementStyle>
+                </DataGridTextColumn>
+
             </DataGrid.Columns>
         </DataGrid>
-
+        
         <DataGrid x:Name="dataGrid_Secondaries" HorizontalAlignment="Left" Margin="10,104,0,0" 
-                  VerticalAlignment="Top" Height="309" Width="609" ItemsSource="{Binding}"
+                  VerticalAlignment="Top" Height="309" Width="750" ItemsSource="{Binding}"
                   HeadersVisibility="Column"
 				  CanUserResizeRows="False"
 				  SelectionMode="Single"
@@ -42,21 +52,30 @@
 				  CanUserReorderColumns="False"
                   IsReadOnly="True" SelectionChanged="dataGrid_Secondaries_SelectionChanged" d:IsHidden="True">
             <DataGrid.Columns>
-                <DataGridTextColumn Width="25" Binding="{Binding Id}" Header="№"/>
-                <DataGridTextColumn Width="90" Binding="{Binding Type}" Header="Тип"/>
-                <DataGridTextColumn Width="150" Binding="{Binding Name}" Header="Название"/>
-                <DataGridTextColumn Width="340" Binding="{Binding Characteristics}" Header="Характеристика"/>
+                <DataGridTextColumn Width="40" Binding="{Binding Id}" Header="№"/>                
+                <DataGridTextColumn Width="170" Binding="{Binding Name}" Header="Название"/>
+                <DataGridTextColumn Width="150" Binding="{Binding Type}" Header="Производитель"/>
+                <!--<DataGridTextColumn Width="340" Binding="{Binding Characteristics}" Header="Характеристика"/>-->
+
+                <DataGridTextColumn Header="Описание" Binding="{Binding Path=Characteristics}" Width="340">
+                    <DataGridTextColumn.ElementStyle>
+                        <Style TargetType="TextBlock">
+                            <Setter Property="TextWrapping" Value="Wrap"></Setter>
+                        </Style>
+                    </DataGridTextColumn.ElementStyle>
+                </DataGridTextColumn>
+                
             </DataGrid.Columns>
         </DataGrid>
 
         <Label x:Name="label_balance" Content="Ничего не выбрано" HorizontalAlignment="Left" 
-               Margin="724,104,0,0" VerticalAlignment="Top" Height="36" Width="168" RenderTransformOrigin="0.753,0.45"/>
+               Margin="781,109,0,0" VerticalAlignment="Top" Height="31" Width="122" RenderTransformOrigin="0.753,0.45"/>
         <Label x:Name="label_Purchase" Content="Ничего не выбрано" HorizontalAlignment="Left" 
-               Margin="724,145,0,0" VerticalAlignment="Top" Width="167"/>
+               Margin="781,145,0,0" VerticalAlignment="Top" Width="119"/>
         <Label x:Name="label_Sell" Content="Ничего не выбрано" HorizontalAlignment="Left" 
-               Margin="724,188,0,0" VerticalAlignment="Top" Width="168"/>
-        <Label x:Name="label_" Content="Ничего не выбрано" HorizontalAlignment="Left" 
-               Margin="724,231,0,0" VerticalAlignment="Top" Width="161"/>
+               Margin="781,176,0,0" VerticalAlignment="Top" Width="121"/>
+        <!--<Label x:Name="label_" Content="Ничего не выбрано" HorizontalAlignment="Left" 
+               Margin="724,231,0,0" VerticalAlignment="Top" Width="161"/>-->
         <Grid x:Name="MainProd" HorizontalAlignment="Left" Height="89" Margin="182,15,0,0" 
               VerticalAlignment="Top" Width="741">
             <Grid.ColumnDefinitions>
@@ -85,7 +104,8 @@
 
             <TextBox x:Name="textBox_diam_from" HorizontalAlignment="Left" Height="23" Margin="594,10,0,0" 
                      TextWrapping="Wrap"  VerticalAlignment="Top" Width="45" TextChanged="textBox_Brand_TextChanged" 
-                     IsEnabled="False" PreviewTextInput="textBox_amm_from_PreviewTextInput" LostFocus="textBox_speed_to_LostFocus"/>
+                     IsEnabled="False" PreviewTextInput="textBox_amm_from_PreviewTextInput" 
+                     LostFocus="textBox_speed_to_LostFocus"/>
             <TextBox x:Name="textBox_diam_to" HorizontalAlignment="Left" Height="23" Margin="667,10,0,0" 
                      TextWrapping="Wrap"  VerticalAlignment="Top" Width="45" TextChanged="textBox_Brand_TextChanged"
                      IsEnabled="False" PreviewTextInput="textBox_amm_from_PreviewTextInput" 
@@ -106,7 +126,8 @@
             <Label x:Name="label10" Content="Диаметр От :" HorizontalAlignment="Left" Margin="492,10,0,0" 
                    VerticalAlignment="Top" FontWeight="Bold"/>
            
-            <Label x:Name="label12" Content="До" HorizontalAlignment="Left" Margin="640,10,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+            <Label x:Name="label12" Content="До" HorizontalAlignment="Left" Margin="640,10,0,0" 
+                   VerticalAlignment="Top" FontWeight="Bold"/>
            
             <CheckBox x:Name="checkBox1_name"  HorizontalAlignment="Left" Margin="221,16,0,0" 
                       VerticalAlignment="Top" Width="17" Click="checkBox1_name_Checked"/>
@@ -120,7 +141,7 @@
                       VerticalAlignment="Top" Width="16" Click="checkBox5_diameter_Checked"/>            
         </Grid>
 
-        <Label x:Name="label4" Content="Тип товара:" HorizontalAlignment="Left" Margin="10,39,0,0" 
+        <Label x:Name="label4" Content="Производ.:" HorizontalAlignment="Left" Margin="10,39,0,0" 
                VerticalAlignment="Top" FontWeight="Bold"/>
         <TextBox x:Name="textBox_type" HorizontalAlignment="Left" Height="23" Margin="84,41,0,0"
                  TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="93"/>

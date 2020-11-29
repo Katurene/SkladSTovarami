@@ -8,8 +8,8 @@
         Title="ВНЕСЕНИЕ НАКЛАДНОЙ" Height="407.592" Width="728.2" Background="White" Loaded="Lol_Loaded">
 
     <Grid Background="#FF4156C7" Margin="0,0,-0.4,-19.8">
-        <Grid x:Name="MainGrid" HorizontalAlignment="Left" Height="360" VerticalAlignment="Top" 
-              Width="684" d:IsHidden="True">
+        <Grid x:Name="MainGrid" HorizontalAlignment="Left" Height="374" VerticalAlignment="Top" 
+              Width="689" d:IsHidden="True">
             <DataGrid x:Name="dataGridGoods" HorizontalAlignment="Left" Margin="10,10,0,0" 
                       VerticalAlignment="Top" Height="281" Width="524"
                        ItemsSource="{Binding}"
@@ -38,10 +38,10 @@
                     VerticalAlignment="Top" Width="121" Height="40" Click="buttonDelete_Click" FontWeight="Bold" FontSize="14"/>
             <Button x:Name="button7" Content="Сохранить" HorizontalAlignment="Left" Margin="539,207,0,0" 
                     VerticalAlignment="Top" Width="121" Height="40" Click="buttonSaving_Click" FontWeight="Bold" FontSize="14"/>
-            
-            <Label x:Name="label4" Content="Принял" HorizontalAlignment="Left" Margin="36,335,0,0" 
-                   VerticalAlignment="Top" Width="432" Height="41" FontSize="18" Background="Transparent" 
-                   Foreground="#FFB0A620"/>
+
+            <Label x:Name="label4" Content="Принял" HorizontalAlignment="Left" Margin="258,335,0,-8" 
+                   VerticalAlignment="Top" Width="276" Height="33" FontSize="18" Background="#FFF6E2E2" 
+                   Foreground="#FF121104"/>
         </Grid>
 
         <Grid x:Name="GoodsGrid" HorizontalAlignment="Left" Height="269" VerticalAlignment="Top"
@@ -59,14 +59,14 @@
                 <DataGrid.Columns>
                     <DataGridTextColumn Width="50" Binding="{Binding Id}" Header="№"/>
                     <DataGridTextColumn Width="100" Binding="{Binding Name}" Header="Название"/>
-                    <DataGridTextColumn Width="80" Binding="{Binding Type}" Header="Тип"/>
+                    <DataGridTextColumn Width="80" Binding="{Binding Type}" Header="Производитель"/>
                     <DataGridTextColumn Width="80" Binding="{Binding PricePurchase}" Header="Закупка"/>
                     <DataGridTextColumn Width="80" Binding="{Binding SellPrice}" Header="Продажа"/>
                     <DataGridTextColumn Width="80" Binding="{Binding Balance}" Header="Наличие"/>
                 </DataGrid.Columns>
             </DataGrid>
             <TextBox x:Name="textBox" HorizontalAlignment="Left" Height="23" Margin="10,5,0,0"
-                     TextWrapping="Wrap" Text="Поиск" VerticalAlignment="Top" Width="139" 
+                     TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="139" 
                      GotFocus="textBox_GotFocus" TextChanged="textBox_TextChanged"/>
             <Button x:Name="button3" Content="Далее" HorizontalAlignment="Left" Margin="496,33,0,0" 
                     VerticalAlignment="Top" Width="125" Height="43" FontFamily="Consolas" FontSize="20"
@@ -74,8 +74,10 @@
             <Button x:Name="button4" Content="Отмена" HorizontalAlignment="Left" Margin="496,91,0,0" 
                     VerticalAlignment="Top" Width="125" Height="43" FontFamily="Consolas" FontSize="20"
                     Click="buttonCancelling_Click" FontWeight="Bold"/>
-            <Button x:Name="button8" Content="Поиск" HorizontalAlignment="Left" Margin="221,5,0,0" 
-                    VerticalAlignment="Top" Width="103" Height="23" Click="buttonFind_Click" FontWeight="Bold"/>
+            <Label Content="Для поиска введите название" HorizontalAlignment="Left" Margin="154,7,0,0" 
+                   VerticalAlignment="Top" Width="246" FontWeight="Bold"/>
+            <!--<Button x:Name="button8" Content="Поиск" HorizontalAlignment="Left" Margin="221,5,0,0" 
+                    VerticalAlignment="Top" Width="103" Height="23" Click="buttonFind_Click" FontWeight="Bold"/>-->
         </Grid>
 
         <Grid x:Name="CountPriceGrid" HorizontalAlignment="Left" Height="162" Margin="121,61,0,0" 
@@ -111,5 +113,11 @@
         <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Margin="386,310,0,0" TextWrapping="Wrap" 
                    Text="0.00" VerticalAlignment="Top" Height="35" Width="96" FontSize="21.333" 
                    FontFamily="Microsoft Sans Serif" />
+        <Label Content="Товар принял:" HorizontalAlignment="Left" Margin="121,342,0,0" 
+               VerticalAlignment="Top" Width="124" FontSize="16" FontWeight="Bold"/>
+        <TextBox Name="textBox_Invoice" HorizontalAlignment="Left" Height="23" Margin="546,289,0,0" TextWrapping="Wrap" 
+                 Text="" VerticalAlignment="Top" Width="143"/>
+        <Label Content="№ приходного документа" HorizontalAlignment="Left" Margin="390,288,0,0" 
+               VerticalAlignment="Top" Width="156"/>
     </Grid>
 </Window>

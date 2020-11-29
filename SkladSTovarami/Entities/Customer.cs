@@ -8,7 +8,7 @@ namespace SkladSTovarami.Entities
 {
     public class Customer
     {
-        public int Id { get; set; }
+        public int CustomerId { get; set; }
         public string FullName { get; set; }
         public string PassportNumber { get; set; }
         public string Contract { get; set; }  
