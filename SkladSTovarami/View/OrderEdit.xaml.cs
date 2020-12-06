@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Microsoft.Office.Interop.Excel;
 using SkladSTovarami.Entities;
 using SkladSTovarami.ViewModel;
 
@@ -19,7 +20,7 @@ namespace SkladSTovarami.View
     /// <summary>
     /// Логика взаимодействия для OrderEdit.xaml
     /// </summary>
-    public partial class OrderEdit : Window
+    public partial class OrderEdit : System.Windows.Window
     {
 
         public int IdDelivery = -1;
@@ -253,7 +254,7 @@ namespace SkladSTovarami.View
 
         private void textBox_Count_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {
-            TextBox Tb1 = sender as TextBox;
+            System.Windows.Controls.TextBox Tb1 = sender as System.Windows.Controls.TextBox;
             if (Char.IsDigit(e.Text, 0))
             {
                 e.Handled = false;
@@ -263,7 +264,7 @@ namespace SkladSTovarami.View
 
         private void textBox_SellPrice_LostFocus(object sender, RoutedEventArgs e)
         {
-            TextBox tb1 = sender as TextBox;
+            System.Windows.Controls.TextBox tb1 = sender as System.Windows.Controls.TextBox;
             if (tb1.Text.IndexOf(",") == tb1.Text.Length - 1)
             {
                 tb1.Text += "0";
@@ -278,6 +279,32 @@ namespace SkladSTovarami.View
             var s = db.Product.Include("MainProduct");
             List<ProductsViewModel> list = GoodsViewMode(s.Include("Secondary").ToList());
             dataGrid.ItemsSource = list.Where(x => x.Name.ToUpper().Contains(textBox.Text.ToUpper()));
+        }
+
+        private void ButtonExl_Click(object sender, RoutedEventArgs e)
+        {
+            Microsoft.Office.Interop.Excel.Application excel = new Microsoft.Office.Interop.Excel.Application();
+            excel.Visible = true;
+            Workbook workbook = excel.Workbooks.Add(System.Reflection.Missing.Value);
+            Worksheet sheet1 = (Worksheet)workbook.Sheets[1];
+            sheet1.Columns.AutoFit();
+
+            for (int j = 0; j < dataGridGoods.Columns.Count; j++)
+            {
+                Range myRange = (Range)sheet1.Cells[1, j + 1];
+                sheet1.Cells[1, j + 1].Font.Bold = true;
+                sheet1.Columns[j + 1].ColumnWidth = 15;
+                myRange.Value2 = dataGridGoods.Columns[j].Header;
+            }
+            for (int i = 0; i < dataGridGoods.Columns.Count; i++)
+            {
+                for (int j = 0; j < dataGridGoods.Items.Count; j++)
+                {
+                    TextBlock b = dataGridGoods.Columns[i].GetCellContent(dataGridGoods.Items[j]) as TextBlock;
+                    Microsoft.Office.Interop.Excel.Range myRange = (Microsoft.Office.Interop.Excel.Range)sheet1.Cells[j + 2, i + 1];
+                    myRange.Value2 = b.Text;
+                }
+            }
         }
 
         //private void buttonFind_Click(object sender, RoutedEventArgs e)

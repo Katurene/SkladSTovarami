@@ -58,17 +58,28 @@ namespace SkladSTovarami.View
 
         private void buttonDelete_Click(object sender, RoutedEventArgs e)
         {
-            if (dataGrid.SelectedItem != null)
+            try
             {
-                MyContext db = new MyContext();
-                Customer cust = dataGrid.SelectedItem as Customer;
-                Customer custdel = db.Customers.Find(cust.CustomerId);
-                db.Customers.Remove(custdel);
-                db.SaveChanges();
+                if (dataGrid.SelectedItem != null)
+                {
+                    MyContext db = new MyContext();
+                    Customer cust = dataGrid.SelectedItem as Customer;
+                    Customer custdel = db.Customers.Find(cust.CustomerId);
+                    db.Customers.Remove(custdel);
+                    db.SaveChanges();
+
+                    //новое - почти работает
+                    MyContext db1 = new MyContext();
+                    dataGrid.ItemsSource = db1.Customers.ToList();
+                }
+                else
+                {
+                    MessageBox.Show("Вы не выбрали никого", "Ошибка", MessageBoxButton.OK);
+                }
             }
-            else
+            catch
             {
-                MessageBox.Show("Вы не выбрали никого", "Ошибка", MessageBoxButton.OK);
+                MessageBox.Show("Удалить чеки из продаж!", "Ошибка");
             }
         }
 

@@ -4,6 +4,14 @@
              xmlns:local="clr-namespace:SkladSTovarami"
              StartupUri="View/MainWindow.xaml">
     <Application.Resources>
-         
+        <!-- Подключаем словари ресурсов -->
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Themes/Brushes.xaml"/>
+                <ResourceDictionary Source="Themes/Core.xaml"/>
+                <!--<ResourceDictionary Source="Themes/ExpressionDark.xaml"/>-->               
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+
     </Application.Resources>
 </Application>

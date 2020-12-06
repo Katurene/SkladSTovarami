@@ -12,7 +12,7 @@
             <ColumnDefinition Width="89*"/>
             <ColumnDefinition Width="680*"/>
         </Grid.ColumnDefinitions>
-        
+
         <Grid x:Name="MainGrid" HorizontalAlignment="Left" Height="364" 
               VerticalAlignment="Top" Width="780" d:IsHidden="False" 
               Margin="0,21,0,0" Grid.ColumnSpan="2">
@@ -20,7 +20,7 @@
                 <ColumnDefinition Width="151*"/>
                 <ColumnDefinition Width="229*"/>
             </Grid.ColumnDefinitions>
-            
+
             <DataGrid x:Name="dataGridGoods" HorizontalAlignment="Left" Margin="10,10,0,0" 
                       VerticalAlignment="Top" Height="264" Width="634"
     			ItemsSource="{Binding}"
@@ -31,7 +31,7 @@
     			AutoGenerateColumns="False"
     			CanUserReorderColumns="False"
     			IsReadOnly="True" FontSize="14" FontWeight="Bold" Grid.ColumnSpan="2">
-                
+
                 <DataGrid.Columns>
                     <DataGridTextColumn Width="40" Binding="{Binding Id}" Header="№"/>
                     <DataGridTextColumn Width="80" Binding="{Binding ProductsId}" Header="№ товара"/>
@@ -42,28 +42,31 @@
             </DataGrid>
             <Button x:Name="button" Content="Редактировать" HorizontalAlignment="Left" 
                     Margin="339.4,78,0,0" VerticalAlignment="Top" Width="121" Click="buttonEdit_Click" 
-                    Height="40" FontWeight="Bold" FontSize="14" Grid.Column="1" Background="#FFC0B2B2" 
+                    Height="40" FontWeight="Bold" FontSize="14" Grid.Column="1" 
                     BorderBrush="#FFEA4343" BorderThickness="2"/>
             <Button x:Name="button5" Content="Добавить" HorizontalAlignment="Left" Margin="339.4,33,0,0" 
                     VerticalAlignment="Top" Width="121" Height="40" Click="buttonAdd_Click" 
-                    FontWeight="Bold" FontSize="14" Grid.Column="1" Background="#FFC0B2B2" 
+                    FontWeight="Bold" FontSize="14" Grid.Column="1" 
                     BorderBrush="#FFEA4343" BorderThickness="2"/>
             <Button x:Name="button6" Content="Удалить" HorizontalAlignment="Left" Margin="339.4,123,0,0" 
                     VerticalAlignment="Top" Width="121" Height="40" Click="buttonDel_Click" 
-                    FontWeight="Bold" FontSize="14" Grid.Column="1" Background="#FFC0B2B2" 
+                    FontWeight="Bold" FontSize="14" Grid.Column="1"
                     BorderBrush="#FFEA4343" BorderThickness="2"/>
             <Button x:Name="button7" Content="Сохранить" HorizontalAlignment="Left" Margin="339.4,168,0,0" 
                     VerticalAlignment="Top" Width="121" Height="40" Click="buttonSave_Click" 
-                    FontWeight="Bold" FontSize="14" Grid.Column="1" Background="#FFC0B2B2" 
+                    FontWeight="Bold" FontSize="14" Grid.Column="1" 
                     BorderBrush="#FFEA4343" BorderThickness="2"/>
-            <Label x:Name="label4" Content="Составил : " HorizontalAlignment="Left" Margin="274,279,0,0" 
-                   VerticalAlignment="Top" Width="370" Height="41" FontSize="21.333" Background="#FFDADCE5" 
-                   Foreground="#FF1017A8" Grid.ColumnSpan="2"/>
 
             <CheckBox x:Name="checkBox" Content="Выполнена" HorizontalAlignment="Left" Margin="39,318,0,0" 
                       VerticalAlignment="Top" FontSize="16" FontWeight="Bold" Height="26"/>
+            <Label x:Name="label4" Content="Составил : " HorizontalAlignment="Left" Margin="274,279,0,0" 
+                   VerticalAlignment="Top" Width="370" Height="41" FontSize="21.333" Background="#FFDADCE5" 
+                   Foreground="#FF1017A8" Grid.ColumnSpan="2"/>
             <Label Content="Ответственный:" HorizontalAlignment="Left" Margin="104,284,0,0" 
                    VerticalAlignment="Top" Width="151" FontSize="18" FontWeight="Bold"/>
+            <Button Content="Экспорт в Excel" Grid.Column="1" HorizontalAlignment="Left" Margin="339.4,213,0,0" 
+                    VerticalAlignment="Top" Width="121" Click="ButtonExl_Click" Height="40" BorderThickness="2"
+                    FontWeight="Bold" BorderBrush="#FFEA4343"/>
         </Grid>
 
         <Grid x:Name="GoodsGrid" HorizontalAlignment="Left" Height="269" VerticalAlignment="Top" 

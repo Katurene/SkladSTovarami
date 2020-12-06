@@ -161,16 +161,16 @@ namespace SkladSTovarami.View
             }
             else
             {
-                MessageBox.Show("Вы не выбрали ничего", "Ошибка");
+                MessageBox.Show("Вы не выбрали товар для редактирования", "Ошибка");
             }
         }
 
         private void button_DeleteGoods_Click(object sender, RoutedEventArgs e)
         {
-            var result = MessageBox.Show("Вы уверены?", "Удалить запись", MessageBoxButton.YesNo);
-            if (result == MessageBoxResult.Yes)
+            if (dataGridGoods.SelectedItem != null)
             {
-                if (dataGridGoods.SelectedItem != null)
+                var result = MessageBox.Show("Вы уверены?", "Удалить запись", MessageBoxButton.YesNo);
+                if (result == MessageBoxResult.Yes)
                 {
                     ProductsViewModel viewmodel = dataGridGoods.SelectedItem as ProductsViewModel;
                     MyContext db = new MyContext();
@@ -185,7 +185,7 @@ namespace SkladSTovarami.View
             }
             else
             {
-                MessageBox.Show("Надо что-нибудь выбрать!", "Ошибка");
+                MessageBox.Show("Вы не выбрали товар для удаления!", "Ошибка");
             }
         }
 
@@ -214,10 +214,10 @@ namespace SkladSTovarami.View
 
         private void button_DeleteWorker_Click(object sender, RoutedEventArgs e)
         {
-            var result = MessageBox.Show("Вы уверены?", "Удалить запись", MessageBoxButton.YesNo);
-            if (result == MessageBoxResult.Yes)
+            if (dataGridWorker.SelectedItem != null)
             {
-                if (dataGridWorker.SelectedItem != null)
+                var result = MessageBox.Show("Вы уверены?", "Удалить запись", MessageBoxButton.YesNo);
+                if (result == MessageBoxResult.Yes)
                 {
                     MyContext db = new MyContext();
                     Employee viewmodel = dataGridWorker.SelectedItem as Employee;
@@ -231,7 +231,7 @@ namespace SkladSTovarami.View
             }
             else
             {
-                MessageBox.Show("Выберите что-нибудь?", "Ошибка");
+                MessageBox.Show("Вы не выбрали запись для удаления!", "Ошибка");
             }
         }
 
@@ -249,6 +249,10 @@ namespace SkladSTovarami.View
                 wind.textBlock_Id.Text = Convert.ToString(s.Id);
                 wind.Closing += AddWorker_Closing;
                 wind.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show("Вы не выбрали запись для редактирования!", "Ошибка");
             }
         }
 
@@ -292,16 +296,16 @@ namespace SkladSTovarami.View
             }
             else
             {
-                MessageBox.Show("Необходимо выбрать!", "Ошибка");
+                MessageBox.Show("Выберите запись для подробного просмотра", "Ошибка");
             }
         }
 
         private void button_DeleteDelivery_Click(object sender, RoutedEventArgs e)
         {
-            var result = MessageBox.Show("Вы уверены?", "Удалить запись", MessageBoxButton.YesNo);
-            if (result == MessageBoxResult.Yes)
+            if (dataGrid_Delivery.SelectedItem != null)
             {
-                if (dataGrid_Delivery.SelectedItem != null)
+                var result = MessageBox.Show("Вы уверены?", "Удалить запись", MessageBoxButton.YesNo);
+                if (result == MessageBoxResult.Yes)
                 {
                     MyContext db = new MyContext();
                     DeliveryNote delnote = dataGrid_Delivery.SelectedItem as DeliveryNote;
@@ -311,6 +315,7 @@ namespace SkladSTovarami.View
                     {
                         db.Product.FirstOrDefault(x => x.Id == s.ProductsId).Balance -= s.Count;
                     }
+
                     db.DeliveryNotes.Remove(del);
                     db.SaveChanges();
                     MyContext db1 = new MyContext();
@@ -320,7 +325,7 @@ namespace SkladSTovarami.View
             }
             else
             {
-                MessageBox.Show("Необходимо сделать выбор!", "Ошибка");
+                MessageBox.Show("Выберите запись для удаления", "Ошибка");
             }
         }
 
@@ -357,9 +362,9 @@ namespace SkladSTovarami.View
         //    }
         //}
 
-        private void button_OrderDelete_Click(object sender, RoutedEventArgs e)
+        private void button_OrderDelete_Click(object sender, RoutedEventArgs e) //немного не так работает Но сойдёт
         {
-            try 
+            try
             {
                 if (dataGridOrder.SelectedItem != null)
                 {
@@ -373,7 +378,7 @@ namespace SkladSTovarami.View
                 }
                 else
                 {
-                    MessageBox.Show("Вы ничего не выбрали!", "Ошибка");
+                    MessageBox.Show("Выберите запись для удаления!", "Ошибка");
                 }
             }
             catch
@@ -394,7 +399,7 @@ namespace SkladSTovarami.View
             }
             else
             {
-                MessageBox.Show("Выберите что-нибудь?", "Ошибка");
+                MessageBox.Show("Выберите запись для редактирования", "Ошибка");
             }
         }
 
@@ -476,16 +481,9 @@ namespace SkladSTovarami.View
 
         private void ButtonPostupleniyaZaPeriod_Click(object sender, RoutedEventArgs e)
         {
-           
+
         }
 
-        private void ButtonDetails_Click(object sender, RoutedEventArgs e)
-        {
-          
-        }
-    
-    
-          
 
         //private void btnExport_Click(object sender, RoutedEventArgs e)
         //{

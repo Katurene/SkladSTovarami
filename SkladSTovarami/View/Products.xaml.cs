@@ -214,7 +214,7 @@ namespace SkladSTovarami.View
                 }
                 else
                 {
-                    if (Tb1.Text.Length - Tb1.Text.IndexOf(",") >= 2) //колич знаков после запятой не больше 1
+                    if (Tb1.Text.Length - Tb1.Text.IndexOf(",") >= 3) //колич знаков после запятой не больше 2
                     {
                         e.Handled = true;
                     }

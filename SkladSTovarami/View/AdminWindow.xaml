@@ -86,11 +86,8 @@
                     BorderBrush="#FFB41616" Grid.Column="1"/>
             <Button Content="Экспорт в EXCEL" HorizontalAlignment="Left" Margin="219.4,181,0,0" 
                     VerticalAlignment="Top" Width="120" Click="btnExport_Click" 
-                    Height="37" Background="#FFDDDDDD" FontWeight="Bold" FontSize="14" 
+                    Height="37" FontWeight="Bold" FontSize="14" 
                     BorderThickness="2" BorderBrush="#FFB41616" Grid.Column="1"/>
-            <Button Content="Подробно" Grid.Column="1" HorizontalAlignment="Left" Margin="218.8,223,0,0" 
-                    VerticalAlignment="Top" Width="120" Height="37" FontSize="14" FontWeight="Bold" 
-                    BorderBrush="#FFB41616" Padding="2" BorderThickness="2" Click="ButtonDetails_Click"/>
         </Grid>
 
         <Grid x:Name="OrderGrid" HorizontalAlignment="Left" Height="319" Margin="10,55,0,0" 
@@ -248,7 +245,8 @@
                     <DataGridTextColumn Width="100" Binding="{Binding Count}" Header="Количество"/>
                     <DataGridTextColumn Width="100" Binding="{Binding Price}" Header="Цена"/>
                     <DataGridTextColumn Width="100" Binding="{Binding Sum}" Header="Сумма"/>
-                    <DataGridTextColumn Width="100" Binding="{Binding ProductsId}" Header="Номер товара"/>
+                    <DataGridTextColumn Width="100" Binding="{Binding GoodId}" Header="Номер товара"/><!--не надо-->
+                    <!--<DataGridTextColumn Width="100" Binding="{Binding Customer.FullName}" Header="Покупатель"/>-->
                 </DataGrid.Columns>
             </DataGrid>
 
@@ -292,6 +290,6 @@
         </Grid>
         <Button Content="EXIT" HorizontalAlignment="Left" Margin="850,17,0,0" 
                 VerticalAlignment="Top" Width="89" Click="ButtonExit_Click" Height="28" FontSize="14" 
-                FontWeight="Bold" Background="#FFED2727"/>
+                FontWeight="Bold" Background="Gray"/>
     </Grid>
 </Window>

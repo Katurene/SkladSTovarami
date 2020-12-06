@@ -13,6 +13,10 @@ namespace SkladSTovarami.Entities
         public virtual Check Check { get; set; }
         public int? ProductsId { get; set; }
         public virtual Product Products { get; set; }
+
+        public int? CustomerId { get; set; }
+        public virtual Customer Customer { get; set; }
+
         public int Count { get; set; }
         public double Sum { get { return Products.SellPrice * Count; } }
     }

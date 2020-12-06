@@ -273,6 +273,33 @@ namespace SkladSTovarami.View
             dataGridCheck.ItemsSource = checks;
         }
 
+        private void buttonPoslednProdagi_Click(object sender, RoutedEventArgs e) 
+        {
+            MyContext db = new MyContext();
+            List<CheckViewModel> lst = new List<CheckViewModel>();
+            List<CheckInfo> WorkTime = db.CheckInfos.ToList().Where(x => x.Check.Date > DateTime.Now.AddDays(-30)).Where(x => x.Check.Date < DateTime.Now).ToList();
+            foreach (CheckInfo s in WorkTime)
+            {
+                CheckViewModel t = new CheckViewModel();
+                t.Id = s.Id;
+                string name;
+                if (s.Products.Secondary == null)
+                    name = s.Products.MainProduct.CodeName;
+                else
+                    name = s.Products.Secondary.Name;
+                t.Name = name;
+                t.Price = s.Products.SellPrice;
+                t.Count = s.Count;               
+                lst.Add(t);
+            }
+            dataGrid_checks.ItemsSource = lst;           
+        }
+
+        private void ButtonChecks_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("Пока не работает!");
+        }
+
         //private void buttonFindProd_Click(object sender, RoutedEventArgs e)
         //{
         //    FindWindow f = new FindWindow();
