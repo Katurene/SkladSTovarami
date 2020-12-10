@@ -65,7 +65,7 @@
                         MouseLeave="Border_MouseLeave" MouseDown="Border_MouseDown_3">
                     <Label x:Name="label1" Content="Обнулить" HorizontalAlignment="Left" Margin="-3.2,-3.2,0,-4.8" 
                            VerticalAlignment="Top" Width="116" FontSize="21.333" Height="40" 
-                           FontWeight="Bold" Foreground="#FF7BBA85"/>
+                           FontWeight="Bold" Foreground="#FF474ED4"/> <!--Foreground="#FF7BBA85"/>-->
                 </Border>
                 <Border BorderBrush="Black" BorderThickness="3" HorizontalAlignment="Left" 
                         Height="36" Margin="104,12,0,0" VerticalAlignment="Top" Width="170" MouseEnter="Border_MouseEnter" 
@@ -129,18 +129,19 @@
             <Grid HorizontalAlignment="Left" Height="96" Margin="10,435,0,0" VerticalAlignment="Top" Width="780" Grid.ColumnSpan="2">
                 <Label x:Name="label_Selected" Content="" HorizontalContentAlignment="Right"  
                        HorizontalAlignment="Left" Margin="10,22,0,0" VerticalAlignment="Top" Height="28"
-                       Width="760" FontSize="24" FontWeight="Bold" Foreground="#FFE5DF16"/>
+                       Width="760" FontSize="24" FontWeight="Bold" Foreground="#FF474ED4"/><!--Foreground="#FFE5DF16"/>-->
                 <!--эта лейбла тоже не работает? ну и не надо-->
                 <Label x:Name="label_SummaSelected" Content="" HorizontalContentAlignment="Right" 
                        HorizontalAlignment="Left" Margin="460,50,0,0" VerticalAlignment="Top" Height="40" Width="310" 
-                       FontSize="24" FontWeight="Bold" Foreground="#FFE5DF16"/>
+                       FontSize="24" FontWeight="Bold" Foreground="#FF474ED4"/>
+                <!--Foreground="#FFE5DF16"/>-->
             </Grid>
             <Grid HorizontalAlignment="Left" Height="96" Margin="174,435,0,0" VerticalAlignment="Top"
                   Width="386" Grid.Column="1">
                 <!--чето не работает лейбла???-->
                 <Label x:Name="label3" Content="" HorizontalAlignment="Left" Margin="10,24,0,0" 
                        VerticalAlignment="Top" RenderTransformOrigin="0.921,0.538" Height="40" Width="194" 
-                       FontSize="24" FontWeight="Bold" Foreground="#FFE5DF16"/>
+                       FontSize="24" FontWeight="Bold" Foreground="#FF474ED4"/> <!--Foreground="#FFE5DF16"/>-->
                 <Label x:Name="label4" Content="" HorizontalAlignment="Left" Margin="246,24,0,0" 
                        VerticalAlignment="Top" FontSize="24" Height="40" Width="90"/>
             </Grid>

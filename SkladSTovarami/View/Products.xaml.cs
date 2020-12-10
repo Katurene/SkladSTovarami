@@ -178,8 +178,8 @@ namespace SkladSTovarami.View
                             mainProduct.Used = checkBox.IsChecked.Value;
                             mainProduct.Info = textBox_Info.Text;
                             f.Balance = Convert.ToInt32(textBox.Text);
-                            f.PricePurchase = Convert.ToInt32(textBox1.Text);
-                            f.SellPrice = Convert.ToInt32(textBox2.Text);
+                            f.PricePurchase = Convert.ToDouble(textBox1.Text); //Convert.ToInt32
+                            f.SellPrice = Convert.ToDouble(textBox2.Text); //Convert.ToInt32
                             db.SaveChanges();
                         }
                         else if (TypeGoods.SelectedItem.ToString() == "Дополнительный")
@@ -189,8 +189,8 @@ namespace SkladSTovarami.View
                             secondary.Name = textBox_Name.Text;
                             secondary.Characteristics = textBox_Charact.Text;
                             f.Balance = Convert.ToInt32(textBox.Text);
-                            f.PricePurchase = Convert.ToInt32(textBox1.Text);
-                            f.SellPrice = Convert.ToInt32(textBox2.Text);
+                            f.PricePurchase = Convert.ToDouble(textBox1.Text);
+                            f.SellPrice = Convert.ToDouble(textBox2.Text);
                             db.SaveChanges();
                         }
                         this.Close();                       

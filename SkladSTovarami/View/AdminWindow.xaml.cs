@@ -156,8 +156,6 @@ namespace SkladSTovarami.View
                 }
                 f.Closing += addNoteWindow_Closing;
                 f.ShowDialog();
-
-                MessageBox.Show("Товар успешно изменен.");
             }
             else
             {
@@ -176,6 +174,11 @@ namespace SkladSTovarami.View
                     MyContext db = new MyContext();
                     var f = db.Product.Include("MainProduct");
                     var g = f.Include("Secondary");
+
+                        //.Include("OrderInfos")
+                        //.Include("DeliveryInfos")
+                        //.Include("CheckInfos");         //полностью удаляет id товар       
+                    
                     Product q = g.FirstOrDefault(x => x.Id == viewmodel.Id);
                     db.Product.Remove(q);
                     db.SaveChanges();
@@ -343,38 +346,31 @@ namespace SkladSTovarami.View
             dataGridOrder.ItemsSource = null;
             dataGridOrder.ItemsSource = db.Orders.ToList();
         }
-
-        //private void button_OrderDelete_Click(object sender, RoutedEventArgs e) //старый нерабочий метод 
-        //{                                                              //пусть будет на всякий случай
-        //    if (dataGridOrder.SelectedItem != null)
-        //    {
-        //        MyContext db = new MyContext();
-        //        Order delnote = dataGridOrder.SelectedItem as Order;
-        //        Order del = db.Orders.FirstOrDefault(x => x.Id == delnote.Id);
-        //        db.Orders.Remove(del);
-        //        db.SaveChanges();
-        //        MyContext db1 = new MyContext();
-        //        dataGridOrder.ItemsSource = db1.Orders.ToList();
-        //    }
-        //    else
-        //    {
-        //        MessageBox.Show("Выберите что-нибудь?", "Ошибка");
-        //    }
-        //}
-
+     
         private void button_OrderDelete_Click(object sender, RoutedEventArgs e) //немного не так работает Но сойдёт
         {
             try
             {
                 if (dataGridOrder.SelectedItem != null)
                 {
-                    MyContext db = new MyContext();
-                    Order delnote = dataGridOrder.SelectedItem as Order;
-                    Order del = db.Orders.FirstOrDefault(x => x.Id == delnote.Id);
-                    db.Orders.Remove(del);
-                    db.SaveChanges();
-                    MyContext db1 = new MyContext();
-                    dataGridOrder.ItemsSource = db1.Orders.ToList();
+                    var result = MessageBox.Show("Вы уверены?", "Удалить запись", MessageBoxButton.YesNo);
+                    if (result == MessageBoxResult.Yes)
+                    {
+                        MyContext db = new MyContext();
+                        Order delnote = dataGridOrder.SelectedItem as Order;
+                        Order del = db.Orders.FirstOrDefault(x => x.Id == delnote.Id);
+
+                        //foreach (OrderInfo s in db.OrderInfos.ToList()) //для удаления пустой заявки
+                        //{
+                        //    if (s.ProductsId == null)
+                        //        db.OrderInfos.Remove(s);
+                        //}
+                        ////////////////////////////////
+                        db.Orders.Remove(del);
+                        db.SaveChanges();
+                        MyContext db1 = new MyContext();
+                        dataGridOrder.ItemsSource = db1.Orders.ToList();
+                    }
                 }
                 else
                 {
@@ -387,19 +383,36 @@ namespace SkladSTovarami.View
             }
         }
 
-        private void button_OrderEdit_Click(object sender, RoutedEventArgs e)
+        private void button_OrderEdit_Click(object sender, RoutedEventArgs e) //кнопка подробно
         {
-            if (dataGridOrder.SelectedItem != null)
+            try
             {
-                Order delnote = dataGridOrder.SelectedItem as Order;
-                OrderEdit wind = new OrderEdit() { IdDelivery = delnote.Id };
-                wind.EmployeeId = EmployeeId;
-                wind.Closing += OrderEdit_closing;
-                wind.ShowDialog();
+                if (dataGridOrder.SelectedItem != null)
+                {
+                    MyContext db = new MyContext();
+                    Order delnote = dataGridOrder.SelectedItem as Order;
+
+                    ////OrderInfo s = db.OrderInfos
+                    //if (db.OrderInfos.ProductsId == null)
+                    //{
+                    //    MessageBox.Show("Заявка пустая! Товары удалены", "Ошибка");
+                    //}
+                    //else
+                    //{
+                        OrderEdit wind = new OrderEdit() { IdDelivery = delnote.Id };
+                        wind.EmployeeId = EmployeeId;
+                        wind.Closing += OrderEdit_closing;
+                        wind.ShowDialog();
+                    }
+               // }
+                else
+                {
+                    MessageBox.Show("Выберите запись для просмотра", "Ошибка");
+                }
             }
-            else
+            catch
             {
-                MessageBox.Show("Выберите запись для редактирования", "Ошибка");
+                MessageBox.Show("error!!!", "Ошибка");
             }
         }
 
@@ -460,21 +473,21 @@ namespace SkladSTovarami.View
             Workbook workbook = excel.Workbooks.Add(System.Reflection.Missing.Value);
             Worksheet sheet1 = (Worksheet)workbook.Sheets[1];
             sheet1.Columns.AutoFit();
-
+                                                  
             for (int j = 0; j < dataGridGoods.Columns.Count; j++)
             {
                 Range myRange = (Range)sheet1.Cells[1, j + 1];
                 sheet1.Cells[1, j + 1].Font.Bold = true;
-                sheet1.Columns[j + 1].ColumnWidth = 15;
+                sheet1.Columns[j + 1].ColumnWidth = 15;        
                 myRange.Value2 = dataGridGoods.Columns[j].Header;
             }
             for (int i = 0; i < dataGridGoods.Columns.Count; i++)
             {
-                for (int j = 0; j < dataGridGoods.Items.Count; j++)
+                for (int j = 0; j < dataGridGoods.Items.Count; j++)   //пока включена тема не сохраняет
                 {
                     TextBlock b = dataGridGoods.Columns[i].GetCellContent(dataGridGoods.Items[j]) as TextBlock;
-                    Microsoft.Office.Interop.Excel.Range myRange = (Microsoft.Office.Interop.Excel.Range)sheet1.Cells[j + 2, i + 1];
-                    myRange.Value2 = b.Text;
+                    Range myRange = (Range)sheet1.Cells[j + 2, i + 1];
+                    myRange.Value2 = b.Text; 
                 }
             }
         }
@@ -483,41 +496,6 @@ namespace SkladSTovarami.View
         {
 
         }
-
-
-        //private void btnExport_Click(object sender, RoutedEventArgs e)
-        //{
-        //    MyContext db = new MyContext();
-        //    Microsoft.Office.Interop.Excel.Application excel = null;
-        //    Microsoft.Office.Interop.Excel.Workbook wb = null;
-        //    object missing = Type.Missing;
-        //    Microsoft.Office.Interop.Excel.Worksheet ws = null;
-        //    Microsoft.Office.Interop.Excel.Range rng = null;
-
-        //    // collection of DataGrid Items
-        //    var dtExcelDataTable = ExcelTimeReport(txtFrmDte.Text, txtToDte.Text, strCondition);
-
-        //    excel = new Microsoft.Office.Interop.Excel.Application();
-        //    wb = excel.Workbooks.Add();
-        //    ws = (Microsoft.Office.Interop.Excel.Worksheet)wb.ActiveSheet;
-        //    ws.Columns.AutoFit();
-        //    ws.Columns.EntireColumn.ColumnWidth = 25;
-
-        //    // Header row
-        //    for (int Idx = 0; Idx < dtExcelDataTable.Columns.Count; Idx++)
-        //    {
-        //        ws.Range["A1"].Offset[0, Idx].Value = dtExcelDataTable.Columns[Idx].ColumnName;
-        //    }
-
-        //    // Data Rows
-        //    for (int Idx = 0; Idx < dtExcelDataTable.Rows.Count; Idx++)
-        //    {
-        //        ws.Range["A2"].Offset[Idx].Resize[1, dtExcelDataTable.Columns.Count].Value = dtExcelDataTable.Rows[Idx].ItemArray;
-        //    }
-
-        //    excel.Visible = true;
-        //    wb.Activate();
-        //}
 
 
         //private void btnExport_Click(object sender, RoutedEventArgs e)

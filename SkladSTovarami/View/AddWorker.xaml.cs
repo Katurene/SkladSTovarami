@@ -40,6 +40,18 @@ namespace SkladSTovarami.View
                 res = MessageBox.Show("Сохранить изменения?", "Подтверждение", MessageBoxButton.YesNo);
                 if (res == MessageBoxResult.Yes)
                 {
+                    //Этот кусок потом убрать!!!!!!!!!!!! Проверка на null ///////////////////////////////
+                    List<TextBox> s = addWorkerGrid.Children.OfType<TextBox>().ToList();
+                    foreach (TextBox q in s)
+                    {
+                        if (q.Text == "")
+                        {
+                            MessageBox.Show("Не все поля заполнены");
+                            return;
+                        }
+                    }
+                    ///////////////////////////////////////////////////////////////
+                    
                     bool allow = true;
                     Employee nw = new Employee();
                     if (textBlock_Id.Text != "-1")
@@ -49,6 +61,7 @@ namespace SkladSTovarami.View
                     nw.Name = textBox_name.Text;
                     nw.Surname = textBox_surname.Text;
                     nw.Role = comboBox_role.SelectedItem as string;
+
                     if (passwordBox.Password == passwordBox_approve.Password)
                     {
                         nw.Password = passwordBox_approve.Password;

@@ -7,7 +7,7 @@
         mc:Ignorable="d"
        Title="ДОБАВЛЕНИЕ СОТРУДНИКА" Height="319.703" Width="416.269" FontSize="14">
 
-    <Grid Background="#FF4156C7">
+    <Grid Name="addWorkerGrid" Background="#FF4156C7">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="86*"/>
             <ColumnDefinition Width="119*"/>

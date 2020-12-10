@@ -12,7 +12,7 @@
     		HorizontalAlignment="Left" 
     		Margin="111,13,0,0"
     		VerticalAlignment="Top"
-    		Width="120" SelectionChanged="TypeGoods_SelectionChanged">
+    		Width="135" SelectionChanged="TypeGoods_SelectionChanged">
         </ComboBox>
         <Label x:Name="label" Content="Тип товара" HorizontalAlignment="Left" Margin="21,10,0,0" 
                VerticalAlignment="Top" FontWeight="Bold"/>
@@ -29,7 +29,7 @@
                                  TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
                         <TextBox x:Name="textBox_Name" HorizontalAlignment="Left" Height="23" Margin="156,12,0,0" 
                                  TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
-                        <TextBox x:Name="textBox_Charact" HorizontalAlignment="Left" Height="88" Margin="156,72,0,0" 
+                        <TextBox x:Name="textBox_Charact" HorizontalAlignment="Left" Height="82" Margin="156,72,0,0" 
                                  TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="317"/>
                         <Label x:Name="label1" Content="Название :" HorizontalAlignment="Left" Margin="44,10,0,0" 
                                VerticalAlignment="Top" RenderTransformOrigin="0.031,-0.083"/>

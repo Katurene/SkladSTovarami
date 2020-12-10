@@ -73,7 +73,7 @@ namespace SkladSTovarami.View
             }
             else
             {
-                MessageBox.Show("Вы ничего не выбрали!", "Ошибка");
+                MessageBox.Show("Выберите запись для редактирования!", "Ошибка");
             }
         }
 
@@ -87,15 +87,19 @@ namespace SkladSTovarami.View
         {
             if (dataGridGoods.SelectedItem != null)
             {
-                MyContext db = new MyContext();
-                OrderViewModel del = dataGridGoods.SelectedItem as OrderViewModel;
-                lst.Remove(lst.FirstOrDefault(x => x == del));
-                dataGridGoods.ItemsSource = null;
-                dataGridGoods.ItemsSource = lst;
+                var result = MessageBox.Show("Вы уверены?", "Удалить запись", MessageBoxButton.YesNo);
+                if (result == MessageBoxResult.Yes)
+                {
+                    MyContext db = new MyContext();
+                    OrderViewModel del = dataGridGoods.SelectedItem as OrderViewModel;
+                    lst.Remove(lst.FirstOrDefault(x => x == del));
+                    dataGridGoods.ItemsSource = null;
+                    dataGridGoods.ItemsSource = lst;
+                }
             }
             else
             {
-                MessageBox.Show("Вы ничего не выбрали!", "Ошибка");
+                MessageBox.Show("Выберите запись для удаления!", "Ошибка");
             }
         }
 
@@ -301,7 +305,7 @@ namespace SkladSTovarami.View
                 for (int j = 0; j < dataGridGoods.Items.Count; j++)
                 {
                     TextBlock b = dataGridGoods.Columns[i].GetCellContent(dataGridGoods.Items[j]) as TextBlock;
-                    Microsoft.Office.Interop.Excel.Range myRange = (Microsoft.Office.Interop.Excel.Range)sheet1.Cells[j + 2, i + 1];
+                    Range myRange = (Range)sheet1.Cells[j + 2, i + 1];
                     myRange.Value2 = b.Text;
                 }
             }

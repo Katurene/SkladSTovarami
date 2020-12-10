@@ -20,9 +20,9 @@
             </Label.Background>
         </Label>
 
-        <Label x:Name="label_Delivery" Content="Накладные" HorizontalAlignment="Left" Foreground="#FF030715" 
+        <Label x:Name="label_Delivery" Content="Поступление" HorizontalAlignment="Left" Foreground="#FF030715" 
                FontSize="18" FontFamily="Segoe WP Semibold" Margin="222,15,0,0" VerticalAlignment="Top" 
-               RenderTransformOrigin="-1.355,0.019" Height="35" Width="125" MouseDown="label_Delivery_MouseDown" 
+               RenderTransformOrigin="-1.355,0.019" Height="35" Width="130" MouseDown="label_Delivery_MouseDown" 
                FontWeight="Bold" BorderThickness="2" BorderBrush="#FFA91818">
             <Label.Background>
                 <ImageBrush/>
@@ -44,13 +44,14 @@
                 <ColumnDefinition Width="599*"/>
                 <ColumnDefinition Width="360*"/>
             </Grid.ColumnDefinitions>
+            
             <DataGrid x:Name="dataGridGoods" 
+                      ItemsSource="{Binding}"
                       HorizontalAlignment="Left"
                       Margin="10,10,0,-1"
                       VerticalAlignment="Top"
                       Height="310"
-                      Width="803"
-                      ItemsSource="{Binding}"
+                      Width="803"                      
                       HeadersVisibility="Column"
 				      CanUserResizeRows="False"
 				      SelectionMode="Single"
@@ -144,8 +145,8 @@
                     <DataGridTextColumn Width="60" Binding="{Binding Id}" Header="№"/>
                     <DataGridTextColumn Width="170" Binding="{Binding Date}" Header="Дата"/>
                     <DataGridTextColumn Width="170" Binding="{Binding TypePayment}" Header="Тип оплаты"/>
-                    <DataGridTextColumn Width="100" Binding="{Binding Sum}" Header="Сумма"/>                    
-                    <DataGridTextColumn Width="120" Binding="{Binding Invoice}" Header="№ инвойса"/>                    
+                    <DataGridTextColumn Width="100" Binding="{Binding Sum}" Header="Сумма"/>
+                    <DataGridTextColumn Width="120" Binding="{Binding Invoice}" Header="№ инвойса"/>
                 </DataGrid.Columns>
             </DataGrid>
 
@@ -203,8 +204,8 @@
         </Grid>
 
         <Label x:Name="label_Worker" Content="Сотрудники" HorizontalAlignment="Left" Foreground="#FF030715" 
-               FontSize="18" FontFamily="Segoe WP Semibold" Margin="352,15,0,0" VerticalAlignment="Top" 
-               RenderTransformOrigin="-1.355,0.019" Height="35" Width="125" 
+               FontSize="18" FontFamily="Segoe WP Semibold" Margin="357,15,0,0" VerticalAlignment="Top" 
+               RenderTransformOrigin="-1.355,0.019" Height="35" Width="120" 
                MouseDown="label_Worker_MouseDown" FontWeight="Bold" BorderThickness="2" BorderBrush="#FFA91818" >
             <Label.Background>
                 <ImageBrush/>
@@ -245,7 +246,8 @@
                     <DataGridTextColumn Width="100" Binding="{Binding Count}" Header="Количество"/>
                     <DataGridTextColumn Width="100" Binding="{Binding Price}" Header="Цена"/>
                     <DataGridTextColumn Width="100" Binding="{Binding Sum}" Header="Сумма"/>
-                    <DataGridTextColumn Width="100" Binding="{Binding GoodId}" Header="Номер товара"/><!--не надо-->
+                    <DataGridTextColumn Width="100" Binding="{Binding GoodId}" Header="Номер товара"/>
+                    <!--не надо-->
                     <!--<DataGridTextColumn Width="100" Binding="{Binding Customer.FullName}" Header="Покупатель"/>-->
                 </DataGrid.Columns>
             </DataGrid>
