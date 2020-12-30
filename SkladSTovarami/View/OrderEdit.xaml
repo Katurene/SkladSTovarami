@@ -101,10 +101,7 @@
                     VerticalAlignment="Top" Width="116" Height="46" FontFamily="Microsoft Sans Serif" 
                     FontSize="20" Click="buttonCancel_Click"/>
             <Label Content="Для поиска введите название" HorizontalAlignment="Left" Margin="154,5,0,0" 
-                   VerticalAlignment="Top" Width="207" Height="23" FontWeight="Bold"/>
-            <!--<Button x:Name="button8" Content="Поиск" HorizontalAlignment="Left" Margin="172,5,0,0" 
-                    VerticalAlignment="Top" Width="81" Click="buttonFind_Click" FontWeight="Bold" 
-                    Height="24" FontSize="14"/>-->
+                   VerticalAlignment="Top" Width="207" Height="23" FontWeight="Bold"/>       
         </Grid>
 
         <Grid x:Name="CountPriceGrid" HorizontalAlignment="Left" Height="146" Margin="61.2,65,0,0" 

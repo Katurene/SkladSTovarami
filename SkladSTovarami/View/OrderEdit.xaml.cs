@@ -310,15 +310,6 @@ namespace SkladSTovarami.View
                 }
             }
         }
-
-        //private void buttonFind_Click(object sender, RoutedEventArgs e)
-        //{
-        //    FindWindow f = new FindWindow();
-        //    f.ShowDialog();
-        //    List<ProductsViewModel> s = dataGridGoods.ItemsSource as List<ProductsViewModel>;
-        //    int i = s.IndexOf(s.FirstOrDefault(x => x.Id == f.Id));
-        //    dataGrid.SelectedIndex = i;
-        //}
     }
 }
 

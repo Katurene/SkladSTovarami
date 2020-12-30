@@ -359,13 +359,6 @@ namespace SkladSTovarami.View
                         MyContext db = new MyContext();
                         Order delnote = dataGridOrder.SelectedItem as Order;
                         Order del = db.Orders.FirstOrDefault(x => x.Id == delnote.Id);
-
-                        //foreach (OrderInfo s in db.OrderInfos.ToList()) //для удаления пустой заявки
-                        //{
-                        //    if (s.ProductsId == null)
-                        //        db.OrderInfos.Remove(s);
-                        //}
-                        ////////////////////////////////
                         db.Orders.Remove(del);
                         db.SaveChanges();
                         MyContext db1 = new MyContext();
@@ -442,7 +435,7 @@ namespace SkladSTovarami.View
                 t.Name = name;
                 t.Price = s.Products.SellPrice;
                 t.Count = s.Count;
-                t.GoodId = s.Products.Id;//ИД товара - не нужен Вместо него Покупателя надо бы
+                t.GoodId = s.Products.Id;
                 lst.Add(t);
             }
             dataGrid_useful.ItemsSource = lst;
@@ -483,11 +476,11 @@ namespace SkladSTovarami.View
             }
             for (int i = 0; i < dataGridGoods.Columns.Count; i++)
             {
-                for (int j = 0; j < dataGridGoods.Items.Count; j++)   //пока включена тема не сохраняет
+                for (int j = 0; j < dataGridGoods.Items.Count; j++)   
                 {
                     TextBlock b = dataGridGoods.Columns[i].GetCellContent(dataGridGoods.Items[j]) as TextBlock;
                     Range myRange = (Range)sheet1.Cells[j + 2, i + 1];
-                    myRange.Value2 = b.Text; 
+                    myRange.Value2 = b.Text;  //пока включена тема не сохраняет 
                 }
             }
         }
